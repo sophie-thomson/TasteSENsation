@@ -1,0 +1,1 @@
+web: gunicorn tastesenation_project.wsgi
