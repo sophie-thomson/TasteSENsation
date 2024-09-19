@@ -1,1 +1,1 @@
-web: gunicorn tastesenation_project.wsgi
+web: gunicorn tastesensation_project.wsgi
