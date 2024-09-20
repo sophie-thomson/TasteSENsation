@@ -29,6 +29,7 @@ class Recipe(models.Model):
     chopping = models.BooleanField(default=False)
     hob_use = models.BooleanField(default=False)
     average_rating = models.IntegerField(default=0)
+    ingredients = models.TextField()
     instructions = models.TextField()
     cooked_status = models.IntegerField(choices=COOKED_STATUS, default=0)
     want_to_try_tag = models.BooleanField(default=False)
