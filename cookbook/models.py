@@ -2,15 +2,11 @@ from django.db import models
 from django.contrib.auth.models import User
 
 COOKED_STATUS = ((0, "Not Cooked"), (1, "Cooked"))
-SKILLS_CHOICES = [
-    ("BK", "Baking"),
-    ("MX", "Mixing"),
-    ("FY", "Frying"),
-    ("ST", "Straining"),
-    ("MA", "Mashing"),
-    ("WH", "Whisking"),
-    ("CH", "Chopping"),
-    ("HB", "Hob Use"),
+SOURCE_SITES = [
+    ("AC", "Accessible Chef"),
+    ("CA", "CookABILITY"),
+    ("A2L", "Able2Learn"),
+    ("AGU", "Autism Grown Up"),
 ]
 
 # Create your models here.
@@ -19,7 +15,8 @@ SKILLS_CHOICES = [
 class Recipe(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
-    source_site = models.CharField(max_length=200)
+    source_site = models.CharField(choices=SOURCE_SITES)
+    original_recipe = models.SlugField()
     baking = models.BooleanField(default=False)
     mixing = models.BooleanField(default=False)
     frying = models.BooleanField(default=False)
