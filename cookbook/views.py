@@ -7,5 +7,5 @@ from .models import Recipe
 
 class RecipeList(generic.ListView):
     # 
-    queryset = Recipe.objects.all()
+    queryset = Recipe.objects.all().order_by("-created_on")
     template_name = "recipe_list.html"
