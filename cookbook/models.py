@@ -39,6 +39,12 @@ class Recipe(models.Model):
     dislike_tag = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ["-created_on", "average_rating"]
+    
+    def __str__(self):
+        return f"{self.title}  |  {self.cooked_status}"
+
 
 class Comment(models.Model):
     recipe = models.ForeignKey(
@@ -49,4 +55,10 @@ class Comment(models.Model):
     own_comment = models.TextField(blank=False)
     approved = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_on"]
+
+    def __str__(self):
+        return f"Comment {self.comment_selection}. {self.own_comment} by {self.author}"
     
