@@ -27,7 +27,7 @@ class Recipe(models.Model):
     mixing = models.BooleanField(default=False)
     frying = models.BooleanField(default=False)
     straining = models.BooleanField(default=False)
-    mashing = models.BooleanField(default=False)
+    microwaving = models.BooleanField(default=False)
     whisking = models.BooleanField(default=False)
     chopping = models.BooleanField(default=False)
     hob_use = models.BooleanField(default=False)
