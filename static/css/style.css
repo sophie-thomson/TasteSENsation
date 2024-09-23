@@ -26,12 +26,12 @@ body {
 }
 
 .main-bg {
-    background-color: #F9FAFC;
+    background-color: #a9c2b8;
 }
 
 .card {
-    border: none;
-    background-color: transparent;
+    border: solid 1px #4A4A4F;
+    background-color: #fafafa;
 }
 
 .image-container {
