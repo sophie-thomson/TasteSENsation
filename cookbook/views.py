@@ -8,4 +8,5 @@ from .models import Recipe
 class RecipeList(generic.ListView):
     # 
     queryset = Recipe.objects.all().order_by("-created_on")
-    template_name = "recipe_list.html"
+    template_name = "cookbook/index.html"
+    paginate_by = 6
