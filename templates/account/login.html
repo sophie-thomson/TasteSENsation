@@ -7,27 +7,35 @@
 
 {% block content %}
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 mt-3 offset-md-2">
-            <h3>{% trans "Sign In" %}</h3>
-
-            <p>{% blocktrans %}Welcome back to TasteSENsation! 
-                To leave a review or add a recipe to your own cookbook profile, please log in. 
-                If you have not created an account yet, then <a class="link" href="{{ signup_url }}">sign up</a>
-                first.{% endblocktrans %}</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-8 mt-3 offset-md-2">
-            <form class="login" method="POST" action="{% url 'account_login' %}">
-                {% csrf_token %}
-                {{ form.as_p }}
-                {% if redirect_field_value %}
-                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-                {% endif %}
-                <button class="btn btn-signup right" type="submit">{% trans "Sign In" %}</button>
-            </form>
+<div class="container d-flex justify-content-center align-items-center">
+    <div class="signup-container">
+        <div class="row">
+            <div class="card">
+                <div class="card-body pl-2">
+                    <div class="col">
+                        <h3 class="card-title">{% trans "Log In" %}</h3>
+                        <h6 class="card-subtitle mb-2 text-muted">{% blocktrans %}Welcome back to TasteSENsation!</h6>
+                        <hr>
+                        <p>You need to Log In if you want to track your cooked recipes or add your own recipe ratings and
+                            reviews</p>
+                        <p>If you don't have an account yet, then <a class="link" href="{{ signup_url }}">sign
+                                up</a>
+                            first.{% endblocktrans %}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col offset-md-1 mb-5">
+                        <form class="login" method="POST" action="{% url 'account_login' %}">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            {% if redirect_field_value %}
+                            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                            {% endif %}
+                            <button class="btn btn-signup right" type="submit">{% trans "Sign In" %}</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

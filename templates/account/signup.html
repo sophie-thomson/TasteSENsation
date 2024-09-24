@@ -1,21 +1,51 @@
-{% extends "account/base.html" %}
+{% extends "base.html" %}
 
 {% load i18n %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock head_title %}
 
 {% block content %}
-<h1>{% trans "Sign Up" %}</h1>
 
-<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+<div class="container d-flex justify-content-center align-items-center">
+  <div class="signup-container">
+    <div class="row">
+      <div class="card">
+        <div class="card-body pl-2">
+          <div class="col">
 
-<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <button type="submit">{% trans "Sign Up" %} &raquo;</button>
-</form>
+
+            <h3 class="card-title">{% trans "Sign Up" %}</h3>
+            <h6 class="card-subtitle mb-2 text-muted">{% blocktrans %}Already have an account? 
+              Then please <a class="link" href="{{ login_url }}">log in</a>.
+              {% endblocktrans %}</h6>
+            <hr>
+            <p>You need to sign up to track your cooked recipes and add your own ratings and
+              reviews.</p>
+              <p>Enter your details below to sign up:</p>
+          </div>
+          <div class="row">
+            <div class="col offset-md-1 mb-4">
+              
+
+              <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+                <button class="btn btn-signup right" type="submit">{% trans "Sign Up" %} &raquo;</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
 
 {% endblock content %}
