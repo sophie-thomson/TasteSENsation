@@ -38,11 +38,25 @@ class Recipe(models.Model):
     class Meta:
         ordering = ["-created_on"]
 
-    def average_rating(self) -> float:
-        return Rating.objects.filter(recipe=self).aggregate(Avg("rating"))["rating__avg"] or 0
-    
     def __str__(self):
-        return f"{self.title}  |  {self.average_rating()}"
+        return self.title
+
+    def get_average_rating(self) -> float:
+        average = self.ratings.aggregate(Avg("rating"))["rating__avg"]
+        return round(average, 1) if average else 0
+    
+
+class Rating(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    recipe = models.ForeignKey(Recipe, related_name="ratings", on_delete=models.CASCADE)
+    rating = models.IntegerField(default=0)
+
+    class Meta:
+        # Checks that user only rates each recipe once
+        unique_together = ("recipe", "user")
+
+    def __str__(self):
+        return f"{self.user.username} gave {self.recipe.title}, {self.rating} stars"
 
 
 class Comment(models.Model):
@@ -60,12 +74,3 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment {self.comment_selection}. {self.own_comment} by {self.author}"
-    
-
-class Rating(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
-    rating = models.IntegerField(default=0)
-
-    def __str__(self):
-        return f"{self.recipe.title}: {self.rating}"

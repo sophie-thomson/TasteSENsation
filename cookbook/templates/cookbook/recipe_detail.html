@@ -21,12 +21,45 @@
     <div class="row">
         <div class="col card mb-4  mt-3 left  top">
             <div class="card-body">
-                <!-- The post content goes inside the card-text. -->
-                <!-- Use the | safe filter inside the template tags -->
-                <p class="card-text">
-                    {{ recipe.ingredients | safe }}
-                    {{ recipe.instructions | safe }}
+                <!-- The | safe filter is used as both these fields are written in html using Summernote -->
+                <p class="card-text"><strong>Ingredients:</strong>
+                    {{ recipe.ingredients | safe }}</p>
+                 <p><strong>Instructions:</strong>{{ recipe.instructions | safe }}</p>
+                
+                <hr>
+                <h3>Rate this Recipe</h3>
+                <form method="POST">
+                    {% csrf_token %}
+                    <select name="rating">
+                        <option value="1">1 Star</option>
+                        <option value="2">2 Stars</option>
+                        <option value="3">3 Stars</option>
+                        <option value="4">4 Stars</option>
+                        <option value="5">5 Stars</option>
+                    </select>
+                    <button type="submit">Submit Rating</button>
+                </form>
+
+                <p>Your Rating: 
+                    {% if user_rating %}
+                        {{ user_rating.rating }}
+                    {% else %}
+                        Not Rated
+                    {% endif %}
                 </p>
+                <!-- <ul class="btn btn-light list-inline rating-list">
+                                <li onclick="rate(5, {{ recipe.id }})">
+                                    <i class="fa fa-star {% if recipe.user_rating > 4 %} checked {% endif %}" title="Rate 5"></i></li>
+                                <li onclick="rate(4, {{ recipe.id }})">
+                                    <i class="fa fa-star {% if recipe.user_rating > 3 %} checked {% endif %}" title="Rate 4"></i></li>
+                                <li onclick="rate(3, {{ recipe.id }})">
+                                    <i class="fa fa-star {% if recipe.user_rating > 2 %} checked {% endif %}" title="Rate 3"></i></li>
+                                <li onclick="rate(2, {{ recipe.id }})">
+                                    <i class="fa fa-star {% if recipe.user_rating > 1 %} checked {% endif %}" title="Rate 2"></i></li>
+                                <li onclick="rate(1, {{ recipe.id }})">
+                                    <i class="fa fa-star {% if recipe.user_rating > 0 %} checked {% endif %}" title="Rate 1"></i></li>
+                            </ul> -->
+                <p>Average Rating: {{ average_rating|floatformat:1 }} stars</p>
             </div>
         </div>
     </div>

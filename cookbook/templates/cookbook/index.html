@@ -28,6 +28,7 @@
                             <p class="baking">{{ recipe.baking }}</p><br /><br />
 
                             <hr />
+                            <p>Average Rating: {{ average_rating|floatformat:1 }} stars</p>
                             <p>Average Rating:
                                 <span class="fa fa-star {% if recipe.average_rating > 0 %} checked {% endif %}"></span>
                                 <span class="fa fa-star {% if recipe.average_rating > 1 %} checked {% endif %}"></span>
@@ -35,18 +36,7 @@
                                 <span class="fa fa-star {% if recipe.average_rating > 3 %} checked {% endif %}"></span>
                                 <span class="fa fa-star {% if recipe.average_rating > 4 %} checked {% endif %}"></span>
                             </p>
-                            <!-- <ul class="btn btn-light list-inline rating-list">
-                                <li onclick="rate(5, {{ recipe.id }})">
-                                    <i class="fa fa-star {% if recipe.user_rating > 4 %} checked {% endif %}" title="Rate 5"></i></li>
-                                <li onclick="rate(4, {{ recipe.id }})">
-                                    <i class="fa fa-star {% if recipe.user_rating > 3 %} checked {% endif %}" title="Rate 4"></i></li>
-                                <li onclick="rate(3, {{ recipe.id }})">
-                                    <i class="fa fa-star {% if recipe.user_rating > 2 %} checked {% endif %}" title="Rate 3"></i></li>
-                                <li onclick="rate(2, {{ recipe.id }})">
-                                    <i class="fa fa-star {% if recipe.user_rating > 1 %} checked {% endif %}" title="Rate 2"></i></li>
-                                <li onclick="rate(1, {{ recipe.id }})">
-                                    <i class="fa fa-star {% if recipe.user_rating > 0 %} checked {% endif %}" title="Rate 1"></i></li>
-                            </ul> -->
+                            
                             <p class="card-text text-muted h6">Added on: {{ recipe.created_on}}
                             </p>
                         </div>
