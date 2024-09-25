@@ -4,16 +4,14 @@ from django.db.models import Avg
 
 COOKED_STATUS = ((0, "Not Cooked"), (1, "Cooked"))
 SOURCE_SITES = [
-    ("AC", "Accessible Chef"),
-    ("CA", "CookABILITY"),
-    ("A2L", "Able2Learn"),
-    ("AGU", "Autism Grown Up"),
+    ("Accessible Chef", "Accessible Chef"),
+    ("CookABILITY", "CookABILITY"),
 ]
 COMMENT_CHOICES = [
-    ("Love", "Love this recipe!"),
-    ("Delish", "Delicious and easy to make"),
-    ("OK", "OK, but prob won't make again"),
-    ("Diff", "Too difficult for me, but might be OK for others"),
+    ("Love this recipe!", "Love this recipe!"),
+    ("Delicious and easy to make.", "Delicious and easy to make."),
+    ("OK, but probably won't make again.", "OK, but probably won't make again."),
+    ("Too difficult for me, but might be OK for others", "Too difficult for me, but might be OK for others"),
 ]
 
 # Create your models here.
@@ -32,12 +30,9 @@ class Recipe(models.Model):
     whisking = models.BooleanField(default=False)
     chopping = models.BooleanField(default=False)
     hob_use = models.BooleanField(default=False)
-    average_rating = models.IntegerField(default=0)
     ingredients = models.TextField()
     instructions = models.TextField()
     cooked_status = models.IntegerField(choices=COOKED_STATUS, default=0)
-    want_to_try_tag = models.BooleanField(default=False)
-    dislike_tag = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:
