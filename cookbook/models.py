@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models import Avg
 
 COOKED_STATUS = ((0, "Not Cooked"), (1, "Cooked"))
 SOURCE_SITES = [
@@ -40,10 +41,13 @@ class Recipe(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ["-created_on", "average_rating"]
+        ordering = ["-created_on"]
+
+    def average_rating(self) -> float:
+        return Rating.objects.filter(recipe=self).aggregate(Avg("rating"))["rating__avg"] or 0
     
     def __str__(self):
-        return f"{self.title}  |  {self.cooked_status}"
+        return f"{self.title}  |  {self.average_rating()}"
 
 
 class Comment(models.Model):
@@ -62,3 +66,11 @@ class Comment(models.Model):
     def __str__(self):
         return f"Comment {self.comment_selection}. {self.own_comment} by {self.author}"
     
+
+class Rating(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    rating = models.IntegerField(default=0)
+
+    def __str__(self):
+        return f"{self.recipe.title}: {self.rating}"
