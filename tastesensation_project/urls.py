@@ -21,8 +21,6 @@ from django.urls import path, include
 urlpatterns = [
     path("accounts/", include("allauth.urls")),
     path('admin/', admin.site.urls),
-    # path('rate/<int:recipe_id>/<int:rating>/', views.rate),
     path('summernote/', include('django_summernote.urls')),
-    path("", include("cookbook.urls"), name="cookbook-urls"),
-    
+    path("", include("cookbook.urls"), name="cookbook-urls"),  
 ] 

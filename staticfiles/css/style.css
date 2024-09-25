@@ -34,6 +34,10 @@ body {
     background-color: #fafafa;
 }
 
+.signup-container {
+    max-width: 525px;  
+}
+
 .image-container {
     position: relative;
 }
@@ -159,3 +163,24 @@ body {
 .approval {
     color: rgb(222, 146, 168);
 }
+
+/* Star Rating */
+
+.rating-list li {
+    float: right;
+    color: #ddd;
+    padding: 10px 5px;
+  }
+
+  .rating-list li:hover,
+  .rating-list li:hover ~ li {
+    color: orange;
+  }
+
+  .rating-list {
+    display: inline-block;
+    list-style: none;
+  }
+  .checked {
+      color: orange;
+  }
