@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from .models import Recipe, Rating
 from django.http import JsonResponse
+from django import forms
 
 
 # Create your views here.
@@ -29,6 +30,10 @@ def recipe_detail(request, slug):
 
     ``recipe``
         An instance of :model:`cookbook.Recipe`.
+    ``user_rating``
+        The unique combination of the current user and their rating_value 
+    ``average_rating``
+        The aggregate average of all submitted ratings using django Avg
 
     **Template:**
 
