@@ -21,35 +21,6 @@ class RecipeList(generic.ListView):
         return queryset
 
 
-# def recipe_list(request):
-#     recipes = Recipe.objects.all()
-#     for recipe in recipes:
-#         recipe.average_rating = recipe.get_average_rating()
-#     return render(request, 'cookbook/index.html', {'recipes': recipes})
-
-
-# def get_user_rating(request, ):
-#     """
-#     Checks if user has made any rating for each recipe and if so, saves to the list to display
-#     """
-#     recipes = Recipe.objects.all()
-#     for recipe in recipes:
-#         user_rating = Rating.objects.filter(recipe=recipe, user=request.user).first()
-#         recipe.user_rating = rating.rating if rating else 0
-#     return user_rating
-
-
-# def rate(request, recipe_id: int, rating: int):
-#     """
-#     Deletes any existing rating submitted by the user
-#     Creates a new rating with the latest selection
-#     """
-#     recipe = Recipe.objects.get(id=recipe_id)
-#     Rating.objects.filter(recipe=recipe, user=request.user).delete()
-#     recipe.rating_set.create(user=request.user, rating=rating)
-#     return index(request)
-
-
 def recipe_detail(request, slug):
     """
     Displays an individual :model:`recipe.Post`.
