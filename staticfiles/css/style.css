@@ -170,17 +170,30 @@ body {
     float: right;
     color: #ddd;
     padding: 10px 5px;
-  }
+}
 
-  .rating-list li:hover,
-  .rating-list li:hover ~ li {
+.rating-list li:hover,
+.rating-list li:hover ~ li {
     color: orange;
-  }
+}
 
-  .rating-list {
+.rating-list {
     display: inline-block;
     list-style: none;
-  }
-  .checked {
-      color: orange;
-  }
+}
+  
+.checked {
+    color: orange;
+}
+
+input[type='radio']:after {
+    accent-color: orange;
+} 
+
+.hidden {
+    display: none;
+}
+
+.display-element {
+    display: block;
+}
