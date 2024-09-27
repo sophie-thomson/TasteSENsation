@@ -42,16 +42,6 @@ body {
     border: none;
 }
 
-.you-will-use-image {
-    /* max-width: 150px; */
-    max-height: 150px;
-}
-
-.you-will-use-item {
-    display: inline-block;
-    position: relative;
-    width: 60%;
-}
 
 .signup-container {
     max-width: 525px;  
