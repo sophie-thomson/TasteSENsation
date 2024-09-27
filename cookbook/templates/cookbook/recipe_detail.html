@@ -1,8 +1,131 @@
 {% extends 'base.html' %} {% block content %}
 {% load static %}
 
+<div class="container">
+    <div class="row g-0 align-items-center bg-light">
+        
+            <div class="col p-3 pt-5 p-md-4 pt-md-5">
+                <!-- <div class="p-5 pt-5 pb-0 "> -->
+                    <h1>{{ recipe.title }}</h1>
+                    
+                <!-- </div>  -->
+                <div class="pt-3">
+                <hr>
+                <h6>Average Rating: {{ recipe.average_rating }}
+                    <span class="fa fa-star {% if average_rating > 0 %} checked {% endif %}"></span>
+                    <span class="fa fa-star {% if average_rating > 1 %} checked {% endif %}"></span>
+                    <span class="fa fa-star {% if average_rating > 2 %} checked {% endif %}"></span>
+                    <span class="fa fa-star {% if average_rating > 3 %} checked {% endif %}"></span>
+                    <span class="fa fa-star {% if average_rating > 4 %} checked {% endif %}"></span>
+                </h6>
+                </div>     
+            </div>
+        </div>  
+
+    <div class="row g-0 bg-light">
+        <div class="col-8">
+            <div class="m-3">
+                <img src="{% static 'images/mini-muffin-pizzas.jpg' %}" class="rounded scale" alt="placeholder">
+            </div> 
+        </div>
+        <div class="col-4">
+            <div class="ml-3">
+                <div class="you-will-use-card mt-3">
+                    <div class="card-body bg-light rounded ml-3">
+                        <h5 class="card-title">You will Use:</h5>
+                        <div>
+                            <div class="col-3 m-1">
+                                {% if recipe.baking %}
+                                <img src="{% static 'images/mini-muffin-pizzas.jpg' %}" class="scale" alt="placeholder">
+                                {% endif %}
+                            </div>
+                            <div class="col-3 m-1">
+                                {% if recipe.baking %}
+                                <img src="{% static 'images/mini-muffin-pizzas.jpg' %}" class="scale" alt="placeholder">
+                                {% endif %}
+                            </div>
+                            <div class="col-3 m-1">
+                                {% if recipe.baking %}
+                                <img src="{% static 'images/mini-muffin-pizzas.jpg' %}" class="scale" alt="placeholder">
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="you-will-use-card mt-3"></div>
+                    <div class="card-body bg-light rounded ml-3">
+                        <h5 class="card-title">You will Need:</h5>
+                        <div>   
+                        <p class="card-text">{{ recipe.ingredients | safe }}</p>
+                        </div>
+                    </div>
+                </div>
+        </div>  
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            Instructions:
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            Rate this Recipe
+        </div>
+        <div class="col">
+            Add a comment
+        </div>
+        <div class="col"></div>
+            Add to Favourites?
+            Want to Try?
+            Don't Like?
+        </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="masthead">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row g-0">
             <div class="col-md-6 masthead-text">
                 <h1 class="recipe-title">{{ recipe.title }}</h1>
@@ -49,50 +172,41 @@
                     {% csrf_token %}
                     <p>How many stars would you give {{ recipe.title }}?</p>
                     <div id="rating-radio-buttons">               
-                        <input type="radio" id="1-star" name="rating" value="1" checked>
+                        <input type="radio" id="1-star" name="rating" value="1">
                         <label for="1-star">
-                            <span class="fa fa-star checked"></span>1 Star</label><br>
+                            <span class="fa fa-star checked"></span></label><br>
                 
                         <input type="radio" id="2-stars" name="rating" value="2">
                         <label for="2-stars">
                             <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>2 Stars</label><br>
+                            <span class="fa fa-star checked"></span></label><br>
                 
                         <input type="radio" id="3-stars" name="rating" value="3">
                         <label for="3-stars">
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>3 Stars</label><br>
+                            <span class="fa fa-star checked"></span></label><br>
                 
                         <input type="radio" id="4-stars" name="rating" value="4">
                         <label for="4-stars">
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>4 Stars</label><br>
+                            <span class="fa fa-star checked"></span></label><br>
                 
-                        <input type="radio" id="5-stars" name="rating" value="5">
+                        <input type="radio" id="5-stars" name="rating" value="5" checked>
                         <label for="5-stars">
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>5 Stars</label><br>
+                            <span class="fa fa-star checked"></span></label><br><br>
                     </div>
-                    <button type="submit">Submit Rating</button>
+                    <button type="submit" class="btn btn-edit">Submit Rating</button>
                 </form>
 
-                <button id="edit-rating-btn" class="btn-edit" onclick="show_rating_form()">Edit Rating</button>
+                <button id="edit-rating-btn" class="btn btn-edit" onclick="show_rating_form()">Edit Rating</button>
                 {% else %}
-
-                <!-- <p>Your Rating:  
-                    <span class="fa fa-star {% if user_rating.rating > 0 %} checked {% endif %}"></span>
-                    <span class="fa fa-star {% if user_rating.rating > 1 %} checked {% endif %}"></span>
-                    <span class="fa fa-star {% if user_rating.rating > 2 %} checked {% endif %}"></span>
-                    <span class="fa fa-star {% if user_rating.rating > 3 %} checked {% endif %}"></span>
-                    <span class="fa fa-star {% if user_rating.rating > 4 %} checked {% endif %}"></span> 
-                </p>
-                <button class="btn-edit" onclick="show_rating_form()">Edit Rating</button> -->
 
                 <p>You haven't submitted a rating for this recipe yet.</p>
                 <form id="rating-form" method="POST">
@@ -102,25 +216,25 @@
                     <div id="rating-radio-buttons">               
                         <input type="radio" id="1-star" name="rating" value="1" checked>
                         <label for="1-star">
-                            <span class="fa fa-star checked"></span>1 Star</label><br>
+                            <span class="fa fa-star checked"></span></label><br>
                 
                         <input type="radio" id="2-stars" name="rating" value="2">
                         <label for="2-stars">
                             <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>2 Stars</label><br>
+                            <span class="fa fa-star checked"></span></label><br>
                 
                         <input type="radio" id="3-stars" name="rating" value="3">
                         <label for="3-stars">
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>3 Stars</label><br>
+                            <span class="fa fa-star checked"></span></label><br>
                 
                         <input type="radio" id="4-stars" name="rating" value="4">
                         <label for="4-stars">
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>4 Stars</label><br>
+                            <span class="fa fa-star checked"></span></label><br>
                 
                         <input type="radio" id="5-stars" name="rating" value="5">
                         <label for="5-stars">
@@ -128,9 +242,9 @@
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>5 Stars</label><br>
+                            <span class="fa fa-star checked"></span></label><br><br>
                     </div>
-                    <button type="submit">Submit Rating</button>
+                    <button type="submit" class="btn btn-edit">Submit Rating</button>
                 </form>
                 {% endif %}
             </div>

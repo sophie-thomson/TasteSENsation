@@ -53,7 +53,7 @@
     </div>
     {% if is_paginated %}
     <nav aria-label="Page navigation">
-        <ul>
+        <ul class="list-inline">
             {% if page_obj.has_previous %}
             <li class="pagination justify-content-lg-start">
             <a href="?page={{ page_obj.previous_page_number }}"
