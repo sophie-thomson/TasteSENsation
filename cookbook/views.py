@@ -44,6 +44,8 @@ def recipe_detail(request, slug):
     recipe = get_object_or_404(queryset, slug=slug)
     user_rating = Rating.objects.filter(recipe=recipe, user=request.user).first()
     average_rating = recipe.get_average_rating()
+    comments = recipe.comments.all().order_by("-created_on")
+    comment_count = recipe.comments.filter(approved=True).count()
 
     # If the user submits a rating
     if request.method == 'POST':
@@ -66,6 +68,8 @@ def recipe_detail(request, slug):
         # dictionary for recipe detail page
         "recipe": recipe,
         "user_rating": user_rating,
-        "average_rating": average_rating
+        "average_rating": average_rating,
+        "comments": comments,
+        "comment_count": comment_count,
         },
     )
