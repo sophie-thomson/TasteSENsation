@@ -3,6 +3,7 @@ from django.views import generic
 from .models import Recipe, Rating
 from django.http import JsonResponse
 from django import forms
+from .forms import CommentForm
 
 
 # Create your views here.
@@ -46,20 +47,35 @@ def recipe_detail(request, slug):
     average_rating = recipe.get_average_rating()
     comments = recipe.comments.all().order_by("-created_on")
     comment_count = recipe.comments.filter(approved=True).count()
+    comment_form = CommentForm()
 
     # If the user submits a rating
-    if request.method == 'POST':
-        rating_value = request.POST.get('rating')
+    if request.method == "POST":
+        form_id = request.POST.get("form_id")
 
-        # Update or create the rating for this user and recipe
-        Rating.objects.update_or_create(
-            recipe=recipe,
-            user=request.user,
-            defaults={'rating': rating_value}  # If a rating exists, it will be updated
-        )
+        if form_id == "rating_form":
+            rating_value = request.POST.get("rating")
 
-        # Redirect to the same page after rating
-        return redirect('recipe_detail', slug=slug)
+            # Update or create the rating for this user and recipe
+            Rating.objects.update_or_create(
+                recipe=recipe,
+                user=request.user,
+                defaults={"rating": rating_value}  # If a rating exists, it will be updated
+            )
+
+            return redirect("recipe_detail", slug=slug)
+
+        elif form_id == "comment_form":
+            comment_form = CommentForm(data=request.POST)
+            if comment_form.is_valid():
+                comment = comment_form.save(commit=False)
+                comment.author = request.user
+                comment.recipe = recipe
+                comment.save()
+
+                # Redirect to the same page after rating
+                return redirect("recipe_detail", slug=slug)
+    
 
     return render(
         request,
@@ -71,5 +87,6 @@ def recipe_detail(request, slug):
         "average_rating": average_rating,
         "comments": comments,
         "comment_count": comment_count,
+        "comment_form": comment_form,
         },
     )
