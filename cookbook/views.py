@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
+from django.contrib import messages
 from .models import Recipe, Rating
 from django.http import JsonResponse
 from django import forms
@@ -67,16 +68,20 @@ def recipe_detail(request, slug):
 
         elif form_id == "comment_form":
             comment_form = CommentForm(data=request.POST)
+
             if comment_form.is_valid():
                 comment = comment_form.save(commit=False)
                 comment.author = request.user
                 comment.recipe = recipe
                 comment.save()
+                messages.add_message(
+                    request, messages.SUCCESS,
+                    'Comment submitted and awaiting approval'
+                )
 
                 # Redirect to the same page after rating
                 return redirect("recipe_detail", slug=slug)
-    
-
+                
     return render(
         request,
         "cookbook/recipe_detail.html", {

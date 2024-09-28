@@ -95,6 +95,8 @@
 
                     {% csrf_token %}
                     <p>How many stars would you give {{ recipe.title }}?</p>
+                    <input type="hidden" name="form_id" value="rating_form">
+                    
                     <div id="rating-radio-buttons">
                         <input type="radio" id="1-star" name="rating" value="1">
                         <label for="1-star">
@@ -137,8 +139,8 @@
 
                     {% csrf_token %}
                     <p>How many stars would you like to give {{ recipe.title }}?</p>
-                    <input type="hidden" name="form_id" calue="rating_form">
-                    
+                    <input type="hidden" name="form_id" value="rating_form">
+
                     <div id="rating-radio-buttons">
 
                         <input type="radio" id="1-star" name="rating" value="1" checked>
