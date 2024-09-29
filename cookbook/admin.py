@@ -8,14 +8,13 @@ class RecipeAdmin(SummernoteModelAdmin):
 
     list_display = ('title', 'source_site', 'created_on')
     search_fields = ['title', 'source_site']
-    # list_filter = ("cooked_status",)
     prepopulated_fields = {'slug': ('title',)}
     summernote_fields = ('ingredients', 'instructions',)
 
 @admin.register(Comment)
 class CommentAdmin(SummernoteModelAdmin):
 
-    list_display = ('recipe', 'comment_selection', 'own_comment', 'approved', 'author','created_on')
+    list_display = ('recipe', 'suggested_comment','own_comment', 'approved', 'author','created_on')
     # search_fields = ['title', 'source_site']
     list_filter = ("author",)
     # prepopulated_fields = {'recipe': ('title',), 'author': ('author',)}
@@ -23,5 +22,4 @@ class CommentAdmin(SummernoteModelAdmin):
 
 
 # Register your models here.
-# admin.site.register(Recipe)--------------REMOVE
-# admin.site.register(Comment)
+

@@ -7,7 +7,7 @@ class CommentForm(forms.ModelForm):
     
     class Meta:
         model = Comment
-        fields = ('comment_selection','own_comment',)
+        fields = ('suggested_comment','own_comment',)
     
     
         

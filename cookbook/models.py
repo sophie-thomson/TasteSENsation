@@ -64,8 +64,8 @@ class Comment(models.Model):
         Recipe, on_delete=models.CASCADE, related_name="comments")
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="commenter")
-    comment_selection = models.CharField(choices=COMMENT_CHOICES)
-    own_comment = models.TextField(blank=False)
+    suggested_comment = models.CharField(choices=COMMENT_CHOICES, blank=True)
+    own_comment = models.TextField(blank=True)
     approved = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
 
@@ -73,4 +73,4 @@ class Comment(models.Model):
         ordering = ["-created_on"]
 
     def __str__(self):
-        return f"Comment {self.comment_selection}. {self.own_comment} by {self.author}"
+        return f"Comment {self.suggested_comment} {self.own_comment} by {self.author}"
