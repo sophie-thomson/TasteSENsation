@@ -23,9 +23,9 @@ COMMENT_CHOICES = [
 class Recipe(models.Model):
     owner = models.ForeignKey(User, related_name="creator", on_delete=models.CASCADE)
     title = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True)
-    source_site = models.CharField(choices=SOURCE_SITES)
-    original_recipe = models.CharField()
+    slug = models.SlugField(max_length=200, unique=True, blank=True)
+    source_site = models.CharField(choices=SOURCE_SITES, blank=True)
+    original_recipe = models.CharField(blank=True)
     featured_image = CloudinaryField('image', default='placeholder')
     baking = models.BooleanField(default=False)
     mixing = models.BooleanField(default=False)

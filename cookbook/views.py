@@ -10,14 +10,12 @@ from .forms import RecipeForm
 # Create your views here.
 
 class RecipeList(generic.ListView):
-    # queryset = Recipe.objects.all().order_by("-created_on")
     template_name = "cookbook/index.html"
     paginate_by = 3
 
 
     def get_queryset(self):
         queryset = Recipe.objects.all().order_by("-created_on")
-        # recipes = Recipe.objects.all()
         for recipe in queryset:
             recipe.average_rating = recipe.get_average_rating()
 
@@ -147,14 +145,18 @@ def suggest_recipe(request):
     """
     view to suggest a new recipe using RecipeForm
 
+    Uses slugify to format title into slug format
+
     """
 
     if request.method == 'POST':
-        form = RecipeForm(request.POST, request.FILES)
+        form = RecipeForm(request.POST)
 
         if form.is_valid():
             
             recipe = form.save(commit=False)
+            if not recipe.slug:
+                recipe.slug = slugify(recipe.title)
             recipe.owner = request.user
             recipe.save()
             
