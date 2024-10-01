@@ -3,9 +3,8 @@ from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .models import Recipe, Rating, Comment
-# from django.http import JsonResponse
-# from django import forms
 from .forms import CommentForm
+from .forms import RecipeForm
 
 
 # Create your views here.
@@ -142,3 +141,31 @@ def comment_delete(request, slug, comment_id):
         messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
 
     return redirect("recipe_detail", slug=slug)
+
+
+def suggest_recipe(request):
+    """
+    view to suggest a new recipe using RecipeForm
+
+    """
+
+    if request.method == 'POST':
+        form = RecipeForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            
+            recipe = form.save(commit=False)
+            recipe.owner = request.user
+            recipe.save()
+            
+            messages.success(request, 'Recipe suggestion submitted successfully!')
+            
+            return redirect('suggest_recipe')
+        else:
+            # If the form is invalid, display an error message
+            messages.error(request, 'Error submitting the form. Please correct the errors below.')
+    else:
+        
+        form = RecipeForm()
+    
+    return render(request, 'cookbook/suggest_recipe.html', {'form': form})

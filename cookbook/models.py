@@ -7,7 +7,9 @@ COOKED_STATUS = ((0, "Not Cooked"), (1, "Cooked"))
 SOURCE_SITES = [
     ("Accessible Chef", "Accessible Chef"),
     ("CookABILITY", "CookABILITY"),
+    ("Other", "Other"),
 ]
+APPROVAL_STATUS = ((0, "Submitted"), (1, "Published"))
 COMMENT_CHOICES = [
     ("Love this recipe!", "Love this recipe!"),
     ("Delicious and easy to make.", "Delicious and easy to make."),
@@ -19,6 +21,7 @@ COMMENT_CHOICES = [
 
 
 class Recipe(models.Model):
+    owner = models.ForeignKey(User, related_name="creator", on_delete=models.CASCADE)
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     source_site = models.CharField(choices=SOURCE_SITES)
@@ -36,6 +39,7 @@ class Recipe(models.Model):
     instructions = models.TextField()
     cooked_status = models.IntegerField(choices=COOKED_STATUS, default=0)
     created_on = models.DateTimeField(auto_now_add=True)
+    recipe_approved = models.IntegerField(choices=APPROVAL_STATUS, default=0)
 
     class Meta:
         ordering = ["-created_on"]
