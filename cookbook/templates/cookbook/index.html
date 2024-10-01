@@ -16,17 +16,17 @@
                         <div class="card-body">
                             <div class="image-container">
                                 {% if "placeholder" in recipe.featured_image.url %}
-                                <img class="card-img-top" src="{% static 'images/default.jpg' %}"
+                                <img class="card-img-top rounded" src="{% static 'images/default.jpg' %}"
                                     alt="placeholder image">
                                 {% else %}
-                                <img class="card-img-top" src=" {{ recipe.featured_image.url }}"
+                                <img class="card-img-top rounded" src=" {{ recipe.featured_image.url }}"
                                     alt="{{ recipe.title }}">
                                 {% endif %}
-                                <div class="image-flash">
+                                <!-- <div class="image-flash">
                                     <p class="cooked_status">
                                         {% if recipe.cooked_status == 0 %}Not Cooked{% endif %}
                                         {% if recipe.cooked_status == 1 %}Cooked!{% endif %}</p>
-                                </div>
+                                </div> -->
                             </div>
                             <a href="{% url 'recipe_detail' recipe.slug %}" class="recipe-link">
                                 <h2 class="card-title">{{ recipe.title }}</h2>
