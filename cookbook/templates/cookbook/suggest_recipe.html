@@ -2,10 +2,30 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-  <h2>Suggest a Recipe</h2>
-  <form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form|crispy }}
-    <button type="submit" class="btn btn-primary">Submit Recipe</button>
-  </form>
+
+<div class="container d-flex justify-content-center align-items-center">
+    <div class="row">
+        <div class="card mb-4">
+            <div class="card-body pl-2 mb-4">
+                <div class="col">
+                    <h2 class="card-title">Suggest a Recipe</h2>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                    Add your own favourite recipe to the TasteSENsation Cookbook!
+                    </h6>
+                    <hr>
+                    <p>Complete the details below and submit your recipe for approval.</p>
+                    <p>Once we have checked to make sure everything is in place, we will
+                        add your recipe to the site for others to enjoy!
+                    </p>
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button type="submit" class="btn btn-success">Submit Recipe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
 {% endblock %}

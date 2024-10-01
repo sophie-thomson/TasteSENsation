@@ -145,7 +145,7 @@ def suggest_recipe(request):
     """
     view to suggest a new recipe using RecipeForm
 
-    Uses slugify to format title into slug format
+    Uses slugify to format title into slug
 
     """
 
