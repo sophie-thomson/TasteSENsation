@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models import Avg
+from cloudinary.models import CloudinaryField
 
 COOKED_STATUS = ((0, "Not Cooked"), (1, "Cooked"))
 SOURCE_SITES = [
@@ -22,6 +23,7 @@ class Recipe(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
     source_site = models.CharField(choices=SOURCE_SITES)
     original_recipe = models.CharField()
+    featured_image = CloudinaryField('image', default='placeholder')
     baking = models.BooleanField(default=False)
     mixing = models.BooleanField(default=False)
     frying = models.BooleanField(default=False)
