@@ -147,10 +147,12 @@ def suggest_recipe(request):
 
     Uses slugify to format title into slug
 
+    request.FILES included to ensure image file is included when retrieving the recipe
+
     """
 
     if request.method == 'POST':
-        form = RecipeForm(request.POST)
+        form = RecipeForm(request.POST, request.FILES)
 
         if form.is_valid():
             

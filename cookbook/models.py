@@ -38,7 +38,7 @@ class Recipe(models.Model):
     ingredients = models.TextField()
     instructions = models.TextField()
     cooked_status = models.IntegerField(choices=COOKED_STATUS, default=0)
-    created_on = models.DateTimeField(auto_now_add=True)
+    created_on = models.DateField(auto_now_add=True)
     recipe_approved = models.IntegerField(choices=APPROVAL_STATUS, default=0)
 
     class Meta:
