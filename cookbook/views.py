@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.template.defaultfilters import slugify
 from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
@@ -173,3 +174,25 @@ def suggest_recipe(request):
         form = RecipeForm()
     
     return render(request, 'cookbook/suggest_recipe.html', {'form': form})
+
+def recipe_edit(request, slug):
+    """
+    view to edit recipe as the recipe owner
+    """
+    if request.method == "POST":
+
+        queryset = Recipe.objects
+        recipe = get_object_or_404(queryset, slug=slug)
+        # comment = get_object_or_404(Comment, pk=recipe_id)
+        recipe_form = RecipeForm(data=request.POST, instance=recipe)
+
+        if recipe_form.is_valid() and recipe.owner == request.user:
+            recipe = recipe_form.save(commit=False)
+            recipe.recipe = recipe
+            recipe.recipe_approved = 0
+            recipe.save()
+            messages.add_message(request, messages.SUCCESS, 'Recipe Updated!')
+        else:
+            messages.add_message(request, messages.ERROR, 'Error updating recipe!')
+
+    return redirect("recipe_detail", slug=slug)

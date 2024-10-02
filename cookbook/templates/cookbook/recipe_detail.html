@@ -68,10 +68,19 @@
     </div>
     <div class="row">
         <div class="col">
-            <div class="bg-light px-4 py-3 rounded-bottom"> 
+            <div class="bg-light px-4 py-3"> 
             <h5>Instructions:</h5>
             <p>{{ recipe.instructions | safe | linebreaks }}</p>
             <button>{{ recipe.cooked_status }}</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="bg-light px-4 py-3 rounded-bottom">
+                {% if recipe.owner == user %}
+                <button id="btn-edit-recipe" class="btn btn-edit" data-id="{{ recipe.id }}">Edit Recipe</button>
+                {% endif %}
             </div>
         </div>
     </div>
