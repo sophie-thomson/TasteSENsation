@@ -15,6 +15,8 @@ import os
 import dj_database_url
 if os.path.isfile('env.py'):
     import env
+from cloudinary import Config as CloudinaryConfig
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -65,6 +67,10 @@ LOGOUT_REDIRECT_URL = '/'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+
+# ensure cloudinary uses https paths
+CloudinaryConfig.secure = "true"
 
 
 MIDDLEWARE = [

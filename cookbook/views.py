@@ -173,26 +173,31 @@ def suggest_recipe(request):
         
         form = RecipeForm()
     
-    return render(request, 'cookbook/suggest_recipe.html', {'form': form})
+    return render(
+        request, 'cookbook/suggest_recipe.html', {'form': form})
+
 
 def recipe_edit(request, slug):
     """
     view to edit recipe as the recipe owner
     """
+    queryset = Recipe.objects
+    recipe = get_object_or_404(queryset, slug=slug)
     if request.method == "POST":
-
-        queryset = Recipe.objects
-        recipe = get_object_or_404(queryset, slug=slug)
-        # comment = get_object_or_404(Comment, pk=recipe_id)
-        recipe_form = RecipeForm(data=request.POST, instance=recipe)
-
-        if recipe_form.is_valid() and recipe.owner == request.user:
-            recipe = recipe_form.save(commit=False)
-            recipe.recipe = recipe
+        form = RecipeForm(request.POST, request.FILES, instance=recipe)
+        if form.is_valid() and recipe.owner == request.user:
+            form.save(commit=False)
             recipe.recipe_approved = 0
-            recipe.save()
-            messages.add_message(request, messages.SUCCESS, 'Recipe Updated!')
-        else:
-            messages.add_message(request, messages.ERROR, 'Error updating recipe!')
+            form.save()
+            messages.success(request, 'Recipe updated successfully!')
+            return redirect('recipe_detail', slug=recipe.slug)
+    else:
+        form = RecipeForm(instance=recipe)
 
-    return redirect("recipe_detail", slug=slug)
+    return render(
+        request, 'cookbook/recipe_edit.html', {
+            'form': form, 
+            'recipe': recipe,
+        }
+    )
+
