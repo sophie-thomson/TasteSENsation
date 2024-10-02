@@ -42,6 +42,14 @@ body {
     border: none;
 }
 
+.legend {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.input-group {
+    display: none;
+}
 
 .signup-container {
     max-width: 525px;  
@@ -51,13 +59,13 @@ body {
     position: relative;
 }
 
-.image-flash {
+/* .image-flash {
     position: absolute;
     bottom: 5%;
     min-width: 30%;
     left: -2px;
     background-color: #188181;
-}
+} */
 
 .scale {
     width: 100%;
@@ -79,7 +87,7 @@ body {
     width: 100%;
 }
 
-.masthead-text {
+/* .masthead-text {
     background-color: #445261;
     color: white;
     position: relative;
@@ -102,7 +110,7 @@ body {
     -moz-transform: skew(15deg);
     transform: skew(15deg);
     z-index: 100;
-}
+} */
 
 .recipe-link {
     text-decoration: none;

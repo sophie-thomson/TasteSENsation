@@ -102,6 +102,7 @@ def recipe_detail(request, slug):
         },
     )
 
+
 def comment_edit(request, slug, comment_id):
     """
     view to edit comments
@@ -201,3 +202,18 @@ def recipe_edit(request, slug):
         }
     )
 
+
+def recipe_delete(request, slug):
+    """
+    view to delete recipe
+    """
+    queryset = Recipe.objects
+    recipe = get_object_or_404(queryset, slug=slug)
+
+    if recipe.owner == request.user:
+        recipe.delete()
+        messages.add_message(request, messages.SUCCESS, 'Recipe deleted!')
+    else:
+        messages.add_message(request, messages.ERROR, 'You can only delete your own recipes!')
+
+    return redirect("home")

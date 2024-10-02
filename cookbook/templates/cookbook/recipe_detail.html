@@ -80,6 +80,7 @@
             <div class="bg-light px-4 py-3 rounded-bottom">
                 {% if recipe.owner == user %}
                     <a href="{% url 'recipe_edit' recipe.slug %}" class="btn btn-edit">Edit Recipe</a>
+                    <button id="btn-recipe-delete" class="btn btn-delete" data-recipe-slug="{{ recipe.slug }}">Delete Recipe</button>
                 {% endif %}
             </div>
         </div>
@@ -276,7 +277,7 @@
     </div>
 </div>
 
-<!-- Delete confirmation modal -->
+<!-- Comment Delete confirmation modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -296,10 +297,35 @@
     </div>
 </div>
 
+<!-- Recipe Delete confirmation modal -->
+<div class="modal fade" id="deleteRecipeModal" tabindex="-1" aria-labelledby="deleteRecipeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteRecipeModalLabel">Delete Recipe?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete your recipe?
+                All associated ratings and comments will also be deleted.
+                This action cannot be undone.
+
+                If you simply want to make changes to the recipe, 
+                you can <a class="link" href="{% url 'recipe_edit' recipe.slug %}">edit your recipe</a>.
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a id="deleteRecipeConfirm" href="#" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock content %}
 
 {% block extras %}
 <script src="{% static 'js/comments.js' %}"></script>
-<!-- <script src="{% static 'js/recipes.js' %}"></script> -->
+<script src="{% static 'js/recipes.js' %}"></script>
 
 {% endblock %}
