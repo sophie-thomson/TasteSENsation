@@ -166,7 +166,7 @@ def suggest_recipe(request):
             
             messages.success(request, 'Recipe suggestion submitted successfully!')
             
-            return redirect('suggest_recipe')
+            return redirect("home")
         else:
             # If the form is invalid, display an error message
             messages.error(request, 'Error submitting the form. Please correct the errors below.')
