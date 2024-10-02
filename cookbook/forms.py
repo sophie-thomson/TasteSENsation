@@ -45,6 +45,8 @@ class RecipeForm(forms.ModelForm):
                 "List all the ingredients, including any measurements"}),
         self.fields['instructions'].widget.attrs.update({ 'placeholder':
                 "Provide simple step by step instructions"}),
+        self.fields['featured_image'].widget.attrs.update({ 'placeholder':
+                "{% if recipe.featured_image %}See current uploaded image below{% endif %}"}),
 
         self.helper = FormHelper()
         self.helper.layout = Layout(

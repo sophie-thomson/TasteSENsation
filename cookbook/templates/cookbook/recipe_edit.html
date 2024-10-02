@@ -10,17 +10,22 @@
                 <div class="col">
                     <h2 class="card-title mt-3">Edit Recipe</h2>
                     <h6 class="card-subtitle my-2 text-muted">
-                    Add your own favourite recipe to the TasteSENsation Cookbook!
+                        Make your changes below and submit your updates for approval
                     </h6>
                     <hr>
-                    <p>Make your changes below and submit your updates for approval.</p>
                     <p>Once we have checked to make sure everything is in place, we will
                         update your recipe for others to see.
                     </p>
+                    {% if recipe.featured_image %}
+                    <div class="mb-3">
+                    <p>Current Recipe Image:</p>
+                    <img src="{{ recipe.featured_image.url }}" alt="Current Recipe Image" width="200">
+                    </div>
+                    {% endif %}
                     <form id="recipe-form" method="POST" action="{% url 'recipe_edit' recipe.slug %}" enctype="multipart/form-data" data-recipe-slug="{{ recipe.slug }}">
                         {% csrf_token %}
                         {{ form|crispy }}
-
+                        {{ form.media }}
                         <button type="submit" class="btn btn-success">Update Recipe</button>
                     </form>
                 </div>

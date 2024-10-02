@@ -47,6 +47,10 @@ body {
     margin-bottom: 10px;
 }
 
+.input-group {
+    display: none;
+}
+
 .signup-container {
     max-width: 525px;  
 }

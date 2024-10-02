@@ -79,7 +79,7 @@
         <div class="col">
             <div class="bg-light px-4 py-3 rounded-bottom">
                 {% if recipe.owner == user %}
-                <button id="btn-edit-recipe" class="btn btn-edit" data-id="{{ recipe.id }}">Edit Recipe</button>
+                    <a href="{% url 'recipe_edit' recipe.slug %}" class="btn btn-edit">Edit Recipe</a>
                 {% endif %}
             </div>
         </div>
@@ -300,5 +300,6 @@
 
 {% block extras %}
 <script src="{% static 'js/comments.js' %}"></script>
+<!-- <script src="{% static 'js/recipes.js' %}"></script> -->
 
 {% endblock %}
