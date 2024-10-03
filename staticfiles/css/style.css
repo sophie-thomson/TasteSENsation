@@ -33,8 +33,13 @@ body {
     background-color:#fafafa;
 }
 
-.card {
+.list-card {
     border: solid 1px #4A4A4F;
+    background-color: #fafafa;
+}
+
+.feedback-card {
+    border: none;
     background-color: #fafafa;
 }
 
@@ -128,6 +133,8 @@ body {
     margin-left: 0;
 }
 
+.a
+
 .recipe-detail-subtitle {
     color: #3a3a3a;
 }
@@ -190,6 +197,11 @@ body {
 }
 
 /* Star Rating */
+
+.ratings-count {
+    color:#188181;
+    font-size: small;
+}
 
 .rating-list li {
     float: right;
