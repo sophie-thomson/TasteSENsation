@@ -18,7 +18,9 @@ class RecipeList(generic.ListView):
     def get_queryset(self):
         queryset = Recipe.objects.all().order_by("-created_on")
         for recipe in queryset:
-            recipe.average_rating = recipe.get_average_rating()
+            average_rating, ratings_count = recipe.get_average_rating()
+            recipe.average_rating = average_rating
+            recipe.ratings_count = ratings_count
 
         return queryset
 
