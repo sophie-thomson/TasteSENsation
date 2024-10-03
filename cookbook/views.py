@@ -35,6 +35,8 @@ def recipe_detail(request, slug):
         The unique combination of the current user and their rating_value 
     ``average_rating``
         The aggregate average of all submitted ratings using django Avg
+    ``ratings_count``
+        The aggregate total of all ratings submitted using django Count
 
     **Template:**
 
@@ -44,7 +46,7 @@ def recipe_detail(request, slug):
     queryset = Recipe.objects
     recipe = get_object_or_404(queryset, slug=slug)
 
-    average_rating = recipe.get_average_rating()
+    average_rating, ratings_count = recipe.get_average_rating()
     
     if request.user.is_authenticated:
         user_rating = Rating.objects.filter(recipe=recipe, user=request.user).first()
@@ -96,6 +98,7 @@ def recipe_detail(request, slug):
         "recipe": recipe,
         "user_rating": user_rating,
         "average_rating": average_rating,
+        "ratings_count": ratings_count,
         "comments": comments,
         "comment_count": comment_count,
         "comment_form": comment_form,

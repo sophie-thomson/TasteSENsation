@@ -128,6 +128,8 @@ body {
     margin-left: 0;
 }
 
+.a
+
 .recipe-detail-subtitle {
     color: #3a3a3a;
 }
@@ -190,6 +192,11 @@ body {
 }
 
 /* Star Rating */
+
+.ratings-count {
+    color:#188181;
+    font-size: small;
+}
 
 .rating-list li {
     float: right;

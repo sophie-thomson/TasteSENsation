@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models import Avg
+from django.db.models import Avg, Count
 from cloudinary.models import CloudinaryField
 
 COOKED_STATUS = ((0, "Not Cooked"), (1, "Cooked"))
@@ -47,9 +47,10 @@ class Recipe(models.Model):
     def __str__(self):
         return self.title
 
-    def get_average_rating(self) -> float:
+    def get_average_rating(self) -> tuple:
         average = self.ratings.aggregate(Avg("rating"))["rating__avg"]
-        return round(average, 1) if average else 0
+        ratings_count = self.ratings.aggregate(Count("rating"))["rating__count"]
+        return (round(average, 1) if average else 0, ratings_count)
     
 
 class Rating(models.Model):
