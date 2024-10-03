@@ -33,8 +33,13 @@ body {
     background-color:#fafafa;
 }
 
-.card {
+.list-card {
     border: solid 1px #4A4A4F;
+    background-color: #fafafa;
+}
+
+.feedback-card {
+    border: none;
     background-color: #fafafa;
 }
 
