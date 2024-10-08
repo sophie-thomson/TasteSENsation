@@ -11,8 +11,10 @@
         <div class="col-12 mt-3 left">
             <div class="row">
                 {% for recipe in recipe_list %}
+                               
+                
                 <div class="col-md-6 col-xl-4">
-                    <div class="card list-card mb-4">
+                    <div class="card list-card m-3">
                         <div class="card-body">
                             <a href="{% url 'recipe_detail' recipe.slug %}" class="recipe-link">
                                 <h2 class="card-title">{{ recipe.title }}</h2>
@@ -134,6 +136,7 @@
                         </div>
                     </div>
                 </div>
+                              
                 {% if forloop.counter|divisibleby:3 %}
             </div>
             <div class="row">

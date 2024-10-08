@@ -16,14 +16,17 @@ class RecipeList(generic.ListView):
 
 
     def get_queryset(self):
-        queryset = Recipe.objects.all().order_by("-created_on")
+        queryset = Recipe.objects.filter(recipe_approved=1).order_by("-created_on")
         for recipe in queryset:
+            # published = recipe.recipe_approved == 1
             average_rating, ratings_count = recipe.get_average_rating()
             recipe.average_rating = average_rating
             recipe.ratings_count = ratings_count
 
         return queryset
 
+    # def get_published_recipes():
+    #     published_recipes = queryset.filter(Recipe.recipe_approved == 1)
 
 def recipe_detail(request, slug):
     """

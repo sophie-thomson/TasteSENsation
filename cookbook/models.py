@@ -9,7 +9,7 @@ SOURCE_SITES = [
     ("CookABILITY", "CookABILITY"),
     ("Other", "Other"),
 ]
-APPROVAL_STATUS = ((0, "Submitted"), (1, "Published"))
+APPROVAL_STATUS = ((0, "Submitted"), (1, "Approved"))
 COMMENT_CHOICES = [
     ("Love this recipe!", "Love this recipe!"),
     ("Delicious and easy to make.", "Delicious and easy to make."),
