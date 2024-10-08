@@ -18,10 +18,13 @@
                                 <h2 class="card-title">{{ recipe.title }}</h2>
                             <div class="image-container">
                                 {% if "placeholder" in recipe.featured_image.url %}
-                                <img class="card-img-top rounded" src="{% static 'images/default.jpg' %}"
+                                    <img class="card-img-top rounded" src="{% static 'images/default.jpg' %}"
                                     alt="placeholder image">
                                 {% else %}
-                                <img class="card-img-top rounded" src=" {{ recipe.featured_image.url }}"
+                                {% load cloudinary_static %}
+                                
+                                
+                                <img class="card-img-top rounded img-fluid" src=" {{ recipe.featured_image.url }}"
                                     alt="{{ recipe.title }}">
                                 {% endif %}
                             </div>
@@ -33,7 +36,7 @@
                                         {% if recipe.baking %}
                                         <div class="col-2">
                                             <figure class="figure">
-                                                <img src="{% static 'images/baking.png' %}" class="figure-img img-fluid rounded" alt="placeholder">
+                                                <img src="{% static 'images/baking.png' %}" class="figure-img scale" alt="placeholder">
                                                 <figcaption class="figure-caption text-center">Oven</figcaption>
                                             </figure>
                                         </div>
@@ -42,7 +45,7 @@
                                         {% if recipe.chopping %}
                                         <div class="col-2">
                                             <figure class="figure">    
-                                                <img src="{% static 'images/chopping.png' %}" class="scale" alt="placeholder">
+                                                <img src="{% static 'images/chopping.png' %}" class="figure-img scale" alt="placeholder">
                                                 <figcaption class="figure-caption text-center">Chopping</figcaption>
                                             </figure>
                                         </div>
@@ -51,7 +54,7 @@
                                         {% if recipe.frying %}
                                         <div class="col-2">
                                             <figure class="figure">    
-                                                <img src="{% static 'images/frying.png' %}" class="scale" alt="placeholder">
+                                                <img src="{% static 'images/frying.png' %}" class="figure-img scale" alt="placeholder">
                                                 <figcaption class="figure-caption text-center">Frying</figcaption>
                                             </figure>    
                                         </div>
@@ -60,7 +63,7 @@
                                         {% if recipe.hob_use %}
                                         <div class="col-2">
                                             <figure class="figure">
-                                                <img src="{% static 'images/hob.png' %}" class="scale" alt="placeholder">
+                                                <img src="{% static 'images/hob.png' %}" class="figure-img scale" alt="placeholder">
                                                 <figcaption class="figure-caption text-center">Hot Pans</figcaption>
                                             </figure>
                                         </div>
@@ -69,7 +72,7 @@
                                         {% if recipe.mixing %}
                                         <div class="col-2">
                                             <figure class="figure">                      
-                                                <img src="{% static 'images/mixing.png' %}" class="scale" alt="placeholder">
+                                                <img src="{% static 'images/mixing.png' %}" class="figure-img scale" alt="placeholder">
                                                 <figcaption class="figure-caption text-center">Mixing</figcaption>
                                             </figure>                        
                                         </div>
@@ -78,7 +81,7 @@
                                         {% if recipe.straining %}
                                         <div class="col-2">
                                             <figure class="figure">    
-                                                <img src="{% static 'images/straining.png' %}" class="scale" alt="placeholder">
+                                                <img src="{% static 'images/straining.png' %}" class="figure-img scale" alt="placeholder">
                                                 <figcaption class="figure-caption text-center">Colander</figcaption>
                                             </figure>
                                         </div>
@@ -87,7 +90,7 @@
                                         {% if recipe.whisking %}
                                         <div class="col-2">
                                             <figure class="figure">                      
-                                                <img src="{% static 'images/whisking.png' %}" class="scale" alt="placeholder">
+                                                <img src="{% static 'images/whisking.png' %}" class="figure-img scale" alt="placeholder">
                                                 <figcaption class="figure-caption text-center">Whisking</figcaption>
                                             </figure>                      
                                         </div>
@@ -96,7 +99,7 @@
                                         {% if recipe.microwaving %}
                                         <div class="col-2">
                                             <figure class="figure">
-                                                <img src="{% static 'images/microwaving.png' %}" class="scale" alt="placeholder">
+                                                <img src="{% static 'images/microwaving.png' %}" class="figure-img scale" alt="placeholder">
                                                 <figcaption class="figure-caption text-center">Microwave</figcaption>
                                             </figure>
                                         </div>
@@ -146,7 +149,7 @@
             {% if page_obj.has_previous %}
             <li class="pagination justify-content-lg-start">
             <a href="?page={{ page_obj.previous_page_number }}"
-                class="page-link">&laquo; Go Back</a>
+                class="page-link">&laquo; Previous Recipes</a>
             </li>
             {% endif %}    
             {% if page_obj.has_next %}

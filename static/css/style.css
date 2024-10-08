@@ -64,6 +64,11 @@ body {
     position: relative;
 }
 
+.list-image {
+    max-height: 275px;
+    /* width: auto; */
+}
+
 /* .image-flash {
     position: absolute;
     bottom: 5%;
@@ -74,7 +79,7 @@ body {
 
 .scale {
     width: 100%;
-    height: auto;
+    height: 70%;
 }
 
 .author {

@@ -1,8 +1,9 @@
-from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Fieldset, Field, HTML
+# from crispy_forms.helper import FormHelper
+# from crispy_forms.layout import Layout, Fieldset, Field, HTML
 from .models import Comment, Recipe
 from django import forms
-
+# from django.forms import ModelForm
+from cloudinary.forms import CloudinaryFileField
 
 
 class CommentForm(forms.ModelForm):
@@ -15,8 +16,11 @@ class CommentForm(forms.ModelForm):
     
 class RecipeForm(forms.ModelForm):
 
+    featured_image = CloudinaryFileField()
+
     class Meta:
         model = Recipe
+        
 
         fields = ('title', 'original_recipe', 'featured_image', 
             'ingredients', 'instructions', 'baking', 
@@ -47,15 +51,24 @@ class RecipeForm(forms.ModelForm):
                 "Provide simple step by step instructions"}),
         self.fields['featured_image'].widget.attrs.update({ 'placeholder':
                 "{% if recipe.featured_image %}See current uploaded image below{% endif %}"}),
+        self.fields['featured_image'].options={ 
+            'tags': "directly_uploaded",
+            'format': "WEBP",
+            'crop': 'fill', 'width': 500, 'height': 400,  
+            # 'eager': [{ 'crop': 'fill', 'width': 150, 'height': 100 }]
+            }
+        
 
-        self.helper = FormHelper()
-        self.helper.layout = Layout(
-                    'baking', 
-                    'mixing', 
-                    'frying', 
-                    'straining', 
-                    'microwaving', 
-                    'whisking', 
-                    'chopping', 
-                    'hob_use',
-        )
+    
+
+        # self.helper = FormHelper()
+        # self.helper.layout = Layout(
+        #             'baking', 
+        #             'mixing', 
+        #             'frying', 
+        #             'straining', 
+        #             'microwaving', 
+        #             'whisking', 
+        #             'chopping', 
+        #             'hob_use',
+        # )
