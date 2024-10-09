@@ -14,7 +14,7 @@ body {
 }
 
 .recipe-detail-subtitle {
-    color: #774a4a;
+    color: #026572;
  }
 
 .thin {
@@ -38,7 +38,7 @@ body {
 }
 
 .list-card {
-    border: solid 1px #4A4A4F;
+    border: solid 1px #979ba0;
     background-color: #fafafa;
 }
 
@@ -68,10 +68,6 @@ body {
     position: relative;
 }
 
-.list-figure-image {
-    height: 15PX;
-    width: 15PX;
-}
 
 /* .image-flash {
     position: absolute;
@@ -81,16 +77,15 @@ body {
     background-color: #188181;
 } */
 
-/* .scale {
-    width: 100%;
-    height: 70%;
-} */
 
-
-.author {
+/* .author {
     color: white;
     margin: 4px;
     text-transform: uppercase;
+} */
+
+.capitalize-title {
+    text-transform: capitalize;
 }
 
 .masthead {
@@ -102,40 +97,17 @@ body {
     width: 100%;
 }
 
-/* .masthead-text {
-    background-color: #445261;
-    color: white;
-    position: relative;
-}
-
-.masthead-image {
-    position: relative;
-    overflow: hidden;
-}
-
-.masthead-image:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 90%;
-    height: 100%;
-    width: 150%;
-    background: #445261;
-    -webkit-transform: skew(15deg);
-    -moz-transform: skew(15deg);
-    transform: skew(15deg);
-    z-index: 100;
-} */
 
 .recipe-link {
     text-decoration: none;
     color: #445261;
 }
 
-/* .recipe-link:hover,
+
+.recipe-link:hover,
 .page-link {
-    color: #5e2479;
-} */
+    color: #039e7c;
+}
 
 .recipe-detail-avg-rating,
 .recipe-title {
@@ -144,11 +116,17 @@ body {
 }
 
 
+.btn-page-nav {
+    background-color: #1e5a41;
+    color: #fafafa;
+    border: none;
+    font-weight: 600;
+}
 
-
-/* #instructions-list li {
-    accent-color: orange;
-} */
+.btn-page-nav:hover {
+    background-color: #f9fdfc;
+    color: #1e5a41;
+}
 
 
 .btn-signup,
@@ -175,33 +153,26 @@ body {
     text-decoration: underline;
 }
 
-/* .btn-like {
-    color: #E84610;
-    border: none;
-    background: transparent;
-} */
 
 .btn-delete {
     color: #fff;
-    background: #E84610;
+    background: #9c3136;
 }
 
-/* .btn-like:hover,
-.btn-like:active {
-    color: #E84610;
-    background: transparent;
-    border: none;
-} */
 
 .btn-rate {
-    background-color: #188181;
-    color: #7c5353;
-    /* border-radius: 25%; */
+    background-color: #dbb508;
+    color: #4A4A4F;
     border: 2px;
 }
 
 .faded {
     color: rgb(172, 175, 175);
+}
+
+.subheading {
+    color: #774a4a;
+    font-weight: 500;
 }
 
 .approval {
@@ -215,28 +186,36 @@ body {
     font-size: small;
 }
 
-.rating-list li {
+/* .rating-list li {
     float: right;
     color: #ddd;
     padding: 10px 5px;
-}
+} */
 
 /* .rating-list li:hover,
 .rating-list li:hover ~ li {
     color: orange;
 } */
 
-.rating-list {
+/* .rating-list {
     display: inline-block;
     list-style: none;
+} */
+
+.fa-star {
+    color: #ddd;
 }
-  
+
 .checked {
     color: orange;
 }
 
+.checked::before {
+    color: orange;
+}
+
 input[type='radio']:after {
-    accent-color: orange;
+    color: orange;
 } 
 
 .hidden {

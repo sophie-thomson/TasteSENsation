@@ -17,7 +17,7 @@
                     <div class="card list-card mx-sm-3 my-4">
                         <div class="card-body">
                             <a href="{% url 'recipe_detail' recipe.slug %}" class="recipe-link">
-                                <h2 class="card-title text-nowrap text-truncate pb-2">{{ recipe.title }}</h2>
+                                <h2 class="card-title text-nowrap text-truncate pb-2 capitalize-title">{{ recipe.title }}</h2>
                             <div class="image-container">
                                 {% if "placeholder" in recipe.featured_image.url %}
                                     <img class="card-img-top rounded" src="{% static 'images/default.jpg' %}"
@@ -141,13 +141,13 @@
         <ul class="pagination">
             {% if page_obj.has_previous %}
                 <li class="page-item btn">
-                    <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-dark btn-page-nav">&laquo; Previous Recipes</a>
+                    <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-page-nav">&laquo; Previous Recipes</a>
                 </li>
             {% endif %}
 
             {% if page_obj.has_next %}
                 <li class="page-item btn ms-auto">
-                    <a href="?page={{ page_obj.next_page_number }}" class="btn btn-dark btn-page-nav">More Recipes &raquo;</a>
+                    <a href="?page={{ page_obj.next_page_number }}" class="btn btn-page-nav">More Recipes &raquo;</a>
                 </li>
             {% endif %}
         </ul>

@@ -1,5 +1,3 @@
-console.log("Life, The Universe and Everything!");
-
 const ratingForm = document.getElementById("rating-form");
 const editRatingBtn = document.getElementById("edit-rating-btn");
 
