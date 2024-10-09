@@ -1,6 +1,7 @@
 from .models import Comment, Recipe
 from django import forms
 from cloudinary.forms import CloudinaryFileField
+from django_summernote.widgets import SummernoteWidget
 
 
 class CommentForm(forms.ModelForm):
@@ -36,6 +37,11 @@ class RecipeForm(forms.ModelForm):
             'whisking': 'Recipe Involves Whisking', 
             'chopping': 'Recipe Involves Chopping',
             'hob_use': 'Recipe Involves Using the Hob',
+        }
+        
+        widgets = {
+            'ingredients': SummernoteWidget(),
+            'instructions': SummernoteWidget(),
         }
 
     def __init__(self, *args, **kwargs):

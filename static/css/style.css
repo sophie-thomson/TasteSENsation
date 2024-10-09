@@ -13,6 +13,10 @@ body {
     padding-left: 5%;
 }
 
+.recipe-detail-subtitle {
+    color: #774a4a;
+ }
+
 .thin {
     font-weight: 300;
 }
@@ -64,10 +68,10 @@ body {
     position: relative;
 }
 
-.list-image {
+/* .list-image {
     max-height: 275px;
     /* width: auto; */
-}
+/* } */
 
 /* .image-flash {
     position: absolute;
@@ -127,10 +131,10 @@ body {
     color: #445261;
 }
 
-.recipe-link:hover,
+/* .recipe-link:hover,
 .page-link {
-    color: #E84610;
-}
+    color: #5e2479;
+} */
 
 .recipe-detail-avg-rating,
 .recipe-title {
@@ -138,11 +142,13 @@ body {
     margin-left: 0;
 }
 
-.a
 
-.recipe-detail-subtitle {
-    color: #3a3a3a;
-}
+
+
+/* #instructions-list li {
+    accent-color: orange;
+} */
+
 
 .btn-signup,
 .btn-edit {
@@ -168,23 +174,23 @@ body {
     text-decoration: underline;
 }
 
-.btn-like {
+/* .btn-like {
     color: #E84610;
     border: none;
     background: transparent;
-}
+} */
 
 .btn-delete {
     color: #fff;
     background: #E84610;
 }
 
-.btn-like:hover,
+/* .btn-like:hover,
 .btn-like:active {
     color: #E84610;
     background: transparent;
     border: none;
-}
+} */
 
 .btn-rate {
     background-color: #188181;
@@ -201,7 +207,7 @@ body {
     color: rgb(222, 146, 168);
 }
 
-/* Star Rating */
+/* ------------------- Star Rating -------------------- */
 
 .ratings-count {
     color:#188181;
@@ -214,10 +220,10 @@ body {
     padding: 10px 5px;
 }
 
-.rating-list li:hover,
+/* .rating-list li:hover,
 .rating-list li:hover ~ li {
     color: orange;
-}
+} */
 
 .rating-list {
     display: inline-block;
