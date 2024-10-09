@@ -68,10 +68,10 @@ body {
     position: relative;
 }
 
-.list-figure-image {
+/* .list-figure-image {
     height: 15PX;
-    width: 15PX;
-}
+    width: ;
+} */
 
 /* .image-flash {
     position: absolute;
@@ -132,10 +132,10 @@ body {
     color: #445261;
 }
 
-/* .recipe-link:hover,
+.recipe-link:hover,
 .page-link {
     color: #5e2479;
-} */
+}
 
 .recipe-detail-avg-rating,
 .recipe-title {
@@ -144,11 +144,18 @@ body {
 }
 
 
+.btn-page-nav {
+    background-color: #6c1770;
+    color:#fafafa;
+    border: solid 3px white;
+    font-weight: 300;
+}
 
 
 /* #instructions-list li {
     accent-color: orange;
 } */
+
 
 
 .btn-signup,

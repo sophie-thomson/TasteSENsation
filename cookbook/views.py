@@ -12,7 +12,7 @@ from .forms import RecipeForm
 
 class RecipeList(generic.ListView):
     template_name = "cookbook/index.html"
-    paginate_by = 3
+    paginate_by = 6
 
 
     def get_queryset(self):
