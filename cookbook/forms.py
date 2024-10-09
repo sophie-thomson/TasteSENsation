@@ -51,5 +51,5 @@ class RecipeForm(forms.ModelForm):
         self.fields['featured_image'].options={ 
             'tags': "directly_uploaded",
             'format': "WEBP",
-            'crop': 'fill', 'width': 500, 'height': 400,
+            'crop': 'fill', 'width': 600, 'height': 400,
             }
