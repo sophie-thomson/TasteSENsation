@@ -13,7 +13,7 @@
                 {% for recipe in recipe_list %}
                                
                 
-                <div class="col-md-6 col-xl-4">
+                <div class="col-lg-6 col-xl-4">
                     <div class="card list-card m-3">
                         <div class="card-body">
                             <a href="{% url 'recipe_detail' recipe.slug %}" class="recipe-link">
@@ -36,72 +36,72 @@
                                     <div class="row">
                                         <h5>You will Use:</h5>
                                         {% if recipe.baking %}
-                                        <div class="col-2">
+                                        <div class="col col-sm-3">
                                             <figure class="figure">
-                                                <img src="{% static 'images/baking.png' %}" class="figure-img scale" alt="placeholder">
+                                                <img src="{% static 'images/baking-sm.png' %}" class="figure-img img-fluid" alt="placeholder">
                                                 <figcaption class="figure-caption text-center">Oven</figcaption>
                                             </figure>
                                         </div>
                                         {% endif %}
                     
                                         {% if recipe.chopping %}
-                                        <div class="col-2">
+                                        <div class="col col-sm-3">
                                             <figure class="figure">    
-                                                <img src="{% static 'images/chopping.png' %}" class="figure-img scale" alt="placeholder">
+                                                <img src="{% static 'images/chopping-sm.png' %}" class="figure-img img-fluid" alt="placeholder">
                                                 <figcaption class="figure-caption text-center">Chopping</figcaption>
                                             </figure>
                                         </div>
                                         {% endif %}
                     
                                         {% if recipe.frying %}
-                                        <div class="col-2">
+                                        <div class="col col-sm-3">
                                             <figure class="figure">    
-                                                <img src="{% static 'images/frying.png' %}" class="figure-img scale" alt="placeholder">
+                                                <img src="{% static 'images/frying-sm.png' %}" class="figure-img img-fluid" alt="placeholder">
                                                 <figcaption class="figure-caption text-center">Frying</figcaption>
                                             </figure>    
                                         </div>
                                         {% endif %}
                     
                                         {% if recipe.hob_use %}
-                                        <div class="col-2">
+                                        <div class="col col-sm-3">
                                             <figure class="figure">
-                                                <img src="{% static 'images/hob.png' %}" class="figure-img scale" alt="placeholder">
+                                                <img src="{% static 'images/hob-sm.png' %}" class="figure-img img-fluid" alt="placeholder">
                                                 <figcaption class="figure-caption text-center">Hot Pans</figcaption>
                                             </figure>
                                         </div>
                                         {% endif %}
                     
                                         {% if recipe.mixing %}
-                                        <div class="col-2">
+                                        <div class="col col-sm-3">
                                             <figure class="figure">                      
-                                                <img src="{% static 'images/mixing.png' %}" class="figure-img scale" alt="placeholder">
+                                                <img src="{% static 'images/mixing-sm.png' %}" class="figure-img img-fluid" alt="placeholder">
                                                 <figcaption class="figure-caption text-center">Mixing</figcaption>
                                             </figure>                        
                                         </div>
                                         {% endif %}
                     
                                         {% if recipe.straining %}
-                                        <div class="col-2">
+                                        <div class="col col-sm-3">
                                             <figure class="figure">    
-                                                <img src="{% static 'images/straining.png' %}" class="figure-img scale" alt="placeholder">
+                                                <img src="{% static 'images/straining-sm.png' %}" class="figure-img img-fluid" alt="placeholder">
                                                 <figcaption class="figure-caption text-center">Colander</figcaption>
                                             </figure>
                                         </div>
                                         {% endif %}
                     
                                         {% if recipe.whisking %}
-                                        <div class="col-2">
+                                        <div class="col col-sm-3">
                                             <figure class="figure">                      
-                                                <img src="{% static 'images/whisking.png' %}" class="figure-img scale" alt="placeholder">
+                                                <img src="{% static 'images/whisking-sm.png' %}" class="figure-img img-fluid" alt="placeholder">
                                                 <figcaption class="figure-caption text-center">Whisking</figcaption>
                                             </figure>                      
                                         </div>
                                         {% endif %}
                     
                                         {% if recipe.microwaving %}
-                                        <div class="col-2">
+                                        <div class="col col-sm-3">
                                             <figure class="figure">
-                                                <img src="{% static 'images/microwaving.png' %}" class="figure-img scale" alt="placeholder">
+                                                <img src="{% static 'images/microwaving-sm.png' %}" class="figure-img img-fluid" alt="placeholder">
                                                 <figcaption class="figure-caption text-center">Microwave</figcaption>
                                             </figure>
                                         </div>

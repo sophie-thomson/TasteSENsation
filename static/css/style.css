@@ -68,10 +68,10 @@ body {
     position: relative;
 }
 
-/* .list-image {
-    max-height: 275px;
-    /* width: auto; */
-/* } */
+.list-figure-image {
+    height: 15PX;
+    width: 15PX;
+}
 
 /* .image-flash {
     position: absolute;
@@ -81,10 +81,11 @@ body {
     background-color: #188181;
 } */
 
-.scale {
+/* .scale {
     width: 100%;
     height: 70%;
-}
+} */
+
 
 .author {
     color: white;
