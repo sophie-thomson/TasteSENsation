@@ -35,8 +35,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}"><span class="brand">Taste<span class="red-sen">SEN</span>sation
-                <!-- <span class="thin"></span> -->
+            <a class="navbar-brand" href="{% url 'home' %}"><span class="brand">Taste<span class="thin">SEN</span>sation
                     </span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,14 +69,18 @@
 
                 </ul>
                 <span class="navbar-text text-muted">
-                    A recipe cookbook for budding chefs with special educational needs (SEN)
+                    {% if user.is_authenticated %}
+                        <p class="text-end m-3">You are logged in as {{ user }}</p>
+                    {% else %}
+                        <p class="text-end m-3">You are not logged in</p>
+                    {% endif %}
                 </span>
             </div>
         </div>
     </nav>
     <!-- displaying Django messages -->
 <div class="container">
-    <div class="row">
+    <div class="row bg-light">
         <div class="col-md-8 offset-md-2">
             {% for message in messages %}
             <div class="alert {{ message.tags }} alert-dismissible
@@ -91,12 +94,6 @@
 </div>
 
     <main class="flex-shrink-0 main-bg">
-
-        {% if user.is_authenticated %}
-        <p class="text-end m-3">You are logged in as {{ user }}</p>
-        {% else %}
-        <p class="text-end m-3">You are not logged in</p>
-        {% endif %}
 
         {% block content %}
         <!-- Content Goes here -->
