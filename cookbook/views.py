@@ -17,16 +17,42 @@ class RecipeList(generic.ListView):
 
     def get_queryset(self):
         queryset = Recipe.objects.filter(recipe_approved=1).order_by("-created_on")
+
+        rating_filter = self.request.GET.get("rating", None)
+        # Checks if user selects a star rating filter
+        if rating_filter is not None:
+
+            try:
+            # Converts rating_filter into an integer
+                rating_filter = int(rating_filter)
+
+                filtered_recipes = []
+                for recipe in queryset:
+                    average_rating, ratings_count = recipe.get_average_rating()
+                    
+                    if average_rating == rating_filter:
+                        recipe.average_rating = average_rating
+                        recipe.ratings_count = ratings_count
+                        filtered_recipes.append(recipe)
+
+                return filtered_recipes
+            # If not able to convert filter into integer (string) then displays all recipes
+            except ValueError:
+                for recipe in queryset:
+                    average_rating, ratings_count = recipe.get_average_rating()
+                    recipe.average_rating = average_rating
+                    recipe.ratings_count = ratings_count
+
+                return queryset
+
         for recipe in queryset:
-            # published = recipe.recipe_approved == 1
+                
             average_rating, ratings_count = recipe.get_average_rating()
             recipe.average_rating = average_rating
             recipe.ratings_count = ratings_count
 
         return queryset
 
-    # def get_published_recipes():
-    #     published_recipes = queryset.filter(Recipe.recipe_approved == 1)
 
 def recipe_detail(request, slug):
     """
@@ -57,7 +83,6 @@ def recipe_detail(request, slug):
         user_rating = Rating.objects.filter(recipe=recipe, user=request.user).first()
     else:
         user_rating = None  # No rating for anonymous users
-    # user_rating = Rating.objects.filter(recipe=recipe, user=request.user).first()
     
     comments = recipe.comments.all().order_by("-created_on")
     comment_count = recipe.comments.filter(approved=True).count()
@@ -70,11 +95,11 @@ def recipe_detail(request, slug):
         if form_id == "rating_form":
             rating_value = request.POST.get("rating")
 
-            # Update or create the rating for this user and recipe
+            # Update or create the rating for this unique user and recipe
             Rating.objects.update_or_create(
                 recipe=recipe,
                 user=request.user,
-                defaults={"rating": rating_value}  # If a rating exists, it will be updated
+                defaults={"rating": rating_value}
             )
 
             return redirect("recipe_detail", slug=slug)
@@ -98,8 +123,6 @@ def recipe_detail(request, slug):
     return render(
         request,
         "cookbook/recipe_detail.html", {
-        # user_rating and average_rating added to the 'context' 
-        # dictionary for recipe detail page
         "recipe": recipe,
         "user_rating": user_rating,
         "average_rating": average_rating,

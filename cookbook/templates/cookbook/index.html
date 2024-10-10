@@ -5,12 +5,26 @@
 
 <!-- index.html content starts here -->
 <div class="container-fluid">
+    <form method="GET" action="">
+        <label for="rating">Filter by Rating:</label>
+        <select name="rating" id="rating">
+            <option>Select Rating</option>
+            <option value="5">5 Stars</option>
+            <option value="4">4 Stars</option>
+            <option value="3">3 Stars</option>
+            <option value="2">2 Stars</option>
+            <option value="1">1 Star</option>
+            <option value="0">Unrated</option>
+            <option value="">All Recipes</option>
+        </select>
+        <button type="submit">Filter</button>
+    </form>
     <div class="row">
 
         <!-- Recipe Entries Column -->
         <div class="col-12 mt-3 left">
             <div class="row">
-                {% for recipe in recipe_list %}
+                {% for recipe in object_list %}
                                
                 
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
@@ -23,9 +37,9 @@
                                     <img class="card-img-top rounded" src="{% static 'images/default.jpg' %}"
                                     alt="placeholder image">
                                 {% else %}
-                                {% load cloudinary_static %}
-                                <img class="card-img-top rounded img-fluid" src=" {{ recipe.featured_image.url }}"
-                                    alt="{{ recipe.title }}">
+                                    {% load cloudinary_static %}
+                                    <img class="card-img-top rounded img-fluid" src=" {{ recipe.featured_image.url }}"
+                                        alt="{{ recipe.title }}">
                                 {% endif %}
                             </div>
                             </a>
