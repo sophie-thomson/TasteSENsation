@@ -5,26 +5,34 @@
 
 <!-- index.html content starts here -->
 <div class="container-fluid">
-    <form method="GET" action="">
-        <label for="rating">Filter by Rating:</label>
-        <select name="rating" id="rating">
-            <option>Select Rating</option>
-            <option value="5">5 Stars</option>
-            <option value="4">4 Stars</option>
-            <option value="3">3 Stars</option>
-            <option value="2">2 Stars</option>
-            <option value="1">1 Star</option>
-            <option value="0">Unrated</option>
-            <option value="">All Recipes</option>
-        </select>
-        <button type="submit">Filter</button>
-    </form>
+    <div class="row">
+        <div class="card">
+            <p class="lead fw-normal mt-4">
+                This is a lead paragraph. It stands out from regular paragraphs.
+              </p>
+            <div class="card-body d-flex justify-content-end">
+                <form  method="GET" action="">
+                    <select name="rating" id="rating">
+                        <option>Filter by Rating</option>
+                        <option value="5">5 Stars</option>
+                        <option value="4">4 Stars</option>
+                        <option value="3">3 Stars</option>
+                        <option value="2">2 Stars</option>
+                        <option value="1">1 Star</option>
+                        <option value="0">Unrated</option>
+                        <option value="">All Recipes</option>
+                    </select>
+                    <button class="btn btn-sm btn-page-nav" type="submit">Apply Filter</button>
+                </form>
+            </div>
+        </div>
+    </div>
     <div class="row">
 
         <!-- Recipe Entries Column -->
         <div class="col-12 mt-3 left">
             <div class="row">
-                {% for recipe in object_list %}
+                {% for recipe in recipes %}
                                
                 
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
@@ -143,22 +151,22 @@
         </div>
     </div>
     {% if is_paginated %}
-    <nav aria-label="Page navigation" class="mt-4">
-        <ul class="pagination">
-            {% if page_obj.has_previous %}
-                <li class="page-item btn">
-                    <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-page-nav">&laquo; Previous Recipes</a>
-                </li>
-            {% endif %}
+        <nav aria-label="Page navigation" class="mt-4">
+            <ul class="pagination">
+                {% if recipes.has_previous %}
+                    <li class="page-item btn">
+                        <a href="?page={{ recipes.previous_page_number }}&rating={{ rating_filter }}" class="btn btn-page-nav">&laquo; Previous Recipes</a>
+                    </li>
+                {% endif %}
 
-            {% if page_obj.has_next %}
-                <li class="page-item btn ms-auto">
-                    <a href="?page={{ page_obj.next_page_number }}" class="btn btn-page-nav">More Recipes &raquo;</a>
-                </li>
-            {% endif %}
-        </ul>
-    </nav>
-{% endif %}
+                {% if recipes.has_next %}
+                    <li class="page-item btn ms-auto">
+                        <a href="?page={{ recipes.next_page_number }}&rating={{ rating_filter }}" class="btn btn-page-nav">More Recipes &raquo;</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    {% endif %}
 </div>
 
 <!-- index.html content ends here -->

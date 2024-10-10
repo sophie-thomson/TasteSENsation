@@ -3,6 +3,7 @@ from django.template.defaultfilters import slugify
 from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
+from django.core.paginator import Paginator
 from .models import Recipe, Rating, Comment
 from .forms import CommentForm
 from .forms import RecipeForm
@@ -10,48 +11,49 @@ from .forms import RecipeForm
 
 # Create your views here.
 
-class RecipeList(generic.ListView):
-    template_name = "cookbook/index.html"
-    paginate_by = 6
 
 
-    def get_queryset(self):
-        queryset = Recipe.objects.filter(recipe_approved=1).order_by("-created_on")
+def recipe_list(request):
+    queryset = Recipe.objects.filter(recipe_approved=1).order_by("-created_on")
 
-        rating_filter = self.request.GET.get("rating", None)
-        # Checks if user selects a star rating filter
-        if rating_filter is not None:
+    rating_filter = request.GET.get("rating", None)
 
-            try:
-            # Converts rating_filter into an integer
-                rating_filter = int(rating_filter)
+    if rating_filter is not None:
+        try:
+            rating_filter = int(rating_filter)
 
-                filtered_recipes = []
-                for recipe in queryset:
-                    average_rating, ratings_count = recipe.get_average_rating()
-                    
-                    if average_rating == rating_filter:
-                        recipe.average_rating = average_rating
-                        recipe.ratings_count = ratings_count
-                        filtered_recipes.append(recipe)
+            filtered_recipes = []
 
-                return filtered_recipes
-            # If not able to convert filter into integer (string) then displays all recipes
-            except ValueError:
-                for recipe in queryset:
-                    average_rating, ratings_count = recipe.get_average_rating()
-                    recipe.average_rating = average_rating
-                    recipe.ratings_count = ratings_count
+            for recipe in queryset:
+                average_rating, ratings_count = recipe.get_average_rating()
+                recipe.average_rating = average_rating
+                recipe.ratings_count = ratings_count
 
-                return queryset
+                if average_rating == rating_filter:
+                    filtered_recipes.append(recipe)
 
-        for recipe in queryset:
-                
-            average_rating, ratings_count = recipe.get_average_rating()
-            recipe.average_rating = average_rating
-            recipe.ratings_count = ratings_count
+            # Update queryset to be the filtered list
+            queryset = filtered_recipes
+        except ValueError:
+            pass
 
-        return queryset
+    # Paginate the results
+    for recipe in queryset:
+        average_rating, ratings_count = recipe.get_average_rating()
+        recipe.average_rating = average_rating
+        recipe.ratings_count = ratings_count
+
+    # Pagination
+    paginator = Paginator(queryset, 6)
+    page_number = request.GET.get("page")
+    recipes = paginator.get_page(page_number)
+
+    return render(request, 'cookbook/index.html', {
+        'recipes': recipes,
+        'rating_filter': rating_filter,
+        'is_paginated': recipes.has_other_pages(),
+    })
+
 
 
 def recipe_detail(request, slug):
