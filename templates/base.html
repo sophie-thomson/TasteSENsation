@@ -86,11 +86,11 @@
     </div>
     <!-- displaying Django messages -->
 {%  if messages %}     
-<div class="container-fluid d-flex justify-content-center message-overlay">
+<div class="container-fluid d-flex justify-content-center">
     <div class="row">
         <div class="col">
             {% for message in messages %}
-            <div class="alert banner-bg {{ message.tags }} alert-dismissible fade show" 
+            <div class="message-overlay alert alert-success {{ message.tags }} alert-dismissible fade show" 
                 id="msg" role="alert">
                 {{ message | safe }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
