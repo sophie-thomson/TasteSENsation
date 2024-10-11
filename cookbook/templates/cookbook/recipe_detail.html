@@ -186,9 +186,6 @@
                                         {{ comment.created_on }}
                                     </span> wrote:
                                 </p>
-                                <!-- <div id="suggested_comment{{ comment.id }}">
-                                    <p>{{ comment.suggested_comment }} </p>
-                                </div> -->
                                 <div id="own_comment{{ comment.id }}">
                                     <p>{{ comment.own_comment | safe }}</p>
                                 </div>
@@ -235,104 +232,108 @@
                     <div class="card-body">
                         <h5 class="card-title pl-sm-3 mt-2">Rate This Recipe</h5>
                         <div class="card-text pl-sm-3">
-                            {% if user.is_authenticated %}
-                                {% if user_rating %}
-                                <p>Your Rating:
-                                    <span class="fa fa-star {% if user_rating.rating > 0 %} checked {% endif %}"></span>
-                                    <span class="fa fa-star {% if user_rating.rating > 1 %} checked {% endif %}"></span>
-                                    <span class="fa fa-star {% if user_rating.rating > 2 %} checked {% endif %}"></span>
-                                    <span class="fa fa-star {% if user_rating.rating > 3 %} checked {% endif %}"></span>
-                                    <span class="fa fa-star {% if user_rating.rating > 4 %} checked {% endif %}"></span>
-                                </p>
-                                <!-- Rating form .hidden if rating exists -->
-                                <form class="hidden" id="rating-form" method="POST">
-            
-                                    {% csrf_token %}
-                                    <p>How many stars would you give {{ recipe.title }}?</p>
-                                    <input type="hidden" name="form_id" value="rating_form">
-                                    
-                                    <div id="rating-radio-buttons">
-                                        <input type="radio" id="1-star" name="rating" value="1">
-                                        <label for="1-star">
-                                            <span class="fa fa-star checked"></span></label><br>
-                
-                                        <input type="radio" id="2-stars" name="rating" value="2">
-                                        <label for="2-stars">
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span></label><br>
-                
-                                        <input type="radio" id="3-stars" name="rating" value="3">
-                                        <label for="3-stars">
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span></label><br>
-                
-                                        <input type="radio" id="4-stars" name="rating" value="4">
-                                        <label for="4-stars">
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span></label><br>
-                
-                                        <input type="radio" id="5-stars" name="rating" value="5" checked>
-                                        <label for="5-stars">
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span></label><br><br>
-                                    </div>
-                                    <button type="submit" class="btn btn-edit">Submit Rating</button>
-                                </form>
-            
-                                <button id="edit-rating-btn" class="btn btn-edit" onclick="show_rating_form()">Edit Rating</button>
-                                {% else %}
-            
-                                <p>You haven't submitted a rating for this recipe yet.</p>
-                                <form id="rating-form" method="POST">
-                
-                                    {% csrf_token %}
-                                    <p>How many stars would you like to give {{ recipe.title }}?</p>
-                                    <input type="hidden" name="form_id" value="rating_form">
-                
-                                    <div id="rating-radio-buttons">              
-                                        <input type="radio" id="1-star" name="rating" value="1" checked>
-                                        <label for="1-star">
-                                            <span class="fa fa-star checked"></span></label><br>
-                
-                                        <input type="radio" id="2-stars" name="rating" value="2">
-                                        <label for="2-stars">
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span></label><br>
-                
-                                        <input type="radio" id="3-stars" name="rating" value="3">
-                                        <label for="3-stars">
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span></label><br>
-                
-                                        <input type="radio" id="4-stars" name="rating" value="4">
-                                        <label for="4-stars">
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span></label><br>
-                
-                                        <input type="radio" id="5-stars" name="rating" value="5">
-                                        <label for="5-stars">
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span></label><br><br>
-                                    </div>
-                                    <button type="submit" class="btn btn-edit">Submit Rating</button>
-                                </form>
-                                {% endif %}
+                            {% if user.is_authenticated and recipe.owner == user %}
+                                <p>Sorry, you are not permitted to rate your own recipe.</p>
                             {% else %}
-                                <p>You need to <a href="{% url 'account_login' %}" class="link">log in</a> to leave a rating for this recipe.</p>
-                                <p>If you don't have an account, you can easily <a href="{% url 'account_signup' %}" class="link">sign up</a> now.</p>
-                            {% endif %} 
+                                {% if user.is_authenticated and recipe.owner != user %}
+                                    {% if user_rating %}
+                                    <p>Your Rating:
+                                        <span class="fa fa-star {% if user_rating.rating > 0 %} checked {% endif %}"></span>
+                                        <span class="fa fa-star {% if user_rating.rating > 1 %} checked {% endif %}"></span>
+                                        <span class="fa fa-star {% if user_rating.rating > 2 %} checked {% endif %}"></span>
+                                        <span class="fa fa-star {% if user_rating.rating > 3 %} checked {% endif %}"></span>
+                                        <span class="fa fa-star {% if user_rating.rating > 4 %} checked {% endif %}"></span>
+                                    </p>
+                                    <!-- Rating form .hidden if rating exists -->
+                                    <form class="hidden" id="rating-form" method="POST">
+                
+                                        {% csrf_token %}
+                                        <p>How many stars would you give {{ recipe.title }}?</p>
+                                        <input type="hidden" name="form_id" value="rating_form">
+                                        
+                                        <div id="rating-radio-buttons">
+                                            <input type="radio" id="1-star" name="rating" value="1">
+                                            <label for="1-star">
+                                                <span class="fa fa-star checked"></span></label><br>
+                    
+                                            <input type="radio" id="2-stars" name="rating" value="2">
+                                            <label for="2-stars">
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span></label><br>
+                    
+                                            <input type="radio" id="3-stars" name="rating" value="3">
+                                            <label for="3-stars">
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span></label><br>
+                    
+                                            <input type="radio" id="4-stars" name="rating" value="4">
+                                            <label for="4-stars">
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span></label><br>
+                    
+                                            <input type="radio" id="5-stars" name="rating" value="5" checked>
+                                            <label for="5-stars">
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span></label><br><br>
+                                        </div>
+                                        <button type="submit" class="btn btn-edit">Submit Rating</button>
+                                    </form>
+                
+                                    <button id="edit-rating-btn" class="btn btn-edit" onclick="show_rating_form()">Edit Rating</button>
+                                    {% else %}
+                
+                                    <p>You haven't submitted a rating for this recipe yet.</p>
+                                    <form id="rating-form" method="POST">
+                    
+                                        {% csrf_token %}
+                                        <p>How many stars would you like to give {{ recipe.title }}?</p>
+                                        <input type="hidden" name="form_id" value="rating_form">
+                    
+                                        <div id="rating-radio-buttons">              
+                                            <input type="radio" id="1-star" name="rating" value="1" checked>
+                                            <label for="1-star">
+                                                <span class="fa fa-star checked"></span></label><br>
+                    
+                                            <input type="radio" id="2-stars" name="rating" value="2">
+                                            <label for="2-stars">
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span></label><br>
+                    
+                                            <input type="radio" id="3-stars" name="rating" value="3">
+                                            <label for="3-stars">
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span></label><br>
+                    
+                                            <input type="radio" id="4-stars" name="rating" value="4">
+                                            <label for="4-stars">
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span></label><br>
+                    
+                                            <input type="radio" id="5-stars" name="rating" value="5">
+                                            <label for="5-stars">
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span></label><br><br>
+                                        </div>
+                                        <button type="submit" class="btn btn-edit">Submit Rating</button>
+                                    </form>
+                                    {% endif %}
+                                {% else %}
+                                    <p>You need to <a href="{% url 'account_login' %}" class="link">log in</a> to leave a rating for this recipe.</p>
+                                    <p>If you don't have an account, you can easily <a href="{% url 'account_signup' %}" class="link">sign up</a> now.</p>
+                                {% endif %}
+                            {% endif %}
                         </div>
                     </div>
                 </div>
