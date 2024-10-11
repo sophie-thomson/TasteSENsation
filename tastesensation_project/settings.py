@@ -68,6 +68,15 @@ LOGOUT_REDIRECT_URL = '/'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
+SUMMERNOTE_CONFIG = {
+    'iframe': False,
+    'summernote': {
+        'width': '100%',
+        'height': '400px',
+        'disableResizeEditor': True,
+    },
+}
+
 
 # ensure cloudinary uses https secure paths
 CloudinaryConfig.secure = "true"

@@ -1,3 +1,5 @@
+/* Text styles and background colours */
+
 body {
     background-color: #F9FAFC;
 }
@@ -64,6 +66,7 @@ body {
 .input-group {
     display: none;
 }
+
 
 .signup-container {
     max-width: 525px;  
@@ -213,3 +216,4 @@ input[type='radio']:after {
 .display-element {
     display: block;
 }
+
