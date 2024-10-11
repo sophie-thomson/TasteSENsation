@@ -35,14 +35,14 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}"><span class="brand">Taste<span class="thin">SEN</span>sation
+            <a class="navbar-brand mt-3 px-3" href="{% url 'home' %}"><span class="brand">Taste<span class="thin">SEN</span>sation
                     </span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <div class="collapse navbar-collapse mt-3" id="navbarText">
+                <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
                             href="{% url 'home' %}">Recipes</a>
@@ -68,16 +68,22 @@
                     {% endif %}
 
                 </ul>
-                <span class="navbar-text text-muted">
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row bg-white">
+            <div class="col">
+                <span class="text-muted">
                     {% if user.is_authenticated %}
-                        <p class="text-end m-3">You are logged in as {{ user }}</p>
+                        <p class="text-end small">You are logged in as {{ user }}</p>
                     {% else %}
-                        <p class="text-end m-3">You are not logged in</p>
+                        <p class="text-end small">You are not logged in</p>
                     {% endif %}
                 </span>
             </div>
         </div>
-    </nav>
+    </div>
     <!-- displaying Django messages -->
 <div class="container">
     <div class="row bg-light">

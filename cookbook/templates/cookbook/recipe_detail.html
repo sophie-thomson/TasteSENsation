@@ -5,43 +5,45 @@
 
 
 <!------------------------ MAIN RECIPE -------------------->
-<div class="container">
+<div class="container recipe-container">
     
-    <div class="row g-0 align-items-center bg-light rounded-top">
+    <div class="row g-0 align-items-center bg-light rounded-top mt-5">
         <!-- Title -->
-        <div class="col p-3 pt-5 p-md-4 pt-md-5">
-            <h1 class="capitalize-title">{{ recipe.title }}</h1>
+        <div class="row">
+            <div class="col pt-5 pt-md-5 rounded-top">
+                <h1 class="capitalize-title px-3">{{ recipe.title }}</h1>
+            </div>
             <!-- Average Rating -->
             <div class="pt-3">
                 <hr>
-                <h6>Average Rating: {{ recipe.average_rating }}
+                <h6 class="px-3">Average Rating: {{ recipe.average_rating }}
                     <span class="fa fa-star {% if average_rating > 0 %} checked {% endif %}"></span>
                     <span class="fa fa-star {% if average_rating > 1 %} checked {% endif %}"></span>
                     <span class="fa fa-star {% if average_rating > 2 %} checked {% endif %}"></span>
                     <span class="fa fa-star {% if average_rating > 3 %} checked {% endif %}"></span>
                     <span class="fa fa-star {% if average_rating > 4 %} checked {% endif %}"></span>
-                    <span class="ratings-count">
+                    <span class="ratings-count mx-2">
                         {% if ratings_count == 1 %}
                             (<span class="fw-bold">{{ ratings_count }}</span> rating)
                         {% elif ratings_count > 1 %}
                             (<span class="fw-bold">{{ ratings_count }}</span> ratings)
                         {% else %}
-                            (No ratings yet</span>)
+                            (No ratings yet)
                         {% endif %}
                     </span>
                 </h6>
             </div>
             <!-- Comment Count -->
-            <div class="align-items-lg-end">
-                <strong class="text-secondary">
+            <div class="px-3">
+                <strong class="text-secondary px-3">
                     <i class="far fa-comments"></i> {{ comment_count }}
                 </strong>
             </div>
         </div>
     </div>
     <div class="row g-0 bg-light">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-            <div class="m-3">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
+            <div class="m-3 px-md-3">
                 {% if "placeholder" in recipe.featured_image.url %}
                 <img class="rounded img-fluid" src="{% static 'images/default.jpg' %}"
                     alt="placeholder image">
@@ -166,11 +168,11 @@
 
 <!---------------------------- Feedback Section ------------------------->
 
-<div class="container">
+<div class="container recipe-container">
     <div class="row g-0 bg-light rounded my-3">
             <!-- Comments Card -->
             <div class="col-lg-4">
-                <div class="feedback-card">
+                <div class="feedback-card px-md-3">
                     <div class="card-body">
                         <h5 class="card-title sm-px-3 mt-2">Comments</h5>
                         {% for comment in comments %}
@@ -206,7 +208,7 @@
                 </div>
             </div>
             <div class="col-lg-4 mb-3">
-                <div class="feedback-card">
+                <div class="feedback-card px-md-3">
                     <div class="card-body">
                         <h5 class="card-title md-px-3 mt-2">Leave a Comment:</h5>
                         <div class="card-text md-px-3">
@@ -218,14 +220,14 @@
                                 <button id="submitButton" type="submit" class="btn btn-signup">Submit Comment</button>
                             </form>
                             {% else %}
-                            <p><a href="{% url 'account_login' %}">Log in</a> to leave a comment</p>
+                            <p><a href="{% url 'account_login' %}" class="link">Log in</a> to leave a comment</p>
                             {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 order-first">
-                <div class="feedback-card">
+                <div class="feedback-card px-md-3">
                     <div class="card-body">
                         <h5 class="card-title pl-sm-3 mt-2">Rate This Recipe:</h5>
                         <div class="card-text pl-sm-3">
@@ -324,8 +326,8 @@
                                 </form>
                                 {% endif %}
                             {% else %}
-                                <p>You need to <a href="{% url 'account_login' %}">log in</a> to leave a rating for this recipe.</p>
-                                <p>If you don't have an account, you can easily <a href="{% url 'account_signup' %}">sign up</a> now.</p>
+                                <p>You need to <a href="{% url 'account_login' %}" class="link">log in</a> to leave a rating for this recipe.</p>
+                                <p>If you don't have an account, you can easily <a href="{% url 'account_signup' %}" class="link">sign up</a> now.</p>
                             {% endif %} 
                         </div>
                     </div>

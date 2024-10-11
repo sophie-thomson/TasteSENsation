@@ -29,6 +29,11 @@ body {
     background-color: #445261;
 }
 
+.banner-bg {
+    background-color: rgb(68, 82, 97, 0.6);
+    color: #fafafa
+}
+
 .main-bg {
     background-color: #a9c2b8;
 }
@@ -64,6 +69,10 @@ body {
     max-width: 525px;  
 }
 
+.recipe-container {
+    max-width: 1200px;
+}
+
 .image-container {
     position: relative;
 }
@@ -78,36 +87,10 @@ body {
 } */
 
 
-/* .author {
-    color: white;
-    margin: 4px;
-    text-transform: uppercase;
-} */
-
 .capitalize-title {
     text-transform: capitalize;
 }
 
-.masthead {
-    margin-top: 10px;
-    overflow: hidden;
-    position: relative;
-    display: inline-block;
-    height: 33vh;
-    width: 100%;
-}
-
-
-.recipe-link {
-    text-decoration: none;
-    color: #445261;
-}
-
-
-.recipe-link:hover,
-.page-link {
-    color: #039e7c;
-}
 
 .recipe-detail-avg-rating,
 .recipe-title {
@@ -115,17 +98,48 @@ body {
     margin-left: 0;
 }
 
+.banner-link {
+    text-decoration: none;
+    color: #fab9ea;
+    font-weight: 600;    
+}
 
-.btn-page-nav {
-    background-color: #1e5a41;
-    color: #fafafa;
-    border: none;
+.recipe-link {
+    text-decoration: none;
+    color: #4A4A4F;
     font-weight: 600;
 }
 
-.btn-page-nav:hover {
-    background-color: #f9fdfc;
+
+.recipe-link:hover {
+    color: #039e7c;
+}
+
+
+.link {
+    color: #039e7c;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.link:hover,
+.banner-link:hover,
+.link:active {
+    color: #774a4a;
+    text-decoration: underline;
+}
+
+
+.btn-page-nav {
+    background-color: #fafafa;
     color: #1e5a41;
+    border: none;
+    font-weight: 500;
+}
+
+.btn-page-nav:hover {
+    background-color: #1e5a41;
+    color: #fafafa;
 }
 
 
@@ -140,17 +154,6 @@ body {
 .btn-signup:active {
     background-color: #fff;
     color: #23BBBB;
-}
-
-.link {
-    color: #23BBBB;
-    text-decoration: none;
-}
-
-.link:hover,
-.link:active {
-    color: #445261;
-    text-decoration: underline;
 }
 
 
@@ -186,21 +189,6 @@ body {
     font-size: small;
 }
 
-/* .rating-list li {
-    float: right;
-    color: #ddd;
-    padding: 10px 5px;
-} */
-
-/* .rating-list li:hover,
-.rating-list li:hover ~ li {
-    color: orange;
-} */
-
-/* .rating-list {
-    display: inline-block;
-    list-style: none;
-} */
 
 .fa-star {
     color: #ddd;
