@@ -30,8 +30,12 @@
             <div class="col-12 pb-3">
             <p class="lead fw-normal mt-4 text-center px-md-5">
                 These simple recipes have been hand picked so they are easy for budding chefs with Special Educational Needs (SEN) to follow.</p>
+            {% if user.is_authenticated %}
+            <P class="text-center">Add your own comments and star ratings so others can see what you think of each recipe!</P>
+            {% else %}
             <p class="text-center"><a class="banner-link" href="{{ login_url }}">Log in</a> to leave your own feeback comments and ratings, or to upload your own recipe for others to try!</p>  
-            </div>
+            {% endif %}
+        </div>
         </div>
     </div>
     <div class="row">
