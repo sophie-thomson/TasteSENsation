@@ -9,7 +9,10 @@ class CommentForm(forms.ModelForm):
     
     class Meta:
         model = Comment
-        fields = ('suggested_comment','own_comment',)
+        fields = ('own_comment',)
+
+        labels = {'own_comment': 'Enter your comment:',
+        }
     
     
 class RecipeForm(forms.ModelForm):

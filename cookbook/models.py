@@ -72,7 +72,7 @@ class Comment(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="commenter")
     suggested_comment = models.CharField(choices=COMMENT_CHOICES, blank=True)
-    own_comment = models.TextField(blank=True)
+    own_comment = models.TextField(blank=False)
     approved = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
 
@@ -80,4 +80,4 @@ class Comment(models.Model):
         ordering = ["-created_on"]
 
     def __str__(self):
-        return f"Comment {self.suggested_comment} {self.own_comment} by {self.author}"
+        return f"Comment {self.own_comment} by {self.author}"

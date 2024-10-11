@@ -175,45 +175,49 @@
                 <div class="feedback-card px-md-3">
                     <div class="card-body">
                         <h5 class="card-title sm-px-3 mt-2">Comments</h5>
-                        {% for comment in comments %}
-                        <div class="card-text sm-px-3 comments
-                            {% if not comment.approved and comment.author == user %}
-                            faded{% elif not comment.approved %} d-none{% endif %}">
-                            <p class="font-weight-bold">
-                                {{ comment.author }}
-                                <span class="font-weight-normal">
-                                    {{ comment.created_on }}
-                                </span> wrote:
-                            </p>
-                            <div id="suggested_comment{{ comment.id }}">
-                                <p>{{ comment.suggested_comment }} </p>
+                        {% if comments %}
+                            {% for comment in comments %}
+                            <div class="card-text sm-px-3 comments
+                                {% if not comment.approved and comment.author == user %}
+                                faded{% elif not comment.approved %} d-none{% endif %}">
+                                <p class="font-weight-bold">
+                                    {{ comment.author }}
+                                    <span class="font-weight-normal">
+                                        {{ comment.created_on }}
+                                    </span> wrote:
+                                </p>
+                                <!-- <div id="suggested_comment{{ comment.id }}">
+                                    <p>{{ comment.suggested_comment }} </p>
+                                </div> -->
+                                <div id="own_comment{{ comment.id }}">
+                                    <p>{{ comment.own_comment | safe }}</p>
+                                </div>
+                                {% if not comment.approved and comment.author == user %}
+                                <p class="approval">
+                                    This comment is awaiting approval
+                                </p>
+                                {% endif %}
+                                {% if user.is_authenticated and comment.author == user %}
+                                <button class="btn btn-edit btn-comment-edit mb-2 mb-sm-0"
+                                    data-comment-id="{{ comment.id }}">Edit Comment</button>
+                                <button class="btn btn-delete btn-comment-delete" data-comment-id="{{ comment.id }}">Delete
+                                    Comment</button>
+                                {% endif %}
                             </div>
-                            <div id="own_comment{{ comment.id }}">
-                                <p>{{ comment.own_comment | safe }}</p>
-                            </div>
-                            {% if not comment.approved and comment.author == user %}
-                            <p class="approval">
-                                This comment is awaiting approval
-                            </p>
-                            {% endif %}
-                            {% if user.is_authenticated and comment.author == user %}
-                            <button class="btn btn-edit btn-comment-edit mb-2 mb-sm-0"
-                                data-comment-id="{{ comment.id }}">Edit Comment</button>
-                            <button class="btn btn-delete btn-comment-delete" data-comment-id="{{ comment.id }}">Delete
-                                Comment</button>
-                            {% endif %}
-                        </div>
-                        {% endfor %}
+                            {% endfor %}
+                        {% else %}
+                            <p class="no-comments-message faded">There are no comments for this recipe yet.</p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 mb-3">
                 <div class="feedback-card px-md-3">
                     <div class="card-body">
-                        <h5 class="card-title md-px-3 mt-2">Leave a Comment:</h5>
+                        <h5 class="card-title md-px-3 mt-2">Leave a Comment</h5>
                         <div class="card-text md-px-3">
                             {% if user.is_authenticated %}
-                            <p>Commenting as: {{ user.username }}</p>
+                            <p class="faded">Commenting as: {{ user.username }}</p>
                             <form id="comment-form" method="POST" action="" data-recipe-slug="{{ recipe.slug }}">
                                 {{ comment_form | crispy }}
                                 {% csrf_token %}
@@ -229,7 +233,7 @@
             <div class="col-lg-3 order-first">
                 <div class="feedback-card px-md-3">
                     <div class="card-body">
-                        <h5 class="card-title pl-sm-3 mt-2">Rate This Recipe:</h5>
+                        <h5 class="card-title pl-sm-3 mt-2">Rate This Recipe</h5>
                         <div class="card-text pl-sm-3">
                             {% if user.is_authenticated %}
                                 {% if user_rating %}
