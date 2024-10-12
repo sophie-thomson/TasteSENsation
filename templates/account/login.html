@@ -1,12 +1,10 @@
 {% extends "base.html" %}
-
 {% load i18n %}
 {% load account socialaccount %}
-
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
-
 {% block content %}
 
+<!-- login.html content start-->
 <div class="container d-flex justify-content-center align-items-center">
     <div class="signup-container">
         <div class="row">
@@ -16,15 +14,15 @@
                         <h3 class="card-title">{% trans "Log In" %}</h3>
                         <h6 class="card-subtitle mb-2 text-muted">{% blocktrans %}Welcome back to TasteSENsation!</h6>
                         <hr>
-                        <p>You need to Log In if you want to track your cooked recipes or add your own recipe ratings and
-                            reviews</p>
-                        <p>If you don't have an account yet, then <a class="link" href="{{ signup_url }}">sign
-                                up</a>
-                            first.{% endblocktrans %}</p>
+                        <p>You need to Log In if you want to add your own recipe ratings and
+                            reviews, or submit a recipe to be shared with others.</p>
+                        <p>If you don't have an account yet, then <a class="link" href="{{ signup_url }}" aria-label="Link to navigate to sign up page">sign
+                            up</a> first.{% endblocktrans %}</p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col offset-md-1 mb-5">
+                        <!-- Login Form -->
                         <form class="login" method="POST" action="{% url 'account_login' %}">
                             {% csrf_token %}
                             {{ form.as_p }}
@@ -39,4 +37,5 @@
         </div>
     </div>
 </div>
+<!-- login.html content end-->
 {% endblock %}

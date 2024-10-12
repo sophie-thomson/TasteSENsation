@@ -56,9 +56,6 @@ class RecipeForm(forms.ModelForm):
 
         self.fields['instructions'].initial = "<p>1. Describe step 1</p><hr><p>2.  Describe step 2</p><hr><p>3.  Describe step 3</p><hr>"
 
-        self.fields['featured_image'].widget.attrs.update({ 'placeholder':
-                "{% if recipe.featured_image %}See current uploaded image below{% endif %}"})
-
         self.fields['featured_image'].options={ 
             'tags': "directly_uploaded",
             'format': "WEBP",
