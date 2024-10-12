@@ -34,7 +34,7 @@
             {% if user.is_authenticated %}
             <P class="text-center">Add your own comments and star ratings so others can see what you think of each recipe!</P>
             {% else %}
-            <p class="text-center"><a class="banner-link" href="{{ login_url }}">Log in</a> to leave your own feeback comments and ratings, or to upload your own recipe for others to try!</p>  
+            <p class="text-center"><a class="banner-link" href="{{ login_url }}" aria-label="Link to log in page">Log in</a> to leave your own feeback comments and ratings, or to upload your own recipe for others to try!</p>  
             {% endif %}
         </div>
         </div>
@@ -54,7 +54,7 @@
                                 <div class="image-container">
                                     {% if "placeholder" in recipe.featured_image.url %}
                                         <img class="card-img-top rounded" src="{% static 'images/default.jpg' %}"
-                                        alt="placeholder image">
+                                        alt="placeholder image for {{ recipe.title }}">
                                     {% else %}
                                         {% load cloudinary_static %}
                                         <img class="card-img-top rounded img-fluid" src=" {{ recipe.featured_image.url }}"
@@ -154,7 +154,7 @@
                                     </p>
                                 </div>
                                 
-                                <p class="card-text text-muted h6">Submitted by: {{ recipe.owner}}
+                                <p class="card-text faded h6">Submitted by: {{ recipe.owner}}
                                 </p>
                             </div>
                         </div>
