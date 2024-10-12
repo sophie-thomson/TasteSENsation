@@ -1,5 +1,4 @@
 {% load static %}
-
 {% url 'home' as home_url %}
 {% url 'account_login' as login_url %}
 {% url 'account_signup' as signup_url %}
@@ -27,11 +26,9 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
 </head>
 
 <body class="d-flex flex-column h-100 main-bg">
-
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
@@ -47,10 +44,11 @@
                         <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
                             href="{% url 'home' %}">Recipes</a>
                     </li>
+                    <!-- Displays or hides certain nav links if user is logged in -->
                     {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
-                            href="{% url 'account_logout' %}">Logout</a>
+                            href="{% url 'account_logout' %}">Log Out</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
@@ -63,14 +61,14 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page"
-                            href="{% url 'account_login' %}">Login</a>
+                            href="{% url 'account_login' %}">Log In</a>
                     </li>
                     {% endif %}
-
                 </ul>
             </div>
         </div>
     </nav>
+    <!-- Log in confirmation for UX -->
     <div class="container-fluid">
         <div class="row bg-white">
             <div class="col">
@@ -84,31 +82,28 @@
             </div>
         </div>
     </div>
-    <!-- displaying Django messages -->
-{%  if messages %}     
-<div class="container-fluid d-flex justify-content-center">
-    <div class="row">
-        <div class="col">
-            {% for message in messages %}
-            <div class="message-overlay alert alert-success {{ message.tags }} alert-dismissible fade show" 
-                id="msg" role="alert">
-                {{ message | safe }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <!-- Displaying Django messages -->
+    {%  if messages %}     
+    <div class="container-fluid d-flex justify-content-center">
+        <div class="row">
+            <div class="col">
+                {% for message in messages %}
+                <div class="message-overlay alert alert-success {{ message.tags }} alert-dismissible fade show" 
+                    id="msg" role="alert">
+                    {{ message | safe }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
     </div>
-</div>
-{% endif %}
-
+    {% endif %}
+    <!-- Main Section -->
     <main class="flex-shrink-0 main-bg">
-
         {% block content %}
-        <!-- Content Goes here -->
+        <!-- html content inserted here -->
         {% endblock content %}
-
     </main>
-
     <!-- Footer -->
     <footer class="footer mt-auto py-3 dark-bg">
         <p class="m-0 text-center text-white">Designed by Sophie Thomson</p>
@@ -121,13 +116,13 @@
             </p>
         </div>
     </footer>
-
+    <!-- JavaScript links-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
         </script>
     <script src="{% static 'js/script.js' %}"></script>
+    <!-- Extra JavaScript links on other templates -->
     {% block extras %}
     {% endblock %}
 </body>
-
 </html>

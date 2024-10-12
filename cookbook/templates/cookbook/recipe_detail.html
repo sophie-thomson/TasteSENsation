@@ -3,19 +3,18 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
-
-<!------------------------ MAIN RECIPE -------------------->
-<div class="container recipe-container">
-    
+<!-- recipe_detail.html content start -->
+<!-- Recipe Content -->
+<div class="container recipe-container"> 
     <div class="row g-0 align-items-center bg-light rounded-top mt-5">
         <!-- Title -->
         <div class="row">
             <div class="col pt-5 pt-md-5 rounded-top">
                 <h1 class="capitalize-title px-3">{{ recipe.title }}</h1>
             </div>
-            <!-- Average Rating -->
             <div class="pt-3">
                 <hr>
+                <!-- Average Rating -->
                 <h6 class="px-3">Average Rating: {{ recipe.average_rating }}
                     <span class="fa fa-star {% if average_rating > 0 %} checked {% endif %}"></span>
                     <span class="fa fa-star {% if average_rating > 1 %} checked {% endif %}"></span>
@@ -41,6 +40,7 @@
             </div>
         </div>
     </div>
+    <!-- Recipe Image -->
     <div class="row g-0 bg-light">
         <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
             <div class="m-3 px-md-3">
@@ -55,7 +55,7 @@
         </div>
         <div class="col">
             <div class="mt-3 px-3">
-                <!-- Equipment -->
+                <!-- Equipment Icons -->
                 <div class="row">
                     <h5>Equipment:</h5>
                     {% if recipe.baking %}
@@ -140,7 +140,6 @@
             </div>
         </div>
     </div>
-
     <!-- Instructions -->
     <div class="row">
         <div class="col">
@@ -165,12 +164,10 @@
         </div>
     </div>
 </div>
-
-<!---------------------------- Feedback Section ------------------------->
-
+<!-- Feedback -->
 <div class="container recipe-container">
     <div class="row g-0 bg-light rounded my-3">
-            <!-- Comments Card -->
+            <!-- Comments List -->
             <div class="col-lg-4">
                 <div class="feedback-card px-md-3">
                     <div class="card-body">
@@ -208,6 +205,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Comment Form-->
             <div class="col-lg-4 mb-3">
                 <div class="feedback-card px-md-3">
                     <div class="card-body">
@@ -221,17 +219,20 @@
                                 <button id="submitButton" type="submit" class="btn btn-signup">Submit Comment</button>
                             </form>
                             {% else %}
+                            <!-- Message to display if not logged in -->
                             <p><a href="{% url 'account_login' %}" class="link">Log in</a> to leave a comment</p>
                             {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- Rating Form -->
             <div class="col-lg-3 order-first">
                 <div class="feedback-card px-md-3">
                     <div class="card-body">
                         <h5 class="card-title pl-sm-3 mt-2">Rate This Recipe</h5>
                         <div class="card-text pl-sm-3">
+                            <!-- Prevents recipe owner from rating own recipe -->
                             {% if user.is_authenticated and recipe.owner == user %}
                                 <p>Sorry, you are not permitted to rate your own recipe.</p>
                             {% else %}
@@ -284,10 +285,10 @@
                                         </div>
                                         <button type="submit" class="btn btn-edit">Submit Rating</button>
                                     </form>
-                
+                                    <!-- Rating form .hidden class removed if Edit Rating button clicked -->
                                     <button id="edit-rating-btn" class="btn btn-edit" onclick="show_rating_form()">Edit Rating</button>
                                     {% else %}
-                
+                                    <!-- Rating form if no rating exists yet -->
                                     <p>You haven't submitted a rating for this recipe yet.</p>
                                     <form id="rating-form" method="POST">
                     
@@ -330,6 +331,7 @@
                                     </form>
                                     {% endif %}
                                 {% else %}
+                                    <!-- Message to display if not logged in -->
                                     <p>You need to <a href="{% url 'account_login' %}" class="link">log in</a> to leave a rating for this recipe.</p>
                                     <p>If you don't have an account, you can easily <a href="{% url 'account_signup' %}" class="link">sign up</a> now.</p>
                                 {% endif %}
@@ -376,12 +378,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Are you sure you want to delete your recipe?
+                <p>Are you sure you want to delete your recipe?
                 All associated ratings and comments will also be deleted.
-                This action cannot be undone.
+                This action cannot be undone.</p>
 
-                If you simply want to make changes to the recipe, 
-                you can <a class="link" href="{% url 'recipe_edit' recipe.slug %}">edit your recipe</a>.
+                <p>If you simply want to make changes to the recipe, 
+                you can <a class="link" href="{% url 'recipe_edit' recipe.slug %}" alt="link to edit recipe">edit your recipe</a>.</p>
                 
             </div>
             <div class="modal-footer">
@@ -391,12 +393,9 @@
         </div>
     </div>
 </div>
-
-
 {% endblock content %}
-
 {% block extras %}
 <script src="{% static 'js/comments.js' %}"></script>
 <script src="{% static 'js/recipes.js' %}"></script>
-
+<!-- recipe_detail.html content end -->
 {% endblock %}

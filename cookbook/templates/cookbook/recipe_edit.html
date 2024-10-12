@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
-
 {% block content %}
 
+<!-- recipe_edit.html content start -->
+<!-- Recipe Content -->
 <div class="container-fluid d-flex justify-content-center mt-5">
     <div class="row">
         <div class="card mb-4">
@@ -16,12 +17,14 @@
                     <p>Once we have checked to make sure everything is in place, we will
                         update your recipe for others to see.
                     </p>
+                    <!-- Current Image -->
                     {% if recipe.featured_image %}
                     <div class="mb-3">
                     <p>Current Recipe Image:</p>
                     <img src="{{ recipe.featured_image.url }}" alt="Current Recipe Image" width="200">
                     </div>
                     {% endif %}
+                    <!-- Recipe Form -->
                     <form id="recipe-form" method="POST" action="{% url 'recipe_edit' recipe.slug %}" enctype="multipart/form-data" data-recipe-slug="{{ recipe.slug }}">
                         {% csrf_token %}
                         {{ form|crispy }}
@@ -33,6 +36,6 @@
         </div>
     </div>
 </div>
-  
+<!-- recipe_edit.html content end -->
 {% endblock %}
 
