@@ -49,7 +49,7 @@
                     alt="placeholder image">
                 {% else %}
                 <img class="rounded img-fluid" src=" {{ recipe.featured_image.url }}"
-                    alt="{{ recipe.title }}">
+                    alt="image for {{ recipe.title }}">
                 {% endif %}
             </div>
         </div>
@@ -61,7 +61,7 @@
                     {% if recipe.baking %}
                     <div class="col-2">
                         <figure class="figure">
-                            <img src="{% static 'images/baking-sm.png' %}" class="figure-img img-fluid" alt="placeholder">
+                            <img src="{% static 'images/baking-sm.png' %}" class="figure-img img-fluid" alt="Baking icon image">
                             <figcaption class="figure-caption text-center d-none d-sm-block">Oven</figcaption>
                         </figure>
                     </div>
@@ -70,7 +70,7 @@
                     {% if recipe.chopping %}
                     <div class="col-2">
                         <figure class="figure">    
-                            <img src="{% static 'images/chopping-sm.png' %}" class="figure-img img-fluid" alt="placeholder">
+                            <img src="{% static 'images/chopping-sm.png' %}" class="figure-img img-fluid" alt="Chopping icon image">
                             <figcaption class="figure-caption text-center d-none d-sm-block">Knife</figcaption>
                         </figure>
                     </div>
@@ -79,7 +79,7 @@
                     {% if recipe.frying %}
                     <div class="col-2">
                         <figure class="figure">    
-                            <img src="{% static 'images/frying-sm.png' %}" class="figure-img img-fluid" alt="placeholder">
+                            <img src="{% static 'images/frying-sm.png' %}" class="figure-img img-fluid" alt="Frying icon image">
                             <figcaption class="figure-caption text-center d-none d-sm-block">Frying</figcaption>
                         </figure>    
                     </div>
@@ -88,7 +88,7 @@
                     {% if recipe.hob_use %}
                     <div class="col-2">
                         <figure class="figure">
-                            <img src="{% static 'images/hob-sm.png' %}" class="figure-img img-fluid" alt="placeholder">
+                            <img src="{% static 'images/hob-sm.png' %}" class="figure-img img-fluid" alt="Hob icon image">
                             <figcaption class="figure-caption text-center d-none d-sm-block">Hob</figcaption>
                         </figure>
                     </div>
@@ -97,7 +97,7 @@
                     {% if recipe.mixing %}
                     <div class="col-2">
                         <figure class="figure">                      
-                            <img src="{% static 'images/mixing-sm.png' %}" class="figure-img img-fluid" alt="placeholder">
+                            <img src="{% static 'images/mixing-sm.png' %}" class="figure-img img-fluid" alt="Mixing icon image">
                             <figcaption class="figure-caption text-center d-none d-sm-block">Mixing</figcaption>
                         </figure>                        
                     </div>
@@ -106,7 +106,7 @@
                     {% if recipe.straining %}
                     <div class="col-2">
                         <figure class="figure">    
-                            <img src="{% static 'images/straining-sm.png' %}" class="figure-img img-fluid" alt="placeholder">
+                            <img src="{% static 'images/straining-sm.png' %}" class="figure-img img-fluid" alt="Colander icon image">
                             <figcaption class="figure-caption text-center d-none d-sm-block">Colander</figcaption>
                         </figure>
                     </div>
@@ -115,7 +115,7 @@
                     {% if recipe.whisking %}
                     <div class="col-2">
                         <figure class="figure">                      
-                            <img src="{% static 'images/whisking-sm.png' %}" class="figure-img img-fluid" alt="placeholder">
+                            <img src="{% static 'images/whisking-sm.png' %}" class="figure-img img-fluid" alt="Whisk icon image">
                             <figcaption class="figure-caption text-center d-none d-sm-block">Whisk</figcaption>
                         </figure>                      
                     </div>
@@ -124,7 +124,7 @@
                     {% if recipe.microwaving %}
                     <div class="col-2">
                         <figure class="figure">
-                            <img src="{% static 'images/microwaving-sm.png' %}" class="figure-img img-fluid" alt="placeholder">
+                            <img src="{% static 'images/microwaving-sm.png' %}" class="figure-img img-fluid" alt="Microwave icon image">
                             <figcaption class="figure-caption text-center d-none d-sm-block">Microwave</figcaption>
                         </figure>
                     </div>
@@ -157,7 +157,7 @@
         <div class="col">
             <div class="bg-light px-4 py-3 rounded-bottom">
                 {% if recipe.owner == user %}
-                    <a href="{% url 'recipe_edit' recipe.slug %}" class="btn btn-edit btn-sm">Edit Recipe</a>
+                    <a href="{% url 'recipe_edit' recipe.slug %}" class="btn btn-edit btn-sm" aria-label="Button to edit recipe as the recipe owner">Edit Recipe</a>
                     <button id="btn-recipe-delete" class="btn btn-delete btn-sm" data-recipe-slug="{{ recipe.slug }}">Delete Recipe</button>
                 {% endif %}
             </div>
@@ -220,7 +220,7 @@
                             </form>
                             {% else %}
                             <!-- Message to display if not logged in -->
-                            <p><a href="{% url 'account_login' %}" class="link">Log in</a> to leave a comment</p>
+                            <p><a href="{% url 'account_login' %}" class="link" aria-label="Link to navigate to log in page">Log in</a> to leave a comment</p>
                             {% endif %}
                         </div>
                     </div>
@@ -332,8 +332,8 @@
                                     {% endif %}
                                 {% else %}
                                     <!-- Message to display if not logged in -->
-                                    <p>You need to <a href="{% url 'account_login' %}" class="link">log in</a> to leave a rating for this recipe.</p>
-                                    <p>If you don't have an account, you can easily <a href="{% url 'account_signup' %}" class="link">sign up</a> now.</p>
+                                    <p>You need to <a href="{% url 'account_login' %}" class="link" aria-label="Link to navigate to log in page">log in</a> to leave a rating for this recipe.</p>
+                                    <p>If you don't have an account, you can easily <a href="{% url 'account_signup' %}" class="link" aria-label="Link to navigate to Sign Up page">sign up</a> now.</p>
                                 {% endif %}
                             {% endif %}
                         </div>
@@ -383,7 +383,7 @@
                 This action cannot be undone.</p>
 
                 <p>If you simply want to make changes to the recipe, 
-                you can <a class="link" href="{% url 'recipe_edit' recipe.slug %}" alt="link to edit recipe">edit your recipe</a>.</p>
+                you can <a href="{% url 'recipe_edit' recipe.slug %}" class="link" aria-label="link to edit recipe page and recipe owner">edit your recipe</a>.</p>
                 
             </div>
             <div class="modal-footer">
