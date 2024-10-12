@@ -7,7 +7,6 @@ const deleteButtons = document.getElementsByClassName("btn-comment-delete");
 const deleteConfirm = document.getElementById("deleteConfirm");
 
 
-
 /**
 * Initializes edit functionality for the provided edit buttons.
 * 

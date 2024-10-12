@@ -11,14 +11,6 @@ body {
     color: #4A4A4F;
 }
 
-/* .recipe-detail-title {
-    padding-left: 5%;
-} */
-
-/* .recipe-detail-subtitle {
-    color: #026572;
-} */
-
 .capitalize-title {
     text-transform: capitalize;
 }
@@ -45,10 +37,6 @@ body {
     background-color: #a9c2b8;
 }
 
-/* .light-bg {
-    background-color: #fafafa;
-} */
-
 .dark-bg {
     background-color: #445261;
 }
@@ -57,10 +45,6 @@ body {
     background-color: rgb(68, 82, 97, 0.6);
     color: #fafafa
 }
-
-/* .recipe-detail-bg {
-    background-color:#fafafa;
-} */
 
 /* ------ Cards ------ */
 .list-card {
@@ -72,19 +56,6 @@ body {
     border: none;
     background-color: #fafafa;
 }
-
-/* .you-will-use-card {
-    border: none;
-} */
-
-/* .legend {
-    font-weight: bold;
-    margin-bottom: 10px;
-} */
-
-/* .input-group {
-    display: none;
-} */
 
 /* ------ Containers ------ */
 .signup-container {
@@ -98,12 +69,6 @@ body {
 .image-container {
     position: relative;
 }
-
-/* .recipe-detail-avg-rating,
-.recipe-title {
-    margin-top: 0;
-    margin-left: 0;
-} */
 
 /* ------ Links ------ */
 .banner-link {

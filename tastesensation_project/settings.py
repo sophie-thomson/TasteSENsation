@@ -65,9 +65,13 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 
+# Tells Crispy forms which version of Bootstrap to use for rendering
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
+
+# Overrides Summernote configuration to ensure styling not conflicting with
+# bootstrap responsive settings.
 SUMMERNOTE_CONFIG = {
     'iframe': False,
     'summernote': {
@@ -78,7 +82,7 @@ SUMMERNOTE_CONFIG = {
 }
 
 
-# ensure cloudinary uses https secure paths
+# ensures cloudinary uses https secure paths
 CloudinaryConfig.secure = "true"
 
 
@@ -115,17 +119,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'tastesensation_project.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
@@ -141,19 +134,17 @@ CSRF_TRUSTED_ORIGINS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME':
+        'django.contrib.auth.password_validation.\
+        UserAttributeSimilarityValidator', },
+    {'NAME':
+        'django.contrib.auth.password_validation.MinimumLengthValidator', },
+    {'NAME':
+        'django.contrib.auth.password_validation.CommonPasswordValidator', },
+    {'NAME':
+        'django.contrib.auth.password_validation.NumericPasswordValidator', },
 ]
+
 
 # Tells Django we are not using email verification in this project
 ACCOUNT_EMAIL_VERIFICATION = 'none'
@@ -177,6 +168,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

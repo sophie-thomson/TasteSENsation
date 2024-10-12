@@ -10,18 +10,34 @@ SOURCE_SITES = [
     ("Other", "Other"),
 ]
 APPROVAL_STATUS = ((0, "Submitted"), (1, "Approved"))
+
+# Suggested comment feature removed from the app as not good ux
 COMMENT_CHOICES = [
     ("Love this recipe!", "Love this recipe!"),
     ("Delicious and easy to make.", "Delicious and easy to make."),
-    ("OK, but probably won't make again.", "OK, but probably won't make again."),
-    ("Too difficult for me, but might be OK for others", "Too difficult for me, but might be OK for others"),
+    ("OK, but won't make again.", "OK, but won't make again."),
+    ("Too difficult.", "Too difficult."),
 ]
-
-# Create your models here.
 
 
 class Recipe(models.Model):
-    owner = models.ForeignKey(User, related_name="creator", on_delete=models.CASCADE)
+    """
+    Recipe model defines all recipe data rendered in index, recipe_detail,
+    and recipe_edit templates.
+
+    RecipeForm used in suggest_recipe and recipe_edit templates displays
+    selected fields from this model and uploads the field values to the
+    recipe model.
+
+    get_average_rating() uses django Avg and Count packages  to get all ratings
+    for that particular recipe.slug and return an aggregate average_rating and
+    a total ratings_count for the recipe.
+    """
+    owner = models.ForeignKey(
+        User,
+        related_name="creator",
+        on_delete=models.CASCADE
+    )
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True, blank=True)
     source_site = models.CharField(choices=SOURCE_SITES, blank=True)
@@ -37,9 +53,15 @@ class Recipe(models.Model):
     hob_use = models.BooleanField(default=False)
     ingredients = models.TextField()
     instructions = models.TextField()
-    cooked_status = models.IntegerField(choices=COOKED_STATUS, default=0)
+    cooked_status = models.IntegerField(
+        choices=COOKED_STATUS,
+        default=0
+    )
     created_on = models.DateField(auto_now_add=True)
-    recipe_approved = models.IntegerField(choices=APPROVAL_STATUS, default=0)
+    recipe_approved = models.IntegerField(
+        choices=APPROVAL_STATUS,
+        default=0
+    )
 
     class Meta:
         ordering = ["-created_on"]
@@ -49,24 +71,45 @@ class Recipe(models.Model):
 
     def get_average_rating(self) -> tuple:
         average = self.ratings.aggregate(Avg("rating"))["rating__avg"]
-        ratings_count = self.ratings.aggregate(Count("rating"))["rating__count"]
+        ratings_count = self.ratings.aggregate(
+            Count("rating")
+        )["rating__count"]
         return (round(average, 1) if average else 0, ratings_count)
-    
+
 
 class Rating(models.Model):
+    """
+    Rating model defines all rating data rendered in index and recipe_detail
+    templates.
+
+    unique_together creates a list of lists which must be unique when
+    considered together. Each user is able to submit only one rating per
+    recipe so unique_together overwrites any previous rating for that user.
+    """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    recipe = models.ForeignKey(Recipe, related_name="ratings", on_delete=models.CASCADE)
+    recipe = models.ForeignKey(
+        Recipe,
+        related_name="ratings",
+        on_delete=models.CASCADE
+    )
     rating = models.IntegerField(default=0)
 
     class Meta:
-        # Checks that user only rates each recipe once
         unique_together = ("recipe", "user")
 
     def __str__(self):
-        return f"{self.user.username} gave {self.recipe.title}, {self.rating} stars"
+        return f"{self.user.username} gave {self.recipe.title}, \
+        {self.rating} stars"
 
 
 class Comment(models.Model):
+    """
+    Comment model defines all comment data rendered in recipe_detail
+    template.
+
+    **NB: suggested_comment field not used in deployed project as did
+    not add positive UX and over-complicated comment functionality.
+    """
     recipe = models.ForeignKey(
         Recipe, on_delete=models.CASCADE, related_name="comments")
     author = models.ForeignKey(
