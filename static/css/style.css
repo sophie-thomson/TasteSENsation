@@ -1,4 +1,4 @@
-/* Text styles and background colours */
+/* ------ Text styles ------ */
 
 body {
     background-color: #F9FAFC;
@@ -11,157 +11,13 @@ body {
     color: #4A4A4F;
 }
 
-.recipe-detail-title {
-    padding-left: 5%;
-}
-
-.recipe-detail-subtitle {
-    color: #026572;
- }
-
-.thin {
-    font-weight: 300;
-}
-
-.main-bg {
-    background-color: #a9c2b8;
-}
-
-.light-bg {
-    background-color: #fafafa;
-}
-
-.dark-bg {
-    background-color: #445261;
-}
-
-.banner-bg {
-    background-color: rgb(68, 82, 97, 0.6);
-    color: #fafafa
-}
-
-.recipe-detail-bg {
-    background-color:#fafafa;
-}
-
-.list-card {
-    border: solid 1px #979ba0;
-    background-color: #fafafa;
-}
-
-.feedback-card {
-    border: none;
-    background-color: #fafafa;
-}
-
-.you-will-use-card {
-    border: none;
-}
-
-.legend {
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.input-group {
-    display: none;
-}
-
-
-.signup-container {
-    max-width: 525px;  
-}
-
-.recipe-container {
-    max-width: 1200px;
-}
-
-.image-container {
-    position: relative;
-}
-
-
 .capitalize-title {
     text-transform: capitalize;
 }
 
-
-.recipe-detail-avg-rating,
-.recipe-title {
-    margin-top: 0;
-    margin-left: 0;
+.thin {
+    font-weight: 300;
 }
-
-.banner-link {
-    text-decoration: none;
-    color: #fab9ea;
-    font-weight: 600;    
-}
-
-.recipe-link {
-    text-decoration: none;
-    color: #4A4A4F;
-    font-weight: 600;
-}
-
-
-.recipe-link:hover {
-    color: #039e7c;
-}
-
-
-.link {
-    color: #039e7c;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.link:hover,
-.banner-link:hover,
-.link:active {
-    color: #774a4a;
-    text-decoration: underline;
-}
-
-
-.btn-page-nav {
-    background-color: #fafafa;
-    color: #1e5a41;
-    border: none;
-    font-weight: 500;
-}
-
-.btn-page-nav:hover {
-    background-color: #1e5a41;
-    color: #fafafa;
-}
-
-
-.btn-signup,
-.btn-edit {
-    background-color: #188181;
-    color: #fff;
-    border: none;
-}
-
-.btn-signup:hover,
-.btn-signup:active {
-    background-color: #fff;
-    color: #23BBBB;
-}
-
-
-.btn-delete {
-    color: #fff;
-    background: #9c3136;
-}
-
-
-/* .btn-rate {
-    background-color: #dbb508;
-    color: #4A4A4F;
-    border: 2px;
-} */
 
 .faded {
     color: rgb(172, 175, 175);
@@ -176,13 +32,110 @@ body {
     color: rgb(222, 146, 168);
 }
 
-/* ------------------- Star Rating -------------------- */
+/* ------ Background Colours ------ */
+.main-bg {
+    background-color: #a9c2b8;
+}
 
+.dark-bg {
+    background-color: #445261;
+}
+
+.banner-bg {
+    background-color: rgb(68, 82, 97, 0.6);
+    color: #fafafa
+}
+
+/* ------ Cards ------ */
+.list-card {
+    border: solid 1px #979ba0;
+    background-color: #fafafa;
+}
+
+.feedback-card {
+    border: none;
+    background-color: #fafafa;
+}
+
+/* ------ Containers ------ */
+.signup-container {
+    max-width: 525px;  
+}
+
+.recipe-container {
+    max-width: 1200px;
+}
+
+.image-container {
+    position: relative;
+}
+
+/* ------ Links ------ */
+.banner-link {
+    text-decoration: none;
+    color: #fab9ea;
+    font-weight: 600;    
+}
+
+.recipe-link {
+    text-decoration: none;
+    color: #4A4A4F;
+    font-weight: 600;
+}
+
+.recipe-link:hover {
+    color: #039e7c;
+}
+
+.link {
+    color: #039e7c;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.link:hover,
+.banner-link:hover,
+.link:active {
+    color: #774a4a;
+    text-decoration: underline;
+}
+
+/* ------ Buttons ------ */
+.btn-page-nav {
+    background-color: #fafafa;
+    color: #1e5a41;
+    border: none;
+    font-weight: 500;
+}
+
+.btn-page-nav:hover {
+    background-color: #1e5a41;
+    color: #fafafa;
+}
+
+.btn-signup,
+.btn-edit {
+    background-color: #188181;
+    color: #fafafa;
+    border: none;
+}
+
+.btn-signup:hover,
+.btn-signup:active {
+    background-color: #fafafa;
+    color: #23BBBB;
+}
+
+.btn-delete {
+    color: #fafafa;
+    background: #9c3136;
+}
+
+/* ------------------- Star Rating -------------------- */
 .ratings-count {
     color:#188181;
     font-size: small;
 }
-
 
 .fa-star {
     color: #ddd;
