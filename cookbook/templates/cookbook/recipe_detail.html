@@ -213,7 +213,7 @@
                         <div class="card-text md-px-3">
                             {% if user.is_authenticated %}
                             <p class="faded">Commenting as: {{ user.username }}</p>
-                            <form id="comment-form" method="POST" action="" data-recipe-slug="{{ recipe.slug }}">
+                            <form id="comment-form" method="POST" action="." data-recipe-slug="{{ recipe.slug }}">
                                 {{ comment_form | crispy }}
                                 {% csrf_token %}
                                 <button id="submitButton" type="submit" class="btn btn-signup">Submit Comment</button>
