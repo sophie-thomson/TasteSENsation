@@ -83,19 +83,24 @@ class RecipeForm(forms.ModelForm):
 
         self.fields[
             'instructions'
-        ].initial = "<p>1. <input type=checkbox name=recipe-check>\
+        ].initial = "<p>1. <input type=checkbox name=recipe-check \
+        aria-label=Check-off-when-step-complete>\
         &nbsp;&nbsp;Describe step 1\
         </p><hr>\
-        <p>2.  <input type=checkbox name=recipe-check>\
+        <p>2.  <input type=checkbox name=recipe-check \
+        aria-label=Check-off-when-step-complete>\
         &nbsp;&nbsp;Describe step 2</p>\
         <hr>\
-        <p>3.  <input type=checkbox name=recipe-check>\
+        <p>3.  <input type=checkbox name=recipe-check \
+        aria-label=Check-off-when-step-complete>\
         &nbsp;&nbsp;Describe step 3</p>\
         <hr>\
-        <p>4.  <input type=checkbox name=recipe-check>\
+        <p>4.  <input type=checkbox name=recipe-check \
+        aria-label=Check-off-when-step-complete>\
         &nbsp;&nbsp;Describe step 4</p>\
         <hr>\
-        <p>5.  <input type=checkbox name=recipe-check>\
+        <p>5.  <input type=checkbox name=recipe-check \
+        aria-label=Check-off-when-step-complete>\
         &nbsp;&nbsp;Describe step 5</p><hr>"
 
         self.fields['featured_image'].options = {
