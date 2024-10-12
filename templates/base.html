@@ -9,7 +9,7 @@
 
 <head>
     <title>TasteSENsation | Recipe Cookbook</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Google Fonts CSS -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -72,13 +72,13 @@
     <div class="container-fluid">
         <div class="row bg-white">
             <div class="col">
-                <span class="text-muted">
+                <div class="text-muted">
                     {% if user.is_authenticated %}
                         <p class="text-end small">You are logged in as {{ user }}</p>
                     {% else %}
                         <p class="text-end small">You are not logged in</p>
                     {% endif %}
-                </span>
+                </div>
             </div>
         </div>
     </div>
@@ -109,9 +109,9 @@
         <p class="m-0 text-center text-white">Designed by Sophie Thomson</p>
         <div>
             <p class="m-0 text-center text-white">Get in touch and check out my other projects:
-                <a href="https://www.linkedin.com/in/sophie-thomson-bristol/" target="blank"  alt="link to my LinkedIn profile">
+                <a href="https://www.linkedin.com/in/sophie-thomson-bristol/" target="blank"  aria-label="Link to Sophie Thomson LinkedIn profile in a new tab">
                     <i class="fa-brands fa-linkedin text-white mx-2"></i></a>
-                <a href="https://github.com/sophie-thomson" target="_blank"  alt="link to my GitHub profile">
+                <a href="https://github.com/sophie-thomson" target="_blank"  aria-label="Link to Sophie Thomson GitHub profile in a new tab">
                 <i class="fa-brands fa-github text-white"></i></a>
             </p>
         </div>

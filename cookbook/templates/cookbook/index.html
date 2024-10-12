@@ -9,7 +9,7 @@
     <div class="row bg-white pb-3 d-none d-sm-block">
         <div class="col">
             <div class="d-flex justify-content-end">   
-                <form class="d-flex small pt-2 pt-sm-2 pt-lg-0" method="GET" action="">
+                <form class="d-flex small pt-2 pt-sm-2 pt-lg-0" method="GET">
                     <select name="rating" id="rating">
                         <option>Filter by Rating</option>
                         <option value="5">5 Stars</option>
@@ -49,7 +49,7 @@
                     <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
                         <div class="card list-card mx-sm-3 my-4">
                             <div class="card-body">
-                                <a href="{% url 'recipe_detail' recipe.slug %}" class="recipe-link">
+                                <a href="{% url 'recipe_detail' recipe.slug %}" class="recipe-link" aria-label="Link to recipe detail">
                                     <h2 class="card-title text-nowrap text-truncate pb-2 capitalize-title">{{ recipe.title }}</h2>
                                 <div class="image-container">
                                     {% if "placeholder" in recipe.featured_image.url %}
@@ -133,7 +133,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <hr />
+                                <hr>
                                 <!-- Average Rating -->
                                 <div class="pt-3">
                                     <h6>Average Rating: 
@@ -165,7 +165,7 @@
                         <div class="col d-flex justify-content-center">
                             <div class="card p-5">
                                 <p class="text-center">There are no recipes with {{ rating_filter }} stars at the moment</p>
-                                <a href="{% url 'home' %}" alt="button to list all recipes" class="btn btn-signup">Show All Recipes</a>
+                                <a href="{% url 'home' %}" class="btn btn-signup" aria-label="Button to list all recipes">Show All Recipes</a>
                             </div>
                         </div>
                     </div>
@@ -179,13 +179,13 @@
             <ul class="pagination">
                 {% if recipes.has_previous %}
                     <li class="page-item btn btn-sm">
-                        <a href="?page={{ recipes.previous_page_number }}&rating={{ rating_filter }}" class="btn btn-page-nav">&laquo; Previous Recipes</a>
+                        <a href="?page={{ recipes.previous_page_number }}&rating={{ rating_filter }}" class="btn btn-page-nav" aria-label="Button to navigate to previous page of recipes">&laquo; Previous Recipes</a>
                     </li>
                 {% endif %}
 
                 {% if recipes.has_next %}
                     <li class="page-item btn btn-sm ms-auto">
-                        <a href="?page={{ recipes.next_page_number }}&rating={{ rating_filter }}" class="btn btn-page-nav">More Recipes &raquo;</a>
+                        <a href="?page={{ recipes.next_page_number }}&rating={{ rating_filter }}" class="btn btn-page-nav" aria-label="Button to navigate to next page of recipes">More Recipes &raquo;</a>
                     </li>
                 {% endif %}
             </ul>
