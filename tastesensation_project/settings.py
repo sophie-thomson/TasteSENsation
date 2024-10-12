@@ -73,7 +73,6 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 # Overrides Summernote configuration to ensure styling not conflicting with
 # bootstrap responsive settings.
 SUMMERNOTE_CONFIG = {
-    'iframe': False,
     'summernote': {
         'width': '100%',
         'height': '400px',
