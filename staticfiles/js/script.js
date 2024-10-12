@@ -37,7 +37,6 @@ function hide_rating_button() {
 document.addEventListener('DOMContentLoaded', function () {
     
     let alerts = document.querySelectorAll('.alert');
-    console.log(alerts);
 
     alerts.forEach(function(alert) {
         setTimeout(function() {

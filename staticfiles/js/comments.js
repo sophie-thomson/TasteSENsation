@@ -22,7 +22,6 @@ for (let button of editButtons) {
       // Get the comment ID from the button attribute
       let commentId = e.target.getAttribute("data-comment-id");
       // Get the values of the fields for that comment
-      
       let commentContent = document.getElementById(`own_comment${commentId}`).innerText;
       // Populate the fields with the current comment data
       commentText.value = commentContent;
