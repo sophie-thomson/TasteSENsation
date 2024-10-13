@@ -10,7 +10,43 @@ The simple, uncluttered layout and use of additional visual prompts help to make
 
 Users are required to sign up and log in to access certain functionality or areas of the TasteSENsation site.
 
-Different user roles are able to view and access different parts of the site. 
+Different user roles are able to view and access different parts of the site.
+
+
+***Authenticated Access and Functionality by Role***
+
+  | **Functionality**          | **Casual User**| **Reg'd User**|  **Admin**   |
+  |:---                        |      :---:     |      :---:    |    :---:     |
+  |View Recipes List           |y               |y              |y             |
+  |Filter Recipe List by Rating|y               |y              |y             |
+  |View Recipe Details         |y               |y              |y             |
+  |View Average Rating         |y               |y              |y             |
+  |View Approved Comments      |y               |y              |y             |
+  |View Own Unapproved Comments|-               |y              |y             |
+  |View All Unapproved Comments|-               |-              |y             |
+  |                            |                |               |              |
+  |Add Rating                  |-               |y              |y             |
+  |Edit Own Rating             |-               |y              |y             |                      
+  |Edit Other's Ratings        |-               |-              |-             |                      
+  |                            |                |               |              |                      
+  |Add Comment                 |-               |y              |y             |                      
+  |Edit Own Approved Comment   |-               |y              |y             |                      
+  |Edit All Approved Comments  |-               |-              |y             |                      
+  |Edit Own Unapproved Comment |-               |y              |y             |                     
+  |Edit All Unapproved Comments|-               |-              |y             |                      
+  |Delete Own Comment          |-               |y              |y             |                      
+  |Delete All Comments         |-               |-              |y             |
+  |                            |                |               |              |                          
+  |Add Recipe                  |-               |y              |y             |                     
+  |Edit Own Approved Recipe    |-               |y              |y             |                      
+  |Edit All Approved Recipes   |-               |-              |y             |                      
+  |Edit Own Unapproved Recipe  |-               |-              |y             |                      
+  |Edit All Unapproved Recipes |-               |-              |y             |                      
+  |Delete Own Recipe           |-               |y              |y             |                      
+  |Delete All Recipes          |-               |-              |y             |
+  |                            |                |               |              |    
+
+
 
 ***Casual User***
 
@@ -18,18 +54,74 @@ TasteSENsation recipes are intended to be accessible to all and some SEN users m
 
 Any visitor to the site who is not a registered user or not logged in can view the recipes list and the recipe detail pages so that they can enjoy making the recipe without having to register for the site. This includes viewing the average rating and approved comments, and filtering the recipes by the average rating.
 
-Casual viewers are not able to:
+![Screenshot of casual user nav bar](docs/readme-images/casual-user-nav-bar.png)
 
-- Rate a recipe
-- Leave a comment
-- View the Suggest Recipe page to submit a recipe to be added to the cookbook
+***Registered User***
+
+Users are able to register for the TasteSENsation site via the Sign Up (signup.html) page which is linked in the navigation bar.
+Once registered, a user can log in via the Log In (login.html) page whever they visit the site.
+
+![Screenshot of Sign Up page](docs/readme-images/sign-up-page.png)
+
+![Screenshot of Log In page](docs/readme-images/log-in-page.png)
+
+Once logged in the registered user will see a note in the nav bar to confirm that they are logged as a specified user. The 'Sign Up' and 'Log In' nav links are then hidden to the user, but a Log Out link becomes visible.
+
+![Screenshot of registered user nav bar](docs/readme-images/registered-user-nav-bar.png)
+
+![Screenshot of Log Out page](docs/readme-images/log-out-page.png)
+
+
 
 ***Admin SuperUser***
 
-SuperUser login credentials are provided within the Code Institute project submission form.  
+*SuperUser login credentials are provided within the Code Institute project submission form.*
+
 When logged in as a SuperUser, you are able to access the admin panel and create, read, update and delete any recipe or comment in the database.
 
-When recipes are submitted via the Suggest Recipe page, these are added to the database, but are not visible in the recipe list until they have been 'Approved' in the admin dashboard. This is to ensure design continuity and simplicity in the curated recipes list for SEN users.
+Submitted comments are added to the database for approval, and any unapproved comments are visible to the user who submitted the comment, but are not visible to other users until they have been approved in the admin dashboard. 
 
-Submitted comments are added to the database for approval, and any unapproved comments are visible to the user who submitted the comment, but are not visible to other users until they have been approved in the admin dashboard. This is to ensure that any offensive or inappropriate comments are not visible to potentially vulnerable SEN users.
+This is to ensure that any offensive or inappropriate comments are not visible to potentially vulnerable SEN users.
+
+Comments are approved by ticking the 'Approved' checkbox and saving the comment.
+
+![Screenshot of Comment Approval in Admin Dashboard](docs/readme-images/admin-approve-comment.png)
+
+![Screenshot of Comment Approval Checkbox](docs/readme-images/admin-approve-comment-checkbox.png)
+
+When recipes are submitted via the Suggest Recipe page, these are added to the database, but are not visible in the recipe list until they have been 'Approved' in the admin dashboard. 
+
+This is to ensure design continuity and simplicity in the curated recipes list for SEN users.
+
+Recipes are approved by changing the 'Recipe Approved' status from Submitted to 'Approved' and saving the recipe.
+
+![Screenshot of Recipe Approval in Admin Dashboard](docs/readme-images/admin-approve-recipe.png)
+
+![Screenshot of Recipe Approval Dropdown](docs/readme-images/admin-approve-recipe-dropdown.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SAMPLE TABLE:
+
+  | **Column 1**               |  **Column 2**  | **Column 3**  | **Column 4** |  **Column 5**      |
+  |:---                        |      :---:     |      :---:    |    :---:     |        :---:       |
+  |                            |                |               |              |                    |
+  |                            |                |               |              |                    |
+  |                            |                |               |              |                    |
+  |                            |                |               |              |                    |
+  |                            |                |               |              |                    |
+  |                            |                |               |              |                    |
+  |                            |                |               |              |                    |
+
 
