@@ -216,11 +216,15 @@ def suggest_recipe(request):
 
             return redirect("home")
         else:
-            # If the form is invalid, display an error message
-            messages.error(request,
-                           'Error submitting the form.\n \
-                            All fields with an * must be completed.\n \
-                            You must be logged in to submit a recipe.')
+            # If user not authenticated, display error message
+            if not request.user.is_authenticated:
+                messages.error(request,
+                               'Error submitting the form. \
+                               You must be logged in to submit a recipe.')
+            else:
+                messages.error(request,
+                               'Error submitting the form. \
+                               All fields with an * must be completed.')
     else:
 
         form = RecipeForm()
