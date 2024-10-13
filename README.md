@@ -50,8 +50,6 @@ The simple, uncluttered layout and use of additional visual prompts help to make
 ![Screenshot of example error message](docs/readme-images/not-authenticated-suggest-recipe-error-message.png)
 
 
-
-
 ### Recipes (index.html)
 
 ***Recipe List***
@@ -60,11 +58,35 @@ The simple, uncluttered layout and use of additional visual prompts help to make
    - The recipe title (name of the dish)
    - A recipe image
    - A 'You will use:' display of icons to represent the different equipment that the recipe requires
-   - An average rating for the recipe represented by a visual representation of 5 star icons
-   - An aria-label is used to ensure that the average rating is still available if the user uses a screen reader
+   - An average rating for the recipe represented by a visual representation of 5 star icons (an aria-label is used to ensure that the average rating is accessible if the user uses a screen reader).
+   - The username of the recipe owner (the person who submitted the recipe)
+
+***Filter by Rating***
+- The user is able to filter the list of recipes so that they can more quickly access recipes with a particular rating such as those that others have enjoyed the most.
+- The filter by rating form has the same appearance as the nav bar so that it blends in and appears to be a seamless extension of the nav bar.
+- The list of filtered results is displayed with 6 recipes per page. If there are lots of recipes, the filtered recipes continue across multiple pages.
+- It is possible for the user to filter the recipes by:
+  - 1 star
+  - 2 stars
+  - 3 stars
+  - 4 stars
+  - 5 stars
+  - Unrated recipes
+  - All Recipes
+
+***Pagination***
+- The recipe cards are displayed with 6 recipes per page to help manage the flow of information for SEN users who may get easily overwhelmed or distracted.
+- Using 6 recipe cards also enables more responsive display for the optimum number of cards to be displayed using the grid structure on different devices (rows of 3 cards each on larger screens, 2 cards on tablets and 1 card on small devices). 
+- Navigation buttons at the bottom of the page enable the user to view more recipes or go back to previous recipes.
+- The page navigation buttons are only visible if there are further pages to view, or if there is a previous page to view.
+
+### Full Recipe Details (recipe_detail.html)
+
+***Recipe Title***
+
+***Recipe Image***
 
 
-***Recipe Detail (recipe_detail.html)***
 
 ***Feedback***
 
