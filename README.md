@@ -70,7 +70,7 @@ The simple, uncluttered layout and use of additional visual prompts help to make
 ***Banner paragraph***
 - Lead paragraph to explain that the recipes displayed in TasteSENsation have been chosen specifically with SEN users in mind.
 - Call to action text to highlight features only available to registered users and prompt casual users to sign up and log in.
-- Visually clear and simple layout to ensure clarity and keep distrations to a minimum.
+- Visually clear and simple layout to ensure clarity and keep distractions to a minimum.
 
 ![Screenshot of recipe list with 6 recipe cards](docs/readme-images/recipe-list.png)
 
@@ -256,33 +256,151 @@ Recipes are approved by changing the 'Recipe Approved' status from Submitted to 
 
 ![Screenshot of Recipe Approval Dropdown](docs/readme-images/admin-approve-recipe-dropdown.png)
 
+### Existing Features
+- Responsive pages with effective styling to look good on different sized devices.
+- Robust user authentication ensures that users can only access areas and functionality in accordance with their user role. 
+- All form fields are correctly assigned with required or blank=True attributes and clear error messages are displayed to the user if field validation fails.
+- This program is deployed and run on Heroku using the CI gitpod template.
+- CRUD functionality (Create, Read, Update, Delete) is evident throughout the project. Refer to the CRUD functionality section for further details.
+
+### Future Features
+
+To expand on this project, there are a number of features that could be added to enhance user experience and functionality:
+- A user profile page for registered users to track the recipes they have cooked and identify recipes that they would like to try.
+- The profile page could include a list of all the comments they have left on other people's recipes.
+- Registered users could tag a recipe as a 'favourite' and list these in their profile page.
+- Improved functionality for SEN users could include a visual image for each step of the instructions in the recipe detail page. This would further break down each recipe into manageable steps and help the user to understand what is required of them.
+- A Further Resources page could provide links to original recipes from other SEN focused cookery / recipe sites and include other useful information and resources.
 
 ## Design
 
 ### UX Design
 
-- Average Rating
-- Responsiveness
-- 
+Along with more usual UX considerations, TasteSENsation has been designed with SEN users in mind.
+
+Design considerations and features include:
+- Simple, uncluttered layout to keep distractions to a minimum and help maintain focus.
+- Clear text with good contrast for easy reading.
+- Consistent styling with clear instruction for all links and buttons across the site.
+- Aria labels used wherever possible to improve accessability for screen reader users.
+- Use of visual prompts alongside text. For example: The use of equipment icons as well as figure captions to provide further clarity for SEN users.
+- Star icons for average rating and user rating form to provide clear visual understanding, along with aria labels for readers.
+- User authentication used to ensure that only links and features that are appropriate for the particular user role are displayed to minimise confusion.
+- Clear messaging throughout the site using green success message and red error message styling for clarity.
+- Curated recipes with consistent styling throughout to ensure ease of use.
+- The use of checkboxes and clear definition between steps to help SEN users to keep track of which step they are on in the recipe instructions.
 
 ### CRUD Functionality
+Full CRUD (Create, Read, Update, Delete) functionality is evident throughout the site for both Registered Users and Admin SuperUsers.
+
+![Screenshot of CRUD functionality as a recipe owner and commenter](docs/readme-images/CRUD-functionality-recipe-owner.png)
+
+- Registered Users can:
+    - Create a user rating for other people's published recipes
+    - Update their own rating for other people's recipes
+    - Create new comments for their own and other people's recipes within the Full Recipe Detail page.
+    - Read all approved comments for all recipes, and read their own unnaproved comments awaiting approval.
+    - Update their own comments (whether approved or not).
+    - Delete their own comments (whether approved or not).
+    - Create a new recipe to submit for approval by admin to be added to the site
+    - Read all approved (published) recipes.
+    - Update their own recipe as the recipe 'owner' and re-submit for approval
+    - Delete their own recipe as the recipe 'owner'
+
+- Admin SuperUsers can:
+    - Create, Read, Update and Delete all comments from all users via the admin dashboard
+    - Create, Read, Update and Delete all recipes from all users via the admin dashboard
 
 
 ### Agile Methodology
 
+***Trello Board***
+
+![Screenshot of initial TasteSENsation Trello Board](docs/readme-images/TasteSENsation-trello-board.png)
+
+- View the live [Trello TasteSENsation Board](https://trello.com/b/vH7TCYBx/tastesensation-your-one-stop-directory-of-user-friendly-sen-accessible-recipes-and-kitchen-skills-training)
+- I first created a Trello Board As a starting point for gathering information and mapping out the general idea for TasteSENsation.
+- This included the following:
+  - TO DO list with a variety of items some of which became EPICS and User Stories later on
+  - General Applications to be included in the django project
+  - CRUD functionality plans to ensure that this aspect of teh assessment criteria is met
+  - Initial UX Design considerations with SEN users in mind
+  - Possible Filtering Options to improve the functionality and flexibility for users
+  - Source Sites of other SEN focused recipe sites and youtube videos
+  - Other Resources list of tutorials, links, Stack Overflow discussions, Django documentation and many others that I used along the way to help with building the project and resolving issues.
+
 ***Kanban Board***
+
+![Screenshot of GitHub Kanban Board](docs/readme-images/tastesensation-github-kanban-board.png)
+
+- View the live [TasteSENsation Project Kanban Board](https://github.com/users/sophie-thomson/projects/3)
+- Following the principles outlined in the Code Institute Agile Working units, I created a GitHub Kanban Board and using Project Issues, Milestones and Labels I mapped out the TasteSENsation project into:
+   - EPICS (Overarching blocks of work broken down into USER STORY Issues)
+   - To Do (USER STORY issues with acceptance criteria and tasks)
+   - In Progress (USER STORY Issues in progress during each Milestone or 'Sprint')
+   - Completed (USER STORY Issues that have been completed)
+   - BUGS (BUG issues that define a particular issue encountered during the project and how it was resolved)
+
+![Screenshot of GitHub EPIC issue](docs/readme-images/epic-kanban.png)
+
+![Screenshot of GitHub USER STORY issue](docs/readme-images/user-story-kanban.png)
+
+![Screenshot of GitHub BUG issue](docs/readme-images/bug-kanban.png)
 
 ***MoSCoW***
 
-***Story Points***
+- Using MoSCoW Prioritisation, each USER STORY and EPIC issue in the kanban board was assigned a label:
+   - **Must Have** - High priority Epics, User Stories and Tasks that MUST be included and working in the finished project in order to have a working project and address the Assessment Criteria.
+   - **Should Have** - Epics, User Stories and Tasks that SHOULD be included in the project, but that won't cause the project to break and are not required in order to address the assessment criteria.
+   - **Could Have** - Epics, User Stories and Tasks that COULD be included in the project, but that are more of a nice to have addition and should not be prioritised over the Must Have or Should Have issues.
+   - **Won't Have** - Epics, User Stories and Tasks that WON'T be included in the project. These are issues that would have been nice to include given more time, but do not affect the usability of the project and are not required to address the assessment criteria.
 
-***Sprints***
+
+***Sprints and Story Points***
+
+![Screenshot of GitHub Milstone Sprints](docs/readme-images/milestone-sprints.png)
+
+- Having broken down each EPIC into USER STORY issues and identified the Must Have priorities, I then split the time I had available until the submission date down into 4-day development 'Sprints' and assigned a date range to each of the Milestones. 
+- Estimating that I could work an average of 6hrs per day on my project, I then broke each 'day' into two 'Story Point' blocks of 1-3hrs per block (8 Story Points per Sprint).
+- Given my previous experience and my level of understanding and programming skills, I made an estimate of how many Story Point blocks it would take me to complete the tasks for each User Story.
+- Arranging each User Story Issue in logical progressional order, I assigned each User Story a certain number of Story Points and a particular Milestone Sprint within which I would aim to complete that set of tasks.
+- This approach kept me on track to complete all of the Must Have labelled User Stories required to complete a working project and address the assessment criteria for PP4.
+
 
 ### Design Process
 
 ***Wireframes***
 
+- Initial Wireframe designs were used to plan out the layout for the Recipe List and Recipe Detail pages
+
+![Recipe Cards Wireframe Design](docs/readme-images/recipe-cards-wireframe.png)
+
+![Recipe Detail Wireframe Design](docs/readme-images/recipe-detail-wireframe.png)
+
 ***Models***
+
+- The next step was to plan and devise an ERD for each of my database models and a schema to map out and understand the relationships between them. I created an ERD and model schema for the project based on all of the elements that I would like to include if I was able (this included the Should Have and Could Have User Story issues).
+- As the project progressed it became apparent that would not require all of the models:
+    - The 'User model' already existed within the Django framework, so did not require an additional model to be created. 
+    - The functionality for the 'Suggestion Model' to create, update and delete recipes could be achieved using methods within the recipe model and views to manipulate the data.
+    - Unfortunately I was not going to have time to create a User Profile page for the project at this time.
+
+![TasteSENsation model schema](docs/readme-images/model-schema.png)
+
+- I created an ERD for the following models:
+  - Recipe Model (Used in final project)
+  - Comment Model (Used in final project)
+  - Rating Model (Used in final project)
+  - User Model (Automatically created in Django framework)
+  - Suggestion Model (Not required)
+  - Profile Model (Not required)
+
+![TasteSENsation Recipe model](docs/readme-images/recipe-model-erd.jpg)
+![TasteSENsation Rating model](docs/readme-images/rating-model-erd.jpg)
+![TasteSENsation Comment model](docs/readme-images/comment-model-erd.jpg)
+![TasteSENsation User model](docs/readme-images/user-model-erd.jpg)
+![TasteSENsation Suggestion model](docs/readme-images/suggestion-model-erd.jpg)
+![TasteSENsation Profile model](docs/readme-images/profile-model-erd.jpg)
 
 ## Technologies
 - Bootstrap 5
