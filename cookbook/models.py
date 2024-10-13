@@ -13,10 +13,7 @@ APPROVAL_STATUS = ((0, "Submitted"), (1, "Approved"))
 
 # Suggested comment feature removed from the app as not good ux
 COMMENT_CHOICES = [
-    ("Love this recipe!", "Love this recipe!"),
-    ("Delicious and easy to make.", "Delicious and easy to make."),
-    ("OK, but won't make again.", "OK, but won't make again."),
-    ("Too difficult.", "Too difficult."),
+    ("", ""),
 ]
 
 
