@@ -182,9 +182,9 @@
                                 <hr>
                                 <p class="fw-bold">
                                     {{ comment.author }}
-                                    <span class="font-weight-normal">
-                                        {{ comment.created_on }}
-                                    </span> wrote:
+                                    <span class="fw-normal small">
+                                        ({{ comment.created_on }}) wrote:
+                                    </span>
                                 </p>
                                 <div id="own_comment{{ comment.id }}">
                                     <p>{{ comment.own_comment | safe }}</p>
