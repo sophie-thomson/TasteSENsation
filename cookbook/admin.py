@@ -10,6 +10,7 @@ class RecipeAdmin(SummernoteModelAdmin):
     search_fields = ['title', 'owner', 'recipe_approved']
     prepopulated_fields = {'slug': ('title',)}
     summernote_fields = ('ingredients', 'instructions',)
+    ordering = ('-recipe_approved',)
 
 
 @admin.register(Comment)
@@ -24,3 +25,4 @@ class CommentAdmin(SummernoteModelAdmin):
     )
     list_filter = ("author",)
     summernote_fields = ('own_comment',)
+    ordering = ('-created_on', 'approved',)

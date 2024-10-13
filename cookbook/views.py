@@ -245,7 +245,10 @@ def recipe_edit(request, slug):
             form.save(commit=False)
             recipe.recipe_approved = 0
             form.save()
-            messages.success(request, 'Recipe updated successfully!')
+            messages.success(request,
+                             'Recipe updates submitted! When approved, your \
+                             recipe will be published again.')
+            # redirects to recipe_detail in case further edits required
             return redirect('recipe_detail', slug=recipe.slug)
     else:
         form = RecipeForm(instance=recipe)
