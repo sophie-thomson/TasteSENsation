@@ -250,6 +250,10 @@ def recipe_edit(request, slug):
                              recipe will be published again.')
             # redirects to recipe_detail in case further edits required
             return redirect('recipe_detail', slug=recipe.slug)
+        else:
+            messages.error(request,
+                           'Error submitting the form. \
+                           You must be logged in to edit a recipe.')
     else:
         form = RecipeForm(instance=recipe)
 
