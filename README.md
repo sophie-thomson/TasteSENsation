@@ -50,16 +50,7 @@ The simple, uncluttered layout and use of additional visual prompts help to make
 ![Screenshot of example error message](docs/readme-images/not-authenticated-suggest-recipe-error-message.png)
 
 
-### Recipes (index.html)
-
-***Recipe List***
-- Initially all published recipes are displayed, with each recipe featured in a 'recipe card' including:
-
-   - The recipe title (name of the dish)
-   - A recipe image
-   - A 'You will use:' display of icons to represent the different equipment that the recipe requires
-   - An average rating for the recipe represented by a visual representation of 5 star icons (an aria-label is used to ensure that the average rating is accessible if the user uses a screen reader).
-   - The username of the recipe owner (the person who submitted the recipe)
+### Recipes Page
 
 ***Filter by Rating***
 - The user is able to filter the list of recipes so that they can more quickly access recipes with a particular rating such as those that others have enjoyed the most.
@@ -74,23 +65,61 @@ The simple, uncluttered layout and use of additional visual prompts help to make
   - Unrated recipes
   - All Recipes
 
+![Screenshot of filter by rating feature and banner text](docs/readme-images/filter-by-rating-and-banner.png)
+
+***Banner paragraph***
+- Lead paragraph to explain that the recipes displayed in TasteSENsation have been chosen specifically with SEN users in mind.
+- Call to action text to highlight features only available to registered users and prompt casual users to sign up and log in.
+- Visually clear and simple layout to ensure clarity and keep distrations to a minimum.
+
+***Recipe List***
+- Initially all published recipes are displayed, with each recipe featured in a 'recipe card' including:
+
+   - The recipe title (name of the dish). Colour changes to highlight selection and title links to the full recipe details.
+   - A recipe image (this is the 'star of the show' and the main focal point for each card). Also links to the full recipe details so user can select either the title or the image to see the full recipe.
+   - A 'You will use:' display of icons to represent the different equipment that the recipe requires. This enables users to quickly identify recipes that may not be suitable for SEN ability levels. For example, users may want to look at recipes which include no chopping or hob use.
+   - An average rating for the recipe represented by a visual representation of 5 star icons (an aria-label is used to ensure that the average rating is accessible if the user uses a screen reader).
+   - The username of the recipe owner (the person who submitted the recipe).
+
 ***Pagination***
 - The recipe cards are displayed with 6 recipes per page to help manage the flow of information for SEN users who may get easily overwhelmed or distracted.
 - Using 6 recipe cards also enables more responsive display for the optimum number of cards to be displayed using the grid structure on different devices (rows of 3 cards each on larger screens, 2 cards on tablets and 1 card on small devices). 
 - Navigation buttons at the bottom of the page enable the user to view more recipes or go back to previous recipes.
 - The page navigation buttons are only visible if there are further pages to view, or if there is a previous page to view.
 
-### Full Recipe Details (recipe_detail.html)
+### Full Recipe Details Page
 
 ***Recipe Title***
+- Large clear heading at the top of the page to confirm the name of the dish.
 
 ***Recipe Image***
+- The same hero image used for the recipe card in the recipe list for continuity and to confirm the user has selected the right recipe.
+- The image size and format type is controlled at the point of creation using Cloudinary functionality so all recipes submitted through the suggest recipe form will feature same sized WEBP image for the hero image.
+- Fully responsive image to ensure it looks good on different devices.
 
+***Equipment (You will use:)***
+- An equipment list using emoji icon to represent the main items of equipment or skills that will be required for making this recipe.
+- The icons enable users to quickly identify recipes that may not be suitable for SEN user abilities or skill level.
+- Equipment icons are further explained with the use of figure captions on medium and larger devices. This also ensures that the icons are announced to users who use a screen reader.
+- Enables the user to source the equipment that they may need such as a mixing bowl, whisk, colander or chopping board.
 
+***Ingredients (You will need:)***
+- A simple list of all ingredients and measurements that are required for making the recipe.
+- Located high up on the page alongside the image so that users can source and prepare their ingredients before starting the recipe.
 
-***Feedback***
+***Instructions***
+- A standrad line of text for all recipes to remind the user to wash their hands before starting the recipe.
+- A step by step ordered list of instructions clearly separated by a horizontal rule to help SEN users to keep track of the step that they are following.
+- A checkbox that can be checked off by the user when each step is completed. Further enables the SEN user to maintain focus and keep track of the step that they are on. 
 
-***Suggest Recipe***
+***Feedback Section***
+- A feedback section for the recipe to enable users to see other people's comments and provide their own feedback.
+- Access to the features in this section is controlled through user authentication.
+ - **Rate This Recipe** - Registered users are able to provide a star rating for a recipe as long as it was not submitted by themselves. This prevents users from rating their own recipes higher than everyone else's. Casual Users are not able to rate a recipe.
+ - **Comments** - Displays all approved comments for this recipe for all users to view. Registered Users are also able to view, edit and delete their own comments that are awaiting approval.
+- **Leave a Comment** - Registered Users are able to write and submit their own comments using a simple form. Casual Users are not able to submit a comment.
+
+### Suggest Recipe Page
 
 
 ## User Authentication
