@@ -6,6 +6,8 @@ Users are invited to sign up to rate and comment on the recipes so that other vi
 
 The simple, uncluttered layout and use of additional visual prompts help to make the site easy to understand and navigate with minimal distractions. This means that SEN users are more likely to be able to use the site and follow the steps unaided.
 
+![TasteSENsation mock up on multiple devices](docs/readme-images/multi-screen-mock-up.png)
+
 ## User Authentication
 
 Users are required to sign up and log in to access certain functionality or areas of the TasteSENsation site.
@@ -65,7 +67,7 @@ Once registered, a user can log in via the Log In (login.html) page whever they 
 
 ![Screenshot of Log In page](docs/readme-images/log-in-page.png)
 
-Once logged in the registered user will see a note in the nav bar to confirm that they are logged as a specified user. The 'Sign Up' and 'Log In' nav links are then hidden to the user, but a Log Out link becomes visible.
+Once logged in the registered user will see a note in the nav bar to confirm that they are logged as a specified user. The 'Sign Up' and 'Log In' nav links are then hidden to the user, but 'Suggest Recipe' and 'Log Out' links become visible.
 
 ![Screenshot of registered user nav bar](docs/readme-images/registered-user-nav-bar.png)
 
