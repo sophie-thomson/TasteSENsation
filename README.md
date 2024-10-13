@@ -146,11 +146,23 @@ The simple, uncluttered layout and use of additional visual prompts help to make
     - Instructions section pre-populated with example steps to update using html code to style in same way as recipes on the site (also adds attributes and aria label to checkbox for validation).
     - Equipment checkboxes to select which key items of equipment and skills will be used when maing this recipe.
 
+![Screenshot of responsive suggest recipe form on mobile](docs/readme-images/suggest-recipe-mobile-top.png)
+![Screenshot of responsive suggest recipe form on mobile](docs/readme-images/suggest-recipe-mobile.png)
+
 ***Edit Recipe Form***
 - The same recipe form is used to edit a recipe.
 - The form is pre-populated with the existing content and the existing recipe image is included so that the user can either select the same one or change it for another one.
-- The edit recipe page is only 
+- User authentication prevents a recipe from being edited successfully if they are not the recipe owner and logged in. In this case, an error message notifies the user that they must be logged in to edit a recipe.
 
+![Screenshot of edit recipe form and error message](docs/readme-images/edit-recipe-error-message.png)
+
+### Delete Recipe
+- JavaScript triggers a delete recipe modal to display if the recipe owner clicks on the 'Delete Recipe' button.
+- User authentication prevents the Delete Recipe button from displaying if the person logged in is not the recipe owner.
+- User is reminded that this action cannot be undone and that the recipe will lose all comments and ratings once deleted.
+- User requested to click on 'Delete' again to confirm action.
+
+![Screenshot of delete recipe modal](docs/readme-images/delete-recipe-modal.png)
 
 ## User Authentication
 
