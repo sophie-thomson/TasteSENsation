@@ -137,7 +137,8 @@
                                 <!-- Average Rating -->
                                 <div class="pt-3">
                                     <!-- Aria Label used to ensure average rating is visible to screen readers -->
-                                    <p class="h6" aria-label="Average rating: {{ recipe.average_rating }} out of 5">Average Rating: 
+                                    <a href="#" aria-label="Average rating: {{ recipe.average_rating }} out of 5"></a>
+                                    <p class="h6">Average Rating: 
                                         <span class="fa fa-star {% if recipe.average_rating > 0 %} checked {% endif %}"></span>
                                         <span class="fa fa-star {% if recipe.average_rating > 1 %} checked {% endif %}"></span>
                                         <span class="fa fa-star {% if recipe.average_rating > 2 %} checked {% endif %}"></span>

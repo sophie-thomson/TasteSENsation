@@ -16,7 +16,8 @@
                 <hr>
                 <!-- Average Rating -->
                 <!-- Aria Label used to ensure average rating is visible to screen readers -->
-                <p class="px-3 h6" aria-label="Average rating: {{ average_rating }} out of 5">Average Rating: {{ recipe.average_rating }}
+                <a href="#" aria-label="Average rating: {{ average_rating }} out of 5"></a>
+                <p class="px-3 h6">Average Rating: {{ recipe.average_rating }}
                     <span class="fa fa-star {% if average_rating > 0 %} checked {% endif %}"></span>
                     <span class="fa fa-star {% if average_rating > 1 %} checked {% endif %}"></span>
                     <span class="fa fa-star {% if average_rating > 2 %} checked {% endif %}"></span>
@@ -240,7 +241,8 @@
                                 {% if user.is_authenticated and recipe.owner != user %}
                                     {% if user_rating %}
                                     <!-- Aria Label used to ensure user rating is visible to screen readers -->
-                                    <p aria-label="Your rating: {{ user_rating.rating }} out of 5">Your Rating:
+                                    <a href="#" aria-label="Your rating: {{ user_rating.rating }} out of 5"></a>
+                                    <p>Your Rating:
                                         <span class="fa fa-star {% if user_rating.rating > 0 %} checked {% endif %}"></span>
                                         <span class="fa fa-star {% if user_rating.rating > 1 %} checked {% endif %}"></span>
                                         <span class="fa fa-star {% if user_rating.rating > 2 %} checked {% endif %}"></span>
