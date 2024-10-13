@@ -24,5 +24,4 @@ class CommentAdmin(SummernoteModelAdmin):
         'created_on'
     )
     list_filter = ("author",)
-    summernote_fields = ('own_comment',)
     ordering = ('-created_on', 'approved',)
