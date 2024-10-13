@@ -179,7 +179,8 @@
                             <div class="card-text sm-px-3 comments
                                 {% if not comment.approved and comment.author == user %}
                                 faded{% elif not comment.approved %} d-none{% endif %}">
-                                <p class="font-weight-bold">
+                                <hr>
+                                <p class="fw-bold">
                                     {{ comment.author }}
                                     <span class="font-weight-normal">
                                         {{ comment.created_on }}
@@ -194,9 +195,9 @@
                                 </p>
                                 {% endif %}
                                 {% if user.is_authenticated and comment.author == user %}
-                                <button class="btn btn-edit btn-comment-edit mb-2 mb-sm-0"
+                                <button class="btn btn-edit btn-comment-edit btn-sm mb-2 mb-sm-0"
                                     data-comment-id="{{ comment.id }}">Edit Comment</button>
-                                <button class="btn btn-delete btn-comment-delete" data-comment-id="{{ comment.id }}">Delete
+                                <button class="btn btn-delete btn-comment-delete btn-sm" data-comment-id="{{ comment.id }}">Delete
                                     Comment</button>
                                 {% endif %}
                             </div>
