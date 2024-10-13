@@ -190,7 +190,9 @@ def comment_delete(request, slug, comment_id):
 
 def suggest_recipe(request):
     """
-    view to suggest a new recipe using RecipeForm
+    View to suggest a new recipe using RecipeForm.
+
+    Checks user authentication before submitting recipe.
 
     Uses slugify to format title into slug
 
@@ -201,7 +203,7 @@ def suggest_recipe(request):
     if request.method == 'POST':
         form = RecipeForm(request.POST, request.FILES)
 
-        if form.is_valid():
+        if form.is_valid() and request.user.is_authenticated:
 
             recipe = form.save(commit=False)
             if not recipe.slug:
@@ -216,8 +218,9 @@ def suggest_recipe(request):
         else:
             # If the form is invalid, display an error message
             messages.error(request,
-                           'Error submitting the form. \
-                           Please correct the errors below.')
+                           'Error submitting the form.\n \
+                            All fields with an * must be completed.\n \
+                            You must be logged in to submit a recipe.')
     else:
 
         form = RecipeForm()
