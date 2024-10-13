@@ -11,11 +11,6 @@ SOURCE_SITES = [
 ]
 APPROVAL_STATUS = ((0, "Submitted"), (1, "Approved"))
 
-# Suggested comment feature removed from the app as not good ux
-COMMENT_CHOICES = [
-    ("", ""),
-]
-
 
 class Recipe(models.Model):
     """
@@ -103,15 +98,11 @@ class Comment(models.Model):
     """
     Comment model defines all comment data rendered in recipe_detail
     template.
-
-    **NB: suggested_comment field not used in deployed project as did
-    not add positive UX and over-complicated comment functionality.
     """
     recipe = models.ForeignKey(
         Recipe, on_delete=models.CASCADE, related_name="comments")
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="commenter")
-    suggested_comment = models.CharField(choices=COMMENT_CHOICES, blank=True)
     own_comment = models.TextField(blank=False)
     approved = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
