@@ -732,10 +732,15 @@ The finished program was initially hosted within a repository on Github, and the
 
 The steps to deploy to Heroku are as follows:
 
+- Ensure that all changed to the models have been migrated by typing the following command into the terminal: python3 manage.py makemigrations
+    - If there are migrations made, type the following command into the terminal: python3 manage.py migrate
 - Ensure that you have a file in your program file directory called: requirements.txt 
 - Ensure that all imported libraries that are used in your program are listed in the requirements.txt file.
     - To add any new libraries, type the following command into the terminal: pip3 freeze > requirements.txt
-- To avoid errors, ensure that there is a \n (new line) at the end of every input function in your code.
+- Collect all static files for your project by typing the following command into the terminal: python3 manage.py collectstatic
+    - Type 'yes' if you have already collected static files before. This will overwrite previous files.
+- Ensure you have installed gunicorn and that you have a Procfile file (has no file extension) which includes a single line of code: web: gunicorn tastesensation_project.wsgi
+- Ensure that the DEBUG setting in settings.py is set to 'False'.
 - Use **git add .** then **git commit -m "Commit message."** and then **git push** to push all latest changes into the relevant repository on Github.
 - Go to the [Heroku Website](https://dashboard.heroku.com/) and log in by clicking on the link in the top right corner of the screen.
     - Sign up for a new Heroku account if needed. 
@@ -746,10 +751,11 @@ The steps to deploy to Heroku are as follows:
 - Select the region that you are located in from the options shown
 - Ignore the Add to pipeline... button and click on **'Create app'**
 - Select the **'Settings'** tab at the top of the screen and scroll to the Config Vars section
-- ********** Click on **'Reveal Config Vars'** and if you have a file with confidetial information such as a CREDS.json file type 'CREDS' in the 'key' field and then copy the entire contents of your CREDS.json file and paste it all into the 'Value' field before clicking on **'Add'**.
-- Repeat the above process to add a second Config Var and type 'PORT' in the 'Key' field and type '8000' in the 'Value' field before clicking on **'Add'**
-- *****************
-- Scroll back to the top of the page and click on the 'Deploy' tab.
+- Click on **'Reveal Config Vars'** and if you have an env.py file with confidential information add these as Config Variables here. This project includes:
+    - CLOUDINARY_URL: {confidential value}
+    - DATABASE_URL: {confidential value}
+    - SECRET_KEY: {confidential value}
+- Once all Config Vars are in place scroll back to the top of the page and click on the 'Deploy' tab.
 - In the Deployment Method section, select Github and confirm that you want to connect to Github.
 - In the 'Search for a repository to connect to' type in the name of the repository that you want to deploy and click **'Search'**.
 - Click on the **'Connect'** button next to the correct Github repository in the search results
@@ -785,31 +791,5 @@ The steps to deploy to Heroku are as follows:
 - Slack - Discussions in the CI SLack channels were good for resolving issues including:
   - [Solving Mixed Content Errors](https://code-institute-room.slack.com/archives/C0ZU95T3R/p1724236036607429)
   - Fixing Summernote responsiveness using config settings
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-SAMPLE TABLE:
-
-  | **Column 1**               |  **Column 2**  | **Column 3**  | **Column 4** |  **Column 5**      |
-  |:---                        |      :---:     |      :---:    |    :---:     |        :---:       |
-  |                            |                |               |              |                    |
-  |                            |                |               |              |                    |
-  |                            |                |               |              |                    |
-  |                            |                |               |              |                    |
-  |                            |                |               |              |                    |
-  |                            |                |               |              |                    |
-  |                            |                |               |              |                    |
 
 
