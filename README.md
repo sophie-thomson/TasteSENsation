@@ -402,13 +402,26 @@ Full CRUD (Create, Read, Update, Delete) functionality is evident throughout the
 ![TasteSENsation Suggestion model](docs/readme-images/suggestion-model-erd.jpg)
 ![TasteSENsation Profile model](docs/readme-images/profile-model-erd.jpg)
 
-## Technologies
-- Bootstrap 5
-- Django
-- JavaScript
-- HTML
-- CSS
-- Python
+## Code and Technologies
+
+ The following coding languages, platforms and apps were used in the creation of this site:
+ - Django 4.2.16 - Framework used to build the project within.
+ - Python - Main programming language used for the back end manipulation and rendering of data and parsing to django templates 
+ - HTML - The main language used to build the content of the django templates providing the front end user interface.
+ - Bootstrap 5 - Set of pre-defined styles and layouts using a grid structure for building html pages quickly and consistently.
+ - CSS - CSS stylingis  applied to the html templates within the django framework working alongside Bootstrap styling from a static file within the project.
+ - JS - Javascript code is applied throughout the site to enable interactive feedback with the user in response to their actions.
+ - Cloudinary - Used to store recipe image files externally to the project and render them from a url link instead of a static image file  
+ - Gitpod - Cloud development environment used to write and preview code before committing.
+ - GitHub - Github hosts the TasteSENsation repository and was used for all version control and agile project management using a kanban board and GitHub issues.
+ - [Heroku](https://dashboard.heroku.com/apps) - TasteSENsation is deployed to Heroku as a published project for assessment
+ - Font Awesome - Free icons from font awesome are used in the footer and to provide a visual star rating mechanism. 
+ - [AI Emoji Creator](https://emojis.sh/) - used to create and download equipment emoji icons used in recipe cards and recipe detail page. 
+ - miro.com - To create database models and model schema
+ - Favicon.io - The letter T favicon generated using [Favicon.io](https://favicon.io/favicon-converter/) free generator.
+ - Balsamiq - The responsive layout wireframes were designed and planned using [Balsamiq](https://balsamiq.com/).
+ - [Trello](https://trello.com/b/vH7TCYBx/tastesensation-your-one-stop-directory-of-user-friendly-sen-accessible-recipes-and-kitchen-skills-training) - Initial planning board to flesh out SEN recipe cookbook idea and requirements.
+ 
 
 ## Testing
 
@@ -416,9 +429,136 @@ Full CRUD (Create, Read, Update, Delete) functionality is evident throughout the
 
 ## Validation
 
+### CI Python Linter
+
+![TasteSENsation Linter Validation admin.py](docs/readme-images/py-linter-admin.py.png)
+![TasteSENsation Linter Validation apps.py](docs/readme-images/py-linter-apps.py.png)
+![TasteSENsation Linter Validation asgi.py](docs/readme-images/py-linter-asgi.py.png)
+![TasteSENsation Linter Validation forms.py](docs/readme-images/py-linter-forms.py.png)
+![TasteSENsation Linter Validation manage.py](docs/readme-images/py-linter-manage.py.png)
+![TasteSENsation Linter Validation models.py](docs/readme-images/py-linter-models.py.png)
+![TasteSENsation Linter Validation settings.py](docs/readme-images/py-linter-settings.py.png)
+![TasteSENsation Linter Validation urls.py](docs/readme-images/py-linter-tastesensation-urls.py.png)
+![TasteSENsation Linter Validation wsgi.py](docs/readme-images/py-linter-tastesensation-wsgi.py.png)
+![TasteSENsation Linter Validation urls.py](docs/readme-images/py-linter-urls.py.png)
+![TasteSENsation Linter Validation views.py](docs/readme-images/py-linter-views.py.png)
+
+
+### JShint
+
+![TasteSENsation JShint Validation comments.js](docs/readme-images/js-jshint-comments.js.png)
+![TasteSENsation JShint Validation recipes.js](docs/readme-images/js-jshint-recipes.js.png)
+![TasteSENsation JShint Validation script.js](docs/readme-images/js-jshint-script.js.png)
+
+### HTML
+
+![TasteSENsation HTML Validation index.html](docs/readme-images/html-w3-index.html.png)
+![TasteSENsation HTML Validation recipe_detail.html](docs/readme-images/html-w3-recipe_detail.html.png)
+![TasteSENsation HTML Validation login.html](docs/readme-images/html-w3-login.html.png)
+![TasteSENsation HTML Validation logout.html](docs/readme-images/html-w3-logout.html.png)
+
+- Known Errors with Summernote Editor Widget. External cause and not solvable using project css.
+
+![TasteSENsation HTML Validation suggest_recipe.html](docs/readme-images/html-errors-summernote-suggest_recipe.html.png)
+![TasteSENsation HTML Validation recipe_edit.html](docs/readme-images/html-errors-summernote-recipe_edit.html.png)
+
+- Known errors with AllAuth signup form in more recent versions. External cause and not solvable using project css.
+
+![TasteSENsation HTML Validation signup.html](docs/readme-images/html-errors-allauth-signup.html.png)
+
+### CSS
+
+![TasteSENsation CSS Validation](docs/readme-images/css-style.css.png)
+
+### Wave Compatibility
+
+![TasteSENsation WAVE Compatability index.html](docs/readme-images/wave-index.html.png)
+![TasteSENsation WAVE Compatability recipe_detail.html](docs/readme-images/wave-recipe_detail.html.png)
+![TasteSENsation WAVE Compatability suggest_recipe.html](docs/readme-images/wave-suggest_recipe.html.png)
+![TasteSENsation WAVE Compatability login.html](docs/readme-images/wave-login.html.png)
+![TasteSENsation WAVE Compatability signup.html](docs/readme-images/wave-signup.html.png)
+
+### Lighthouse
+
+![TasteSENsation Lighthouse Assessment signup.html](docs/readme-images/lighthouse-signup.html.png)
+![TasteSENsation Lighthouse Assessment login.html](docs/readme-images/lighthouse-login.html.png)
+![TasteSENsation Lighthouse Assessment index.html](docs/readme-images/lighthouse-index.html.png)
+![TasteSENsation Lighthouse Assessment recipe_detail.html](docs/readme-images/lighthouse-recipe_detail.html.png)
+![TasteSENsation Lighthouse Assessment suggest_recipe.html](docs/readme-images/lighthouse-suggest_recipe.html.png)
+
+
 ## Deployment
 
+### Gitpod Version Control
+This site was created using the Gitpod cloud development environment before being pushed through to a dedicated repository on Github.
+
+The following commands were used througout development to push the code through to the Github repo:
+
+- **git add .** - This command was used to add any tracked files to the staging area.
+- **git commit -m "Commit message."** - This command was used to create a snapshot of the staged area with a short description.
+- **git push** - This command was used to push the committed changes from the current branch to the remote repository on Github.
+
+### Deployment
+
+The finished program was initially hosted within a repository on Github, and then this Github repository was connected with Heroku, the site through which the program is deployed.
+
+***How to Deploy to Heroku***
+
+The steps to deploy to Heroku are as follows:
+
+- Ensure that you have a file in your program file directory called: requirements.txt 
+- Ensure that all imported libraries that are used in your program are listed in the requirements.txt file.
+    - To add any new libraries, type the following command into the terminal: pip3 freeze > requirements.txt
+- To avoid errors, ensure that there is a \n (new line) at the end of every input function in your code.
+- Use **git add .** then **git commit -m "Commit message."** and then **git push** to push all latest changes into the relevant repository on Github.
+- Go to the [Heroku Website](https://dashboard.heroku.com/) and log in by clicking on the link in the top right corner of the screen.
+    - Sign up for a new Heroku account if needed. 
+    - Please note you will need to add a payment card before Heroku will allow you to deploy any project. 
+    - To do this you will need to click on your account profile in the top right corner and click on Account Settings, then select the Billing tab and follow the instructions to add a credit card. 
+- Once logged in, click on the **'New'** drop down menu at the top of your dashboard and select **'Create new app'**
+- Choose a name for your app ideally using the same conventions as your project name in your Github repository
+- Select the region that you are located in from the options shown
+- Ignore the Add to pipeline... button and click on **'Create app'**
+- Select the **'Settings'** tab at the top of the screen and scroll to the Config Vars section
+- ********** Click on **'Reveal Config Vars'** and if you have a file with confidetial information such as a CREDS.json file type 'CREDS' in the 'key' field and then copy the entire contents of your CREDS.json file and paste it all into the 'Value' field before clicking on **'Add'**.
+- Repeat the above process to add a second Config Var and type 'PORT' in the 'Key' field and type '8000' in the 'Value' field before clicking on **'Add'**
+- *****************
+- Scroll back to the top of the page and click on the 'Deploy' tab.
+- In the Deployment Method section, select Github and confirm that you want to connect to Github.
+- In the 'Search for a repository to connect to' type in the name of the repository that you want to deploy and click **'Search'**.
+- Click on the **'Connect'** button next to the correct Github repository in the search results
+- Scroll down to select whether you would like to deploy automatically (Heroku will build a new app every time you push new updates through to the Github repository), or whether you would like to deploy manually at less regular intervals when you wish to check or test something.
+- Click on **'Deploy Branch'** (ensure that the branch selected is 'main') to deploy manually when you want to.
+- Heroku will build your app and will then display a 'View' button at the bottom of the screen.
+- Click **'View'** to see your deployed project!
+
 ## References
+- The CI walkthrough project 'I Think Therefore I Blog' was used as a reference when building the inital project in django and the basis for the recipe and comment models and views.
+- [Django documentation](https://docs.djangoproject.com/en/5.1/) - Was used regularly to find potential tags, functions and widgets to manipulate and manage data in Python.
+  - [Muliple Choice Fields](https://docs.djangoproject.com/en/5.1/ref/models/fields/)
+  - [Generic Views](https://docs.djangoproject.com/en/4.2/ref/class-based-views/generic-display/)
+  - [Slugify](https://docs.djangoproject.com/en/5.1/ref/utils/)
+  - [Widgets in Forms](https://django.readthedocs.io/en/1.5.x/ref/forms/widgets.html)
+  - [Rating count using aggregation](https://docs.djangoproject.com/en/5.1/topics/db/aggregation/)
+  - [Adding initial data to a formset](https://docs.djangoproject.com/en/5.1/topics/forms/formsets/#using-initial-data-with-a-formset)
+  - [use of Unique_together](https://docs.djangoproject.com/en/5.1/ref/models/options/#django.db.models.Options.unique_together)
+- [Bootstrap 5 documentation](https://getbootstrap.com/docs/5.0/getting-started/introduction/) was used regularly when considering layout and styling for the project
+- [Stack Overflow](https://stackoverflow.com/) - used as a reference for possible syntax and uses for Star Ratings and Python functions.
+- [StackOverflow - Divergent branch issue](https://stackoverflow.com/questions/71768999/how-to-merge-when-you-get-error-hint-you-have-divergent-branches-and-need-to-s)
+- [W3 Schools](https://www.w3schools.com/) - used for JS tutorials and testing space to find correct syntax.
+- [AllAuth Docs](https://docs.allauth.org/en/latest/installation/quickstart.html)
+- [YouTube video tutorial](https://www.youtube.com/watch?v=N-PB-HMFmdo) was used to help resolve issues with pagination for filtered recipe list.
+- [YouTube - Adding fields to a Django registration form](https://www.youtube.com/watch?v=TBGRYkzXiTg)
+- [Open Classrooms - Using multiple forms on one template](https://openclassrooms.com/en/courses/7107341-intermediate-django/7264795-include-multiple-forms-on-a-page)
+- [StackOverflow - Using slugify](https://stackoverflow.com/questions/837828/how-do-i-create-a-slug-in-django)
+- [Cloudinary docs](https://cloudinary.com/documentation/resizing_and_cropping)
+- [Cloudinary - Resizing cloudinary images in Django](https://support.cloudinary.com/hc/en-us/community/posts/360009752479-How-to-resize-before-uploading-pictures-in-Django)
+- [StackOverflow - Adding Summernote to edit recipe form](https://stackoverflow.com/questions/52168446/how-to-use-django-summernote-in-templates)
+- [Geek Culture - Implementing a star rating mechanism](https://medium.com/geekculture/django-implementing-star-rating-e1deff03bb1c)
+- All recipe images have creative commons licences and were sourced online.
+- Slack - Discussions in the CI SLack channels were good for resolving issues including:
+  - [Solving Mixed Content Errors](https://code-institute-room.slack.com/archives/C0ZU95T3R/p1724236036607429)
+  - Fixing Summernote responsiveness using config settings
 
 
 
