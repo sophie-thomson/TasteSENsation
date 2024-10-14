@@ -35,6 +35,7 @@ function hide_rating_button() {
 * 5000ms (5 seconds).
 */
 document.addEventListener('DOMContentLoaded', function () {
+    editRatingBtn.addEventListener('click', show_rating_form);
     
     let alerts = document.querySelectorAll('.alert');
 
