@@ -86,7 +86,7 @@ The simple, uncluttered layout and use of additional visual prompts help to make
 ![Screenshot of responsive recipe list on tablet](docs/readme-images/recipe-list-responsive-tablet.png)
 
 ***Pagination***
-- The recipe cards are displayed with 6 recipes per page to help manage the flow of information for SEN users who may get easily overwhelmed or distracted.
+- The recipe cards are displayed with 6 recipes per page to help manage the flow of information for SEN users who may get easily overwhelmed or distracted with infinite scrolling.
 - Using 6 recipe cards also enables more responsive display for the optimum number of cards to be displayed using the grid structure on different devices (rows of 3 cards each on larger screens, 2 cards on tablets and 1 card on small devices). 
 - Navigation buttons at the bottom of the page enable the user to view more recipes or go back to previous recipes.
 - The page navigation buttons are only visible if there are further pages to view, or if there is a previous page to view.
@@ -97,6 +97,13 @@ The simple, uncluttered layout and use of additional visual prompts help to make
 
 ***Recipe Title***
 - Large clear heading at the top of the page to confirm the name of the dish.
+
+***Average Rating and Comment Count***
+- Average rating displayed using 5 star icons and coloured representation of the rating.
+- Aria label used to ensure that screen readers can announce the rating to users where necessary.
+- Rating count indicates total number of ratings for that recipe included in the aggregate average to give better user experience and deeper understanding of the rating context.
+- Comment count and comment icon shows the total number of comments for a particular recipe.
+- Helps to build interest in the recipe and look at other people's comments. Also provides visual prompt to encourage registered users to leave their own comment.
 
 ***Recipe Image***
 - The same hero image used for the recipe card in the recipe list for continuity and to confirm the user has selected the right recipe.
@@ -116,7 +123,7 @@ The simple, uncluttered layout and use of additional visual prompts help to make
 - Located high up on the page alongside the image so that users can source and prepare their ingredients before starting the recipe.
 
 ***Instructions***
-- A standrad line of text for all recipes to remind the user to wash their hands before starting the recipe.
+- A standard subheading highlighted in bold and a different colour for all recipes to remind the user to wash their hands and read through the steps before starting the recipe.
 - A step by step ordered list of instructions clearly separated by a horizontal rule to help SEN users to keep track of the step that they are following.
 - A checkbox that can be checked off by the user when each step is completed. Further enables the SEN user to maintain focus and keep track of the step that they are on.
 
@@ -125,9 +132,9 @@ The simple, uncluttered layout and use of additional visual prompts help to make
 ***Feedback Section***
 - A feedback section for the recipe to enable users to see other people's comments and provide their own feedback.
 - Access to the features in this section is controlled through user authentication.
- - **Rate This Recipe** - Registered users are able to provide a star rating for a recipe as long as it was not submitted by themselves. This prevents users from rating their own recipes higher than everyone else's. Casual Users are not able to rate a recipe.
+ - **Rate This Recipe** - Registered users are able to provide a star rating for a recipe as long as it was not submitted by themselves. This prevents users from rating their own recipes higher than everyone else's. Casual Users are not able to rate a recipe. Jinja tags are used to check user authentication and check whether there is an existing rating in place for that user. JavaScript is used to add and remove the .hidden class so that the edit rating button and the rating form are only visible for the appropriate user. 
  - **Comments** - Displays all approved comments for this recipe for all users to view. Registered Users are also able to view, edit and delete their own comments that are awaiting approval.
-- **Leave a Comment** - Registered Users are able to write and submit their own comments using a simple form. Casual Users are not able to submit a comment.
+- **Leave a Comment** - Registered Users are able to write and submit their own comments using a simple form. User authentication ensures that Casual Users are not able to submit a comment.
 
 ![Screenshot of rating form with no previous rating](docs/readme-images/first-rating-mobile.png)
 ![Screenshot of edit rating section on mobile](docs/readme-images/edit-rating-mobile.png)
@@ -354,6 +361,14 @@ Full CRUD (Create, Read, Update, Delete) functionality is evident throughout the
    - **Should Have** - Epics, User Stories and Tasks that SHOULD be included in the project, but that won't cause the project to break and are not required in order to address the assessment criteria.
    - **Could Have** - Epics, User Stories and Tasks that COULD be included in the project, but that are more of a nice to have addition and should not be prioritised over the Must Have or Should Have issues.
    - **Won't Have** - Epics, User Stories and Tasks that WON'T be included in the project. These are issues that would have been nice to include given more time, but do not affect the usability of the project and are not required to address the assessment criteria.
+     - EPIC and USER STORY issues that this project Won't Have at the point of submission are:
+        - [#9](https://github.com/sophie-thomson/TasteSENsation/issues/9)
+        - [#21](https://github.com/sophie-thomson/TasteSENsation/issues/21)
+        - [#22](https://github.com/sophie-thomson/TasteSENsation/issues/22)
+        - [#25](https://github.com/sophie-thomson/TasteSENsation/issues/25)
+        - [#34](https://github.com/sophie-thomson/TasteSENsation/issues/34)
+        - [#15](https://github.com/sophie-thomson/TasteSENsation/issues/15)
+        - [#23](https://github.com/sophie-thomson/TasteSENsation/issues/23)
 
 
 ***Sprints and Story Points***
@@ -406,10 +421,11 @@ Full CRUD (Create, Read, Update, Delete) functionality is evident throughout the
 
  The following coding languages, platforms and apps were used in the creation of this site:
  - Django 4.2.16 - Framework used to build the project within.
+ - PostgreSQL database created using [CI Database Maker](https://dbs.ci-dbs.net/) is used to store all of the data for TasteSENsation outside of the project.
  - Python - Main programming language used for the back end manipulation and rendering of data and parsing to django templates 
  - HTML - The main language used to build the content of the django templates providing the front end user interface.
  - Bootstrap 5 - Set of pre-defined styles and layouts using a grid structure for building html pages quickly and consistently.
- - CSS - CSS stylingis  applied to the html templates within the django framework working alongside Bootstrap styling from a static file within the project.
+ - CSS - CSS styling is applied to the html templates within the django framework working alongside Bootstrap styling from a static file within the project.
  - JS - Javascript code is applied throughout the site to enable interactive feedback with the user in response to their actions.
  - Cloudinary - Used to store recipe image files externally to the project and render them from a url link instead of a static image file  
  - Gitpod - Cloud development environment used to write and preview code before committing.
@@ -417,7 +433,7 @@ Full CRUD (Create, Read, Update, Delete) functionality is evident throughout the
  - [Heroku](https://dashboard.heroku.com/apps) - TasteSENsation is deployed to Heroku as a published project for assessment
  - Font Awesome - Free icons from font awesome are used in the footer and to provide a visual star rating mechanism. 
  - [AI Emoji Creator](https://emojis.sh/) - used to create and download equipment emoji icons used in recipe cards and recipe detail page. 
- - miro.com - To create database models and model schema
+ - [miro.com](https://miro.com/) - To create database models and model schema
  - Favicon.io - The letter T favicon generated using [Favicon.io](https://favicon.io/favicon-converter/) free generator.
  - Balsamiq - The responsive layout wireframes were designed and planned using [Balsamiq](https://balsamiq.com/).
  - [Trello](https://trello.com/b/vH7TCYBx/tastesensation-your-one-stop-directory-of-user-friendly-sen-accessible-recipes-and-kitchen-skills-training) - Initial planning board to flesh out SEN recipe cookbook idea and requirements.
@@ -426,10 +442,29 @@ Full CRUD (Create, Read, Update, Delete) functionality is evident throughout the
 ## Testing
 
 ***Bugs***
+- Significant issues that took additional research and time to resolve are documented in the [GitHub TasteSENsation Kanban Board](https://github.com/users/sophie-thomson/projects/3). Refer to the relevant BUG issue for further details:
+  - [BUG: Initial Deployment to Heroku #35](https://github.com/users/sophie-thomson/projects/3?pane=issue&itemId=80415269&issue=sophie-thomson%7CTasteSENsation%7C35)
+  - [BUG: Redefining Recipe Model #39](https://github.com/users/sophie-thomson/projects/3?pane=issue&itemId=81083741&issue=sophie-thomson%7CTasteSENsation%7C39)
+  - [BUG: Enabling user to edit star rating #40](https://github.com/users/sophie-thomson/projects/3?pane=issue&itemId=81251658&issue=sophie-thomson%7CTasteSENsation%7C40)
+  - [BUG: Handling multiple POST requests in the recipe_detail view #41](https://github.com/users/sophie-thomson/projects/3?pane=issue&itemId=81439675&issue=sophie-thomson%7CTasteSENsation%7C41)
+  - [BUG: Casual user not able to view recipe_detail page #42](https://github.com/users/sophie-thomson/projects/3?pane=issue&itemId=81471532&issue=sophie-thomson%7CTasteSENsation%7C42)
+  - [BUG: Placeholder comments not showing in Recipe Form #48](https://github.com/users/sophie-thomson/projects/3?pane=issue&itemId=81882211&issue=sophie-thomson%7CTasteSENsation%7C48)
+  - [BUG: Edit recipe form showing raw html instead of content #49](https://github.com/users/sophie-thomson/projects/3?pane=issue&itemId=82900515&issue=sophie-thomson%7CTasteSENsation%7C49)
+  - [BUG: Equipment icons not responsive #50](https://github.com/users/sophie-thomson/projects/3?pane=issue&itemId=82904254&issue=sophie-thomson%7CTasteSENsation%7C50)
+  - [BUG: Filter by star rating not working over pagination logic #53](https://github.com/users/sophie-thomson/projects/3/views/1?pane=issue&itemId=82988924&issue=sophie-thomson%7CTasteSENsation%7C53)
+  - [BUG: Suggest Recipe page not responsive on smaller screens #54](https://github.com/users/sophie-thomson/projects/3/views/1?pane=issue&itemId=83097196&issue=sophie-thomson%7CTasteSENsation%7C54)
+
+***Unresolved Bugs / Issues***
+- At the time of submission there are some BUG issues that remain unclosed. Details of the approaches tried and the reason they remain unresolved are included in each BUG issue:
+  - [BUG: Enabling order by or sort by ranking in RecipeList #51](https://github.com/sophie-thomson/TasteSENsation/issues/51)
+  - [BUG: Multiple Validation errors using Summernote Widget #55](https://github.com/sophie-thomson/TasteSENsation/issues/55)
+  - [BUG: Validation Errors Issue with AllAuth Signup Form #56](https://github.com/sophie-thomson/TasteSENsation/issues/56)
+
 
 ## Validation
 
 ### CI Python Linter
+- There are no errors raised in the [Python Linter](https://pep8ci.herokuapp.com/) for any of the TasteSENsation .py files:
 
 ![TasteSENsation Linter Validation admin.py](docs/readme-images/py-linter-admin.py.png)
 ![TasteSENsation Linter Validation apps.py](docs/readme-images/py-linter-apps.py.png)
@@ -445,6 +480,8 @@ Full CRUD (Create, Read, Update, Delete) functionality is evident throughout the
 
 
 ### JShint
+- JShint flags Bootstrap as an 'Undefined Variable', but as this is used in the walkthrough and is caused by cross referencecing scripts this is not considered an issue.
+- 
 
 ![TasteSENsation JShint Validation comments.js](docs/readme-images/js-jshint-comments.js.png)
 ![TasteSENsation JShint Validation recipes.js](docs/readme-images/js-jshint-recipes.js.png)
