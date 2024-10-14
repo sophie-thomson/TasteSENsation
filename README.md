@@ -304,13 +304,15 @@ Full CRUD (Create, Read, Update, Delete) functionality is evident throughout the
 
 - Registered Users can:
     - Create a user rating for other people's published recipes
+    - Read their own rating in form of star icons on other people's recipes
     - Update their own rating for other people's recipes
     - Create new comments for their own and other people's recipes within the Full Recipe Detail page.
-    - Read all approved comments for all recipes, and read their own unnaproved comments awaiting approval.
+    - Read all approved comments for all recipes, and read their own unnaproved comments awaiting approval. 
+    - Read content of own comments in comment form when editing comment.
     - Update their own comments (whether approved or not).
     - Delete their own comments (whether approved or not).
     - Create a new recipe to submit for approval by admin to be added to the site
-    - Read all approved (published) recipes.
+    - Read all approved (published) recipes, and read content of their own recipe when editing recipe.
     - Update their own recipe as the recipe 'owner' and re-submit for approval
     - Delete their own recipe as the recipe 'owner'
 
@@ -441,7 +443,192 @@ Full CRUD (Create, Read, Update, Delete) functionality is evident throughout the
 
 ## Testing
 
-***Bugs***
+### Tests Carried Out
+A series of manual tests have been carried out across all aspects of the TasteSENsation site to ensure full working functionality:
+
+- CRUD Functionality - Are registered users able to Create, Read, Update and Delete data in all areas defined in the CRUD Functionality Section of this README? 
+- Navigation - Do all links lead to the expected url / information and open in a new page where appropriate?
+- User Authentication Testing - Does user authentication manage access and functionality according to user role as expected?
+- User Story Testing - Is the project a good solution to the User's needs?
+
+### CRUD Testing
+
+***Rating CRUD Testing for Registered User***
+
+  | **Testing**               |  **Expected Outcome**  | **Actual Outcome**  |
+  |:---                       |         :---:          |          :---:      | 
+  |Create rating for own recipe? |Message stating "Not permitted to rate own recipe"|Message visible. No add rating option available|
+  |Create rating for other's recipe?|Rating Form visible, Submit Rating btn triggers successful submission alert|Form visible and success alert triggered|  
+  |If submitted, Read own current rating?| Current Rating shown as star icons with Edit Rating btn visible|Rating shown, Edit Rating btn visible| 
+  |Update own rating?|Edit Rating btn shows Rating Form, Edit Rating btn hidden, Submit Rating btn visible,successful submission alert.|All as expected|  
+  |Update other's rating?|No current rating displayed and no Edit Rating btn visible|No rating displayed, no Edit Rating btn visible|
+  |                           |                        |                     | 
+
+
+***Comment CRUD Testing for Registered User***
+
+  | **Testing**               |  **Expected Outcome**  | **Actual Outcome**  |
+  |:---                       |         :---:          |          :---:      | 
+  |Create comment for own recipe?|Comment Form visible and Submit Comment btn triggers successful submission alert|Form visible and success alert triggered|  
+  |Create comment for other's recipe?|Comment Form visible and Submit Comment btn triggers successful submission alert|Form visible and success alert triggered| 
+  |Read all approved comments for all recipes?|Approved comments visible as a list, or message stating "No comments yet" if none|Comments visible or message visible| 
+  |Read all unapproved comments?|Unnaproved comments by other users hidden|Unnapproved commets hidden|  
+  |Read own unapproved comments?|Own unnaproved comments visible with note to highlight "Comment awaiting approval"|Own unnaproved comments visible with note|
+  |Read own comment in comment form when editing?|Comment content populated in Comment Form when Edit Comment btn clicked|Comment content added to Comment Form|
+  |Update own approved comment?|Edit Comment btn visible. Update Comment btn triggers successful submission alert|Form visible and success alert triggered|
+  |Delete own approved comment?|Delete Comment btn visible. Delete Comment Modal triggered when clicked. Delete in model triggers success alert|All as expected| 
+  |Delete own unapproved comment?|Delete Comment btn visible. Delete Comment Modal triggered when clicked. Delete in model triggers success alert|All as expected|
+  |                           |                        |                     | 
+
+
+***Recipe CRUD Testing for Registered User***
+
+  | **Testing**               |  **Expected Outcome**  | **Actual Outcome**  |
+  |:---                       |         :---:          |          :---:      | 
+  |Create new recipe using Suggest Recipe page?|Recipe Form visible. Submit Recipe btn triggers success alert.|Form visible and success alert triggered|
+  |Create new recipe if not logged in?|If not logged in Submit Recipe btn triggers error alert|Error alert triggered|  
+  |Read own recipe in order to update?|If recipe 'Owner', Edit Recipe btn visible and content displayed in Recipe Form for editing|Edit Recipe btn visible, form populated|  
+  |Update own recipe using Recipe Form?|If recipe 'Owner', Edit Recipe btn visible (as above) Update Recipe triggers success alert| All as expected|  
+  |Update own recipe if not logged in?|If recipe 'Owner', but not logged in Update Recipe btn triggers error alert| Error alert triggered| 
+  |Delete own recipe|If recipe 'Owner' Delete Recipe btn visible. Delete Recipe Modal triggered when clicked. Delete in model triggers success alert|All as expected|
+  |                           |                        |                     | 
+
+
+### Navigation Testing
+
+Testing all links and buttons work on each page. Functionality of CRUD related buttons already tested above.
+
+  | **Page Tested**               |  **Expected Outcome**  | **Actual Outcome** 
+  |:---                              |      :---:           |      :---:    |
+  |Recipe List (index.html)|Recipe links, log in link and page navigation buttons take user to expected url|All as expected|
+  |Recipe Detail (recipe_details.html)|Links to log in and sign up pages in feedback section take user to expected url|All as expected|
+  |Suggest Recipe (suggest_recipe.html)|No text links to test. Only Submit Recipe btn|All as expected|
+  |Edit Recipe (recipe_edit.html)|No text links to test. Only Update Recipe btn|All as expected|
+  |Log In (login.html)|Link to Sign Up page takes user to expected url |All as expected|
+  |Log Out (logout.html)|No text links to test. Only Log Out btn|All as expected|
+  |Sign Up (signup.html)|Link to Log In page takes user to expected url |All as expected|
+  |Base Template (base.html)|Nav Bar links and socials links take user to expected url in new page where appropriate|All as expected|
+  |       |                |               |
+
+
+### User Authentication Testing
+
+***User Authentication Testing for Casual Users***
+
+  | **Functionality**          |  **Expected**  | **Actual**   |
+  |:---                        |      :---:     |    :---:     |
+  |View Recipes List           |y               |y             |
+  |Filter Recipe List by Rating|y               |y             |
+  |View Recipe Details         |y               |y             |
+  |View Average Rating         |y               |y             |
+  |View Approved Comments      |y               |y             |
+  |View Own Unapproved Comments|-               |-             |
+  |View All Unapproved Comments|-               |-             |
+  |                            |                |              |
+  |Add Rating                  |-               |-             |
+  |Edit Own Rating             |-               |-             |
+  |Edit Other's Ratings        |-               |-             |
+  |                            |                |              |
+  |Add Comment                 |-               |-             |                     
+  |Edit Own Approved Comment   |-               |-             |
+  |Edit All Approved Comments  |-               |-             |
+  |Edit Own Unapproved Comment |-               |-             |
+  |Edit All Unapproved Comments|-               |-             |
+  |Delete Own Comment          |-               |-             |
+  |Delete All Comments         |-               |-             |
+  |                            |                |              |
+  |Add Recipe                  |-               |-             |
+  |Edit Own Approved Recipe    |-               |-             |
+  |Edit All Approved Recipes   |-               |-             |
+  |Edit Own Unapproved Recipe  |-               |-             |                
+  |Edit All Unapproved Recipes |-               |-             |                    
+  |Delete Own Recipe           |-               |-             |                   
+  |Delete All Recipes          |-               |-             |
+  |                            |                |              |  
+
+
+***User Authentication Testing for Registered Users***
+  
+  | **Functionality**           |  **Expected**  | **Actual**   |
+  |:---                         |      :---:     |    :---:     |
+  |View Recipes List            |y               |y             |
+  |Filter Recipe List by Rating |y               |y             |
+  |View Recipe Details          |y               |y             |
+  |View Average Rating          |y               |y             |
+  |View Approved Comments       |y               |y             |
+  |View Own Unapproved Comments |y               |y             |
+  |View All Unapproved Comments |-               |-             |
+  |                             |                |              |
+  |Add Rating to Other's Recipes|y               |y             |
+  |Add Rating to Own Recipe     |-               |-             |
+  |Edit Own Rating              |y               |y             |
+  |Edit Other's Ratings         |-               |-             |
+  |                             |                |              |
+  |Add Comment                  |y               |y             |                     
+  |Edit Own Approved Comment    |y               |y             |
+  |Edit All Approved Comments   |-               |-             |
+  |Edit Own Unapproved Comment  |y               |y             |
+  |Edit All Unapproved Comments |-               |-             |
+  |Delete Own Comment           |y               |y             |
+  |Delete All Comments          |-               |-             |
+  |                             |                |              |
+  |Add Recipe                   |y               |y             |
+  |Edit Own Approved Recipe     |y               |y             |
+  |Edit All Approved Recipes    |-               |-             |
+  |Edit Own Unapproved Recipe   |-               |-             |                
+  |Edit All Unapproved Recipes  |-               |-             |                    
+  |Delete Own Recipe            |y               |y             |                   
+  |Delete All Recipes           |-               |-             |
+  |                             |                |              |
+
+
+***User Authentication Testing for Admin Superuser***
+
+  | **Functionality**          |  **Expected**  | **Actual**   |
+  |:---                        |      :---:     |    :---:     |
+  |View Recipes List           |y               |y             |
+  |Filter Recipe List by Rating|y               |y             |
+  |View Recipe Details         |y               |y             |
+  |View Average Rating         |y               |y             |
+  |View Approved Comments      |y               |y             |
+  |View Own Unapproved Comments|y               |y             |
+  |View All Unapproved Comments|y               |y             |
+  |                            |                |              |
+  |Add Rating                  |y               |y             |
+  |Edit Own Rating             |y               |y             |
+  |Edit Other's Ratings        |-               |-             |
+  |                            |                |              |
+  |Add Comment                 |y               |y             |                     
+  |Edit Own Approved Comment   |y               |y             |
+  |Edit All Approved Comments  |y               |y             |
+  |Edit Own Unapproved Comment |y               |y             |
+  |Edit All Unapproved Comments|y               |y             |
+  |Delete Own Comment          |y               |y             |
+  |Delete All Comments         |y               |y             |
+  |                            |                |              |
+  |Add Recipe                  |y               |y             |
+  |Edit Own Approved Recipe    |y               |y             |
+  |Edit All Approved Recipes   |y               |y             |
+  |Edit Own Unapproved Recipe  |y               |y             |                
+  |Edit All Unapproved Recipes |y               |y             |                    
+  |Delete Own Recipe           |y               |y             |                   
+  |Delete All Recipes          |y               |y             |
+  |                            |                |              |
+
+
+### User Story Testing
+
+The TasteSENsation site provides a good solution to address USER STORY issues listed in the kanban booard in the following ways:
+
+- Users are able to view a list of recipes in a clean and attractive layout and filter this view accrding to star rating.
+- Users are able to view the full details for each recipe and follow a clear set of instructions with checkboxes and clean layout to help them stay on track.
+- Users are able to interact with the site by registering and adding their own ratings and comments to feedback on other people's recipes.
+- Users are able to submit their own recipe to be added to the cookbook for other people to enjoy.
+- Users have full CRUD functionality for their own comments and recipes and are able to update their rating if they change their mind.
+ 
+
+
+### Bugs
 - Significant issues that took additional research and time to resolve are documented in the [GitHub TasteSENsation Kanban Board](https://github.com/users/sophie-thomson/projects/3). Refer to the relevant BUG issue for further details:
   - [BUG: Initial Deployment to Heroku #35](https://github.com/users/sophie-thomson/projects/3?pane=issue&itemId=80415269&issue=sophie-thomson%7CTasteSENsation%7C35)
   - [BUG: Redefining Recipe Model #39](https://github.com/users/sophie-thomson/projects/3?pane=issue&itemId=81083741&issue=sophie-thomson%7CTasteSENsation%7C39)
@@ -459,6 +646,9 @@ Full CRUD (Create, Read, Update, Delete) functionality is evident throughout the
   - [BUG: Enabling order by or sort by ranking in RecipeList #51](https://github.com/sophie-thomson/TasteSENsation/issues/51)
   - [BUG: Multiple Validation errors using Summernote Widget #55](https://github.com/sophie-thomson/TasteSENsation/issues/55)
   - [BUG: Validation Errors Issue with AllAuth Signup Form #56](https://github.com/sophie-thomson/TasteSENsation/issues/56)
+
+- There appears to be a console error triggered on the recipe_detail page for the js used to add an event listener to the editRatingBtn to run the showRatingForm function. The error is noted below but the showRatingForm function is working without error, so I am not sure how to go about resolving this error. I have tried moving the Const editRatingBtn variable inside a DOMContentLoaded parameter, but this did not sole the issue. As it is not causing any issues with the functionality I have left this console error unresolved.
+  - Console Error: Uncaught TypeError: Cannot read properties of null (reading 'addEventListener') for line 38 of script.js
 
 
 ## Validation
@@ -481,7 +671,6 @@ Full CRUD (Create, Read, Update, Delete) functionality is evident throughout the
 
 ### JShint
 - JShint flags Bootstrap as an 'Undefined Variable', but as this is used in the walkthrough and is caused by cross referencecing scripts this is not considered an issue.
-- 
 
 ![TasteSENsation JShint Validation comments.js](docs/readme-images/js-jshint-comments.js.png)
 ![TasteSENsation JShint Validation recipes.js](docs/readme-images/js-jshint-recipes.js.png)
